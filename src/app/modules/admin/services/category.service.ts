@@ -14,6 +14,6 @@ export class CategoryService {
   categoriesUrl = 'http://localhost:3000/categories';
   constructor(private http: HttpClient) {}
   getCategories(): Observable<any> {
-    return this.http.get('https://jsonplaceholder.typicode.com/users');
+    return this.http.get('http://localhost:3000/categories');
   }
 }

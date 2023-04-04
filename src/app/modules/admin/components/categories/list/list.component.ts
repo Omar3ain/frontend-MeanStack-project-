@@ -8,23 +8,18 @@ import { CategoryService } from '../../../services/category.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
 })
-export class ListComponent implements OnInit, AfterViewInit {
+export class ListComponent {
   categories: any[] = [];
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['ID','name', 'creator'];
   dataSource = new MatTableDataSource<any>(this.categories);
   constructor(private categoryService: CategoryService) {
     this.categoryService.getCategories().subscribe((res) => {
-      this.categories = res;
-      // console.log()
+      this.dataSource.data = this.categories= res.categories;
     })
-  }
-  ngOnInit() {
-    console.log(this.categories)
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngAfterViewInit() {
-    console.log(this.categories)
     this.dataSource.paginator = this.paginator;
   }
 
