@@ -1,7 +1,7 @@
 import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { MatFormField } from '@angular/material/form-field';
-
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { CategoryService } from '../../../services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -9,18 +9,19 @@ import { MatFormField } from '@angular/material/form-field';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
-  form: FormGroup = new FormGroup({
-  username: new FormControl(''),
-  password: new FormControl(''),
-});
-
-submit() {
-  if (this.form.valid) {
-    this.submitEM.emit(this.form.value);
+  createCategoryForm: FormGroup;
+  constructor(private router: Router, private categoryService: CategoryService, private formBuilder: FormBuilder) {
+    this.createCategoryForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      categoryCover: ['']
+    });
   }
-}
-@Input() error: string | undefined;
 
-@Output() submitEM = new EventEmitter();
-
+  onSubmit() {
+    this.categoryService.postCategory(this.createCategoryForm.value).subscribe(res => {
+      
+    },
+      error => { console.log(error); }
+    );
+  }
 }
