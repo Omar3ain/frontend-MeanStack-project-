@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListBooksComponent } from './components/books/list-books/list-books.component';
 import { ListComponent as ListCategories } from './components/categories/list/list.component';
 
 const routes: Routes = [
-  {path: 'categories/list', component: ListCategories},
+  {path: 'categories/list', data: { title: 'Library categories' } ,component: ListCategories},
+  {path: 'books/list', data: { title: 'Library books' } , component: ListBooksComponent},
 ];
 
 @NgModule({

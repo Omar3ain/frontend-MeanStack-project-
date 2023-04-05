@@ -10,12 +10,20 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { AddBookComponent } from './components/books/add-book/add-book.component';
+import { ListBooksComponent } from './components/books/list-books/list-books.component';
+import { AdminAsideBarComponent } from '../../sharedComponents/admin-aside-bar/admin-aside-bar.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [
     ListComponent,
-    CreateComponent
+    CreateComponent,
+    AddBookComponent,
+    ListBooksComponent,
+    AdminAsideBarComponent 
   ],
   imports: [
     CommonModule,
@@ -24,7 +32,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatPaginatorModule,
     HttpClientModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }

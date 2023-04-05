@@ -1,0 +1,16 @@
+.table-area {
+  width: 90%;
+  margin: 1vw;
+  color: var(--text-color);
+}
+.card-title{
+  font-family: var(--header-font-family);
+}
+.table-area {
+  font-family: var(--text-font-family);
+}
+.image-size{
+  border-radius: .5vw;
+  width: 3vw;
+  aspect-ratio: 1 / 1;
+}
