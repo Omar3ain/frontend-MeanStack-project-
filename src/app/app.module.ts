@@ -7,7 +7,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { NotFoundComponent } from './sharedComponents/not-found/not-found.component';
 
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,11 @@ import { NotFoundComponent } from './sharedComponents/not-found/not-found.compon
     BrowserAnimationsModule,
     AdminModule,
     AuthModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      closeButton: true
+    }),
 
   ],
   providers: [],

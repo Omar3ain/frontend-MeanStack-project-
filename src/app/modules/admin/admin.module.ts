@@ -41,7 +41,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ]
 })
 export class AdminModule { }

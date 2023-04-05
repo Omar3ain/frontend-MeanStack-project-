@@ -14,3 +14,23 @@
   width: 3vw;
   aspect-ratio: 1 / 1;
 }
+
+@media (max-width: 767px) {
+  .d-flex {
+    flex-direction: column;
+  }
+}
+
+/* For screens larger than 768px */
+@media (min-width: 768px) {
+  .table-area {
+    width: 70%;
+  }
+}
+
+/* For screens larger than 992px */
+@media (min-width: 992px) {
+  .table-area {
+    width: 90%;
+  }
+}

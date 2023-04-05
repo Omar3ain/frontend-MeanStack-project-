@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ViewChild , OnInit} from '@angular/core';
 import { BookService } from '../../../services/book.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-list-books',
   templateUrl: './list-books.component.html',
@@ -9,10 +9,28 @@ import { BookService } from '../../../services/book.service';
 export class ListBooksComponent implements AfterViewInit, OnInit {
   books: bookElement[] = [];
   page : number = 1;
+  toastr_options = {
+    closeButton: true,
+    newestOnTop: false,
+    progressBar: true,
+    positionClass: "toast-bottom-center",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: 300,
+    hideDuration: 1000,
+    timeOut: 5000,
+    extendedTimeOut: 1000,
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut"
+  }
   // filterBooks : string = '';
   // _filterBooks : string = '';
   
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, public toastr: ToastrService,) { 
+  
+  }
 
   // filteredBooks: any[] = [];
   // get listFilter(): string {
@@ -48,10 +66,9 @@ export class ListBooksComponent implements AfterViewInit, OnInit {
         }));
       },
       error: (err) => {
-        (error: any) => console.log(error)
-      },
-      
-    });
+       this.toastr.error(`MESSAGE : ${err.message}`,'Could not load books data',this.toastr_options);
+    }
+  });
   }
 }
 
