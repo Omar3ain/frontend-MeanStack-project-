@@ -37,4 +37,11 @@ export class ListComponent {
        }
     });
   }
+
+  deleteCategory(categoryId: string) {
+    this.categoryService.deleteCategory(categoryId).subscribe((category) => {
+      this.categories = this.categories.filter(c => c.id != categoryId)
+      this.dataSource.data = this.categories;
+    });
+  }
 }
