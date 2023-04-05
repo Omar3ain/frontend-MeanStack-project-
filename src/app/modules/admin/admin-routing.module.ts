@@ -6,6 +6,8 @@ import { ListComponent as ListCategories } from './components/categories/list/li
 const routes: Routes = [
   {path: 'categories/list', data: { title: 'Library categories' } ,component: ListCategories},
   {path: 'books/list', data: { title: 'Library books' } , component: ListBooksComponent},
+
+  {path: 'admin/categories/list', component: ListCategories},
 ];
 
 @NgModule({

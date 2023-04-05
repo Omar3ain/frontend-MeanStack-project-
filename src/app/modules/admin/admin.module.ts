@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
+
 @NgModule({
   declarations: [
     ListComponent,
@@ -28,6 +29,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     AdminRoutingModule,
+    MatTableModule,
+    MatPaginatorModule,
+    HttpClientModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,

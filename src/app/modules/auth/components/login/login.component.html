@@ -1,0 +1,27 @@
+<section class="vh-80 mt-5 pt-5">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          class="img-fluid" alt="Phone image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Email is invalid</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" formControlName="password">
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('pattern')">Password must include at least one uppercase letter, one lowercase letter, one symbol, and one number, and be at least six characters long</mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" id="btn">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
