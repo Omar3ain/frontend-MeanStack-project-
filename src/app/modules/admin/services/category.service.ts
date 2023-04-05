@@ -16,18 +16,12 @@ export class CategoryService {
   categoriesAdminUrl = 'http://localhost:3000/admin/categories';
   constructor(private http: HttpClient) {}
   getCategories(): Observable<any> {
-    return this.http.get(this.categoriesUrl,{
-      withCredentials: true
-    });
+    return this.http.get(this.categoriesUrl);
   }
   postCategory(myCategory: any): Observable<any> {
-    return this.http.post(this.categoriesUrl, myCategory,{
-      withCredentials: true
-    });
+    return this.http.post(this.categoriesUrl, myCategory);
   }
   deleteCategory(categoryId: any): Observable<any> {
-    return this.http.delete(`${this.categoriesAdminUrl}/${categoryId}`,{
-      withCredentials: true
-    });
+    return this.http.delete(`${this.categoriesAdminUrl}/${categoryId}`);
   }
 }
