@@ -18,8 +18,19 @@ export class AuthService {
     return jwtToken !== null;
   }
 
+  isAdmin(): boolean {
+    const isAdmin = this.getAdmin();
+    return isAdmin;
+  }
+
   getJwtToken(): string | null {
     const cookieVal = document.cookie.split('; ').find(row => row.startsWith('jwtToken='))?.split('=')[1];
     return cookieVal || null;
+  }
+
+  getAdmin() : boolean{
+     const admin = document.cookie.split('; ').find(row => row.startsWith('isAdmin='))?.split('=')[1];
+     console.log(admin)
+     return Boolean(admin);
   }
 }
