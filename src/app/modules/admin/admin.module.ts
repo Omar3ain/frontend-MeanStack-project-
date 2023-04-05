@@ -10,15 +10,20 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { AddBookComponent } from './components/books/add-book/add-book.component';
+import { ListBooksComponent } from './components/books/list-books/list-books.component';
+import { AdminAsideBarComponent } from '../../sharedComponents/admin-aside-bar/admin-aside-bar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ListComponent,
-    CreateComponent
+    CreateComponent,
+    AddBookComponent,
+    ListBooksComponent,
+    AdminAsideBarComponent 
   ],
   imports: [
     CommonModule,
@@ -28,11 +33,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HttpClientModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    HttpClientModule,
+    MatIconModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
-    ReactiveFormsModule,
-    FormsModule
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

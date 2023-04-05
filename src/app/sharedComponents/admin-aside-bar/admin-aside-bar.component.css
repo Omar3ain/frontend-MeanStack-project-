@@ -1,0 +1,128 @@
+
+
+aside img {
+  background-color: var(--sub-bg-color);
+  padding: 1vw;
+  border-radius: 2vw;
+  width: 60%;
+}
+.divider {
+  width:10vw;
+  height: 1px;
+  background-color: var(--sub-bg-color);
+}
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #fff;
+  width: 15vw;
+  height: 100vh;
+  background: var(--text-color);
+  border-top-right-radius: 80px;
+  transition: flex-direction 0.2s;
+}
+aside div{
+  margin: 1vw;
+}
+aside div a {
+  font-size: 12px;
+  color: var( --sub-bg-color);
+  display: block;
+  padding: 12px;
+  font-size: 1.3rem;
+  font-family: var(--bold-font-family);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+aside div a:hover {
+  color: var(--text-color);
+  background-color: var( --background-color );
+  width: 130%;
+  border-radius: 1vw 0 0 1vw;
+  transition: all 0.2s;
+}
+
+aside div a:hover::after {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  bottom: 100%;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0 20px 0 0 #fff;
+}
+
+aside div a:hover::before {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  top: 38px;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -20px 0 0 #fff;
+}
+
+aside div p {
+  margin: 0;
+  padding: 40px 0;
+}
+
+.social {
+  height: 0;
+}
+
+/* Media queries for responsive design */
+
+@media screen and (max-width: 992px) {
+  aside {
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 0;
+    flex-direction: row;
+    background-image: var( --sub-bg-color);
+    transition: flex-direction 0.5s;
+    padding: 5px;
+  }
+
+aside div a {
+  color: var( --sub-bg-color);
+  font-size: 5vw;
+}
+
+  aside img {
+    width: 100%;
+    max-width: 20vw;
+  }
+  .divider{
+    display: none;
+  }
+
+  aside div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  aside div a {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  aside div a:hover {
+    border-radius: 0;
+  }
+
+  aside div a:hover::after,
+  aside div a:hover::before {
+    display: none;
+  }
+}
