@@ -1,21 +1,14 @@
-<section class="vh-80 mt-5 pt-5">
-  <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <form (ngSubmit)="onSubmit()" [formGroup]="createCategoryForm">
-          <mat-form-field>
-            <input matInput placeholder="name" formControlName="name">
-            <mat-error *ngIf="createCategoryForm.get('name')?.hasError('required')">name is required</mat-error>
-            <mat-error *ngIf="createCategoryForm.get('name')?.hasError('name')">name is invalid</mat-error>
-          </mat-form-field>
+<form [formGroup]="createCategoryForm">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+    <mat-error *ngIf="createCategoryForm?.hasError('required')">Name is required</mat-error>
+  </mat-form-field>
 
-          <mat-form-field>
-            <input matInput type="file" placeholder="category cover" formControlName="categoryCover">
-          </mat-form-field>
+  <!-- <mat-form-field>
+    <mat-label>Category Cover</mat-label>
+    <input type="file" accept=".jpg,.png,.jpeg" (change)="onFileSelected($event)">
+  </mat-form-field> -->
 
-          <button mat-raised-button color="primary" type="submit" [disabled]="createCategoryForm.invalid" id="btn">create</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+  <button mat-raised-button color="primary" [disabled]="createCategoryForm.invalid" (click)="save()">Save</button>
+</form>

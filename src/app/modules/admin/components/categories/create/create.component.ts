@@ -10,18 +10,20 @@ import { Router } from '@angular/router';
 })
 export class CreateComponent {
   createCategoryForm: FormGroup;
-  constructor(private router: Router, private categoryService: CategoryService, private formBuilder: FormBuilder) {
+  name: string | undefined;
+  categoryCover: File | undefined;
+  constructor(private formBuilder: FormBuilder) {
     this.createCategoryForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      categoryCover: ['']
+      name: ['', Validators.required],
+      categoryCover: ['', Validators.required]
     });
+   }
+
+  onFileSelected(event: any) {
+    this.categoryCover = event.target.files[0];
   }
 
-  onSubmit() {
-    this.categoryService.postCategory(this.createCategoryForm.value).subscribe(res => {
-      
-    },
-      error => { console.log(error); }
-    );
+  save() {
+    // Handle save logic here
   }
 }

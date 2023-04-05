@@ -15,9 +15,10 @@ import { ListBooksComponent } from './components/books/list-books/list-books.com
 import { AdminAsideBarComponent } from '../../sharedComponents/admin-aside-bar/admin-aside-bar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+    FormsModule
   ]
 })
 export class AdminModule { }
