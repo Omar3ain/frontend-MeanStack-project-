@@ -1,18 +1,22 @@
-import {AfterViewInit, Component, ViewChild , OnInit} from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { BookService } from '../../../services/book.service';
-
+import { ToastrService } from 'ngx-toastr';
+import  toastr_options  from "../../../../../utils/toastr.options";
+import {MatDialog} from '@angular/material/dialog';
+import {AddBookComponent} from '../add-book/add-book.component'
 @Component({
   selector: 'app-list-books',
   templateUrl: './list-books.component.html',
   styleUrls: ['./list-books.component.css']
 })
-export class ListBooksComponent implements AfterViewInit, OnInit {
+export class ListBooksComponent implements OnInit {
   books: bookElement[] = [];
   page : number = 1;
+
   // filterBooks : string = '';
   // _filterBooks : string = '';
   
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, private toastr: ToastrService,public dialog: MatDialog) { }
 
   // filteredBooks: any[] = [];
   // get listFilter(): string {
@@ -38,7 +42,13 @@ export class ListBooksComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(AddBookComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   getBooks() {
     this.bookService.getBooks().subscribe({
       next : (data: any) => {
@@ -48,8 +58,8 @@ export class ListBooksComponent implements AfterViewInit, OnInit {
         }));
       },
       error: (err) => {
-        (error: any) => console.log(error)
-      },
+        this.toastr.error(`MESSAGE : ${err.message}`,'Could not load books data',toastr_options );
+      }
       
     });
   }
