@@ -1,0 +1,12 @@
+img {
+    max-height: 100%;
+    max-width: 100%;
+    width: 150px;
+}
+
+img:nth-child(1) {
+    transform: translateY(-50%);
+}
+img:nth-child(3) {
+    transform: translateY(50%);
+}

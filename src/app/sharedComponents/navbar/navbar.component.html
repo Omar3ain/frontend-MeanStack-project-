@@ -11,7 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav me-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/home">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/books">books</a>
@@ -23,14 +23,14 @@
         <a class="nav-link" [routerLink]="['/author']">authors</a>
       </li>
       <li (click)="dropDownToggler()" id="dropdown-list" class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="true">
           settings
         </a>
         <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">dashboard (for admin)</a>
-          <a class="dropdown-item" href="#">profile </a>
-          <a class="dropdown-item" href="#">logout</a>
+          <a class="dropdown-item">dashboard (for admin)</a>
+          <a class="dropdown-item">profile </a>
+          <a class="dropdown-item">logout</a>
         </div>
       </li>
     </ul>
@@ -41,11 +41,11 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item">
-        <a class="nav-link" href="/login">login</a>
+        <a class="nav-link" href="/auth/login">login</a>
       </li>
       <li>
         <div class="btn-nav">
-          <a class="btn btn-primary btn-small navbar-btn" href="/register">Sign up!</a>
+          <a class="btn btn-primary btn-small navbar-btn" href="/auth/register">Sign up!</a>
         </div>
       </li>
     </ul>
