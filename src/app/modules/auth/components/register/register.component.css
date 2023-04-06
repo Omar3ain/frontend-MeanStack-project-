@@ -1,12 +1,25 @@
-.mat-form-field {
-  width: 100%;
-  margin-bottom: 15px;
+.warn{
+  color: red;
+}
+.form-group {
+  margin-top: 1rem;
+}
+.btn {
+  margin-top: 1rem;
 }
 
-.mat-button-wrapper {
-  margin-top: 15px;
+.form-group
+.dataInput {
+  background-color: #3f3d56;
+  height: 2.7rem;
+  color: var(--sub-bg-color);
+  width: 70%;
+ }
+
+.my-form .dataInput:focus {
+  background-color: #3f3d56;
 }
 
-.form-outline {
-  width: 100%;
+.link{
+  cursor: pointer;
 }

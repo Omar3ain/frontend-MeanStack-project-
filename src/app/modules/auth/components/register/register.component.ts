@@ -9,12 +9,11 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  selectedFile: any = null;
-
   registerForm: FormGroup;
-  fileInputControl: FormControl;
+  avatar!: File;
 
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) {
+
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -23,20 +22,19 @@ export class RegisterComponent {
       Validators.minLength(6),
       Validators.pattern("^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()])(?=.*[0-9]).+$")]]
     });
-    this.fileInputControl = new FormControl(null, Validators.required);
   }
   onSubmit() {
 
-    if (!this.registerForm.valid || !this.fileInputControl.value) {
+    if (!this.registerForm.valid || !this.avatar) {
       return;
     }
-  
+
     const formData = new FormData();
     formData.append('firstName', this.registerForm.get('firstName')?.value);
     formData.append('lastName', this.registerForm.get('lastName')?.value);
     formData.append('email', this.registerForm.get('email')?.value);
     formData.append('password', this.registerForm.get('password')?.value);
-    formData.append('avatar', this.fileInputControl.value);
+    formData.append('avatar', this.avatar);
 
     this.authService.register(formData).subscribe(res => {
       this.router.navigate(['/login']);
@@ -44,9 +42,11 @@ export class RegisterComponent {
       error => { console.log(error); }
     );
   }
+  onFileChange(event: any) {
+    this.avatar = event.target.files[0];
+  }
 
-  onFileSelected(event: any): void {
-      this.selectedFile = event.target.files[0] ?? null;
-  
+  navigate() {
+    this.router.navigate(['/auth/login']);
   }
 }
