@@ -15,9 +15,10 @@
     --easing: cubic-bezier(0.4, 0, 0.2, 1);
     --font-size: .75rem;
     --color: var(--color-foreground);
-    --color-highlight: rgb(0, 0, 0);
+    --color-highlight: rgb(240, 240, 240);
     --transition-time-icon: 0.2s;
     --transition-time-input: 0.3s 0.25s;
+    color: var(--color-highlight);
     border-radius: 999px;
     border: 2px solid transparent;
     display: flex;
