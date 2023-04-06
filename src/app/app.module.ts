@@ -20,6 +20,7 @@ import { AuthorsSliderComponent } from './modules/library/libModules/sections/au
 import { SectionsComponent } from './modules/library/libModules/sections/sections.component';
 // import { ExpandedSearchComponent } from './sharedComponents/expanded-search/expanded-search.component';
 import { FooterComponent } from './sharedComponents/footer/footer.component';
+import { BookCoverComponent } from './modules/library/libModules/sections/header/book-cover/book-cover.component';
 // import { ExpandedSearchComponent } from './sharedComponents/expanded-search/expanded-search.component';
 
 @NgModule({
@@ -34,6 +35,7 @@ import { FooterComponent } from './sharedComponents/footer/footer.component';
     AuthorsSliderComponent,
     SectionsComponent,
     FooterComponent,
+    BookCoverComponent
   ],
   imports: [
     BrowserModule,

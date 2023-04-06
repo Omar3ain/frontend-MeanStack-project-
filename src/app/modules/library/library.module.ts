@@ -19,7 +19,6 @@ import { SectionsComponent } from './libModules/sections/sections.component';
 
 @NgModule({
   declarations: [
-
   ],
   imports: [
     CommonModule,
