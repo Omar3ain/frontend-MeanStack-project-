@@ -6,10 +6,21 @@ import { BookModule } from './libModules/book/book.module';
 import { CategoryModule } from './libModules/category/category.module';
 import { ProfileModule } from './libModules/profile/profile.module';
 import { AuthorModule } from './libModules/author/author.module';
+import { LibraryComponent } from './library.component';
+import { NavbarComponent } from 'src/app/sharedComponents/navbar/navbar.component';
+import { HeaderComponent } from './libModules/header/header.component';
+import { CategoriesComponent } from './libModules/sections/categories/categories.component';
+import { BooksComponent } from './libModules/sections/books/books.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LibraryComponent,
+    NavbarComponent,
+    HeaderComponent,
+    CategoriesComponent,
+    BooksComponent
+  ],
   imports: [
     CommonModule,
     LibraryRoutingModule,

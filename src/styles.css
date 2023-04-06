@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&family=PT+Sans+Narrow:wght@400;700&family=Sawarabi+Mincho&display=swap');
+
 :root {
    /* colors */
   --background-color:#f0f0e2;
@@ -10,6 +11,11 @@
   --header-font-family: 'Sawarabi Mincho', serif;
   --text-font-family: 'PT Sans Narrow', sans-serif;
   --bold-font-family: 'Changa One', cursive;
+}
+* {
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 html, body { 
   height: 100%; 
