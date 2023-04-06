@@ -28,5 +28,9 @@ export class LoginComponent {
       error => { console.log(error); }
     );
   }
+
+  navigate() {
+    this.router.navigate(['/auth/register']);
+  }
 }
 

@@ -6,21 +6,32 @@
           class="img-fluid" alt="Phone image">
       </div>
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-          <mat-form-field>
-            <input matInput placeholder="Email" formControlName="email">
-            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
-            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Email is invalid</mat-error>
-          </mat-form-field>
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="my-form">
+          <div class="form-group">
+            <label for="email">E-mail address</label>
+            <input type="email" class="form-control dataInput" id="email" formControlName="email" placeholder="Enter your email address">
+            <p class="warn"
+              *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">E-mail is
+              required!</p>
+            <p class="warn" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']">
+              E-mail is not valid!</p>
+          </div>
 
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password" formControlName="password">
-            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
-            <mat-error *ngIf="loginForm.get('password')?.hasError('pattern')">Password must include at least one uppercase letter, one lowercase letter, one symbol, and one number, and be at least six characters long</mat-error>
-          </mat-form-field>
-
-          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" id="btn">Login</button>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input  type="password" class="form-control dataInput" id="password" formControlName="password" placeholder="Enter your password">
+            <p class="warn"
+              *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+              <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required!</span>
+              <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password should be at least 6 characters
+                long!</span>
+              <span *ngIf="loginForm.get('password')?.errors?.['pattern']">Password should contain at least one
+                uppercase letter, one lowercase letter, one number, and one special character!</span>
+            </p>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Log In</button>
         </form>
+        <p class="mt-2">Don't have an account? <a class="link-info link" (click)="navigate()">Sign Up here</a></p>
       </div>
     </div>
   </div>

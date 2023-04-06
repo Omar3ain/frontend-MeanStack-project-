@@ -1,13 +1,25 @@
-mat-form-field {
-  display: block;
+.warn{
+  color: red;
+}
+.form-group {
+  margin-top: 1rem;
+}
+.btn {
+  margin-top: 1rem;
 }
 
-#btn {
-  margin-top: 10px;
-  border: none;
-  border-radius: 5%;
-  padding: 10px;
-  color: white;
-  background-color: var(--logo-color);
+.form-group
+.dataInput {
+  background-color: #3f3d56;
+  height: 2.7rem;
+  color: var(--sub-bg-color);
+  width: 70%;
+ }
+
+.my-form .dataInput:focus {
+  background-color: #3f3d56;
 }
 
+.link{
+  cursor: pointer;
+}
