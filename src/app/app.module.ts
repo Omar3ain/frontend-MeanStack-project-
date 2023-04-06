@@ -9,6 +9,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { NotFoundComponent } from './sharedComponents/not-found/not-found.component';
 import { AuthInterceptor } from './Interceptors/auth/auth.interceptor';
 import { RouterModule } from '@angular/router';
+import { AdminGuard } from './Guard/admin/admin.guard';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   providers: [
+    AdminGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]

@@ -7,10 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private loginUrl = 'http://localhost:3000/auth/login';
+  private registerUrl = 'http://localhost:3000/auth/register';
   constructor(private http: HttpClient) {}
 
   login(formData : FormData): Observable<any> {
     return this.http.post(this.loginUrl, formData);
+  }
+
+  register(formData: FormData): Observable<any> {
+    return this.http.post(this.registerUrl, formData);
   }
 
   isAuthenticated(): boolean {
@@ -20,7 +25,7 @@ export class AuthService {
 
   isAdmin(): boolean {
     const isAdmin = this.getAdmin();
-    return isAdmin;
+    return Boolean(isAdmin);
   }
 
   getJwtToken(): string | null {
@@ -30,7 +35,6 @@ export class AuthService {
 
   getAdmin() : boolean{
      const admin = document.cookie.split('; ').find(row => row.startsWith('isAdmin='))?.split('=')[1];
-     console.log(admin)
      return Boolean(admin);
   }
 }
