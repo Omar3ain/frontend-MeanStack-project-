@@ -11,11 +11,13 @@ import { AdminGuard } from './Guard/admin/admin.guard';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './sharedComponents/not-found/not-found.component';
 import { AuthInterceptor } from './Interceptors/auth/auth.interceptor';
+import { FooterComponent } from './sharedComponents/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

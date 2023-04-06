@@ -34,7 +34,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AdminRoutingModule,
     AuthRoutingModule,
-    LibraryRoutingModule  ],
+    LibraryRoutingModule,
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

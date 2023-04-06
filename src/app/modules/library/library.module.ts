@@ -8,9 +8,13 @@ import { ProfileModule } from './libModules/profile/profile.module';
 import { AuthorModule } from './libModules/author/author.module';
 import { LibraryComponent } from './library.component';
 import { NavbarComponent } from 'src/app/sharedComponents/navbar/navbar.component';
-import { HeaderComponent } from './libModules/header/header.component';
+import { HeaderComponent } from './libModules/sections/header/header.component';
 import { CategoriesComponent } from './libModules/sections/categories/categories.component';
 import { BooksComponent } from './libModules/sections/books/books.component';
+import { ExpandedSearchComponent } from 'src/app/sharedComponents/expanded-search/expanded-search.component';
+import { AuthorsSliderComponent } from './libModules/sections/authors-slider/authors-slider.component';
+import { FooterComponent } from 'src/app/sharedComponents/footer/footer.component';
+
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import { BooksComponent } from './libModules/sections/books/books.component';
     NavbarComponent,
     HeaderComponent,
     CategoriesComponent,
-    BooksComponent
+    BooksComponent,
+    ExpandedSearchComponent,
+    AuthorsSliderComponent,
+    FooterComponent,
+
   ],
   imports: [
     CommonModule,
@@ -28,7 +36,7 @@ import { BooksComponent } from './libModules/sections/books/books.component';
     CategoryModule,
     ProfileModule,
     AuthorModule
-    
+
   ]
 })
 export class LibraryModule { }

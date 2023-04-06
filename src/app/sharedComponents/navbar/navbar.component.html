@@ -1,45 +1,53 @@
-<nav class="navbar navbar-expand-md sticky-top navbar-light bg-light px-5">
-    <a class="navbar-brand" href="#">
-        <img [src]="logoPath" width="30" height="30" class="d-inline-block align-top" alt="">
-        {{siteName}}
-      </a>
-      <button (click)="navbarToggler()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/books">books</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/categories">categories</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/authors">authors</a>
-          </li>
-          <li (click)="dropDownToggler()" id="dropdown-list" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              settings
-            </a>
-            <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">dashboard (for admin)</a>
-              <a class="dropdown-item" href="#">profile </a>
-              <a class="dropdown-item" href="#">logout</a>
-            </div>
-          </li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item">
-            <a class="nav-link" href="/login">login</a>
-          </li>
-          <li>
-              <div class="btn-nav"><a class="btn btn-primary btn-small navbar-btn" href="/register">Sign up!</a>
-              </div>
-          </li>
-      </ul>
-      </div>
-  </nav>
+<nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark px-5">
+  <a class="navbar-brand" style="background-color: white; color:black; border-radius: 50%;" href="#">
+    <img [src]="logoPath" width="30" height="30" class="d-inline-block" alt="" />
+    <!-- {{ siteName }} -->
+  </a>
+  <button (click)="navbarToggler()" class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/books">books</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/categories">categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/author']">authors</a>
+      </li>
+      <li (click)="dropDownToggler()" id="dropdown-list" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="true">
+          settings
+        </a>
+        <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">dashboard (for admin)</a>
+          <a class="dropdown-item" href="#">profile </a>
+          <a class="dropdown-item" href="#">logout</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+        <app-expanded-search></app-expanded-search>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+        <a class="nav-link" href="/login">login</a>
+      </li>
+      <li>
+        <div class="btn-nav">
+          <a class="btn btn-primary btn-small navbar-btn" href="/register">Sign up!</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
