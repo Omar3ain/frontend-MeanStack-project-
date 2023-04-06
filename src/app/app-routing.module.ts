@@ -6,12 +6,15 @@ import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { LibraryRoutingModule } from './modules/library/library-routing.module';
 
 import { NotFoundComponent } from './sharedComponents/not-found/not-found.component';
+import { AdminGuard } from './Guard/admin/admin.guard';
 
 const routes: Routes = [
-  {
-    path: 'admin',
-    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
-  },
+  {path: '', canActivate:[AdminGuard], children: [
+    {
+      path: 'admin',
+      loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+    },
+  ]},
   {
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
