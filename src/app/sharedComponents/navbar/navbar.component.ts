@@ -10,7 +10,12 @@ export class NavbarComponent {
   siteName = 'Booky Tooky';
   navbarCollapsed = true;
 
-  toggleNavbarCollapsing() {
-    
+  navbarToggler(){
+    document.getElementById('navbarNavDropdown')?.classList.toggle('show');
+  }
+
+  dropDownToggler(){
+    document.getElementById('dropdown-list')?.classList.toggle('show');
+    document.getElementById('dropdown-menu')?.classList.toggle('show');
   }
 }
