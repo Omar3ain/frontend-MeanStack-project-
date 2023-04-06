@@ -1,0 +1,6 @@
+.bg{
+  background-color: aliceblue;
+}
+.color{
+ color: var(--text-color);
+}

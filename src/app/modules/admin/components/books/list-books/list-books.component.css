@@ -13,4 +13,42 @@
   border-radius: .5vw;
   width: 3vw;
   aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+::ng-deep .ngx-pagination .current{
+  background: var(--button-color) !important;
+}
+.action{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.action i{
+  cursor: pointer;
+  transition: 0.25s;
+}
+.action i:hover{
+  cursor: pointer;
+  transform: scale(1.5);
+  transition: 0.25s;
+}
+@media (max-width: 767px) {
+  .d-flex {
+    flex-direction: column;
+  }
+}
+
+/* For screens larger than 768px */
+@media (min-width: 768px) {
+  .table-area {
+    width: 70%;
+  }
+}
+
+/* For screens larger than 992px */
+@media (min-width: 992px) {
+  .table-area {
+    width: 90%;
+  }
 }

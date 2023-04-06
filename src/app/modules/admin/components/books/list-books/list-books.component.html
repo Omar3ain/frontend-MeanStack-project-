@@ -11,7 +11,7 @@
           </div>
       </div>
   </form> -->
-
+  <i (click)="openDialog()" class="bi bi-plus-square"></i>
   <ng-container>
     <div class="row text-left">
       <ng-container>
@@ -19,6 +19,7 @@
           <div class="card">
             <div class="card-header">
               <h1 class="card-title">Books</h1>
+
             </div>
             <div class="card-content">
               <div class="card-body">
@@ -43,7 +44,12 @@
                         </td>
                         <td>{{book.categoryId}}</td>
                         <td>{{book.authorId}}</td>
-                        <td style="font-weight: unset;">
+                        <td >
+                          <div class="action">
+                          <i class="bi bi-trash"></i>
+                          <i class="bi bi-pencil-fill"></i>
+                          </div>
+                          
                         </td>
                       </tr>
                     </ng-container>
