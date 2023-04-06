@@ -11,12 +11,27 @@ import { AuthInterceptor } from './Interceptors/auth/auth.interceptor';
 import { RouterModule } from '@angular/router';
 import { AdminGuard } from './Guard/admin/admin.guard';
 import { FooterComponent } from './sharedComponents/footer/footer.component';
+import { NavbarComponent } from './sharedComponents/navbar/navbar.component';
+import { HeaderComponent } from './modules/library/libModules/sections/header/header.component';
+import { CategoriesComponent } from './modules/library/libModules/sections/categories/categories.component';
+import { BooksComponent } from './modules/library/libModules/sections/books/books.component';
+import { ExpandedSearchComponent } from './sharedComponents/expanded-search/expanded-search.component';
+import { AuthorsSliderComponent } from './modules/library/libModules/sections/authors-slider/authors-slider.component';
+import { SectionsComponent } from './modules/library/libModules/sections/sections.component';
 // import { ExpandedSearchComponent } from './sharedComponents/expanded-search/expanded-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavbarComponent,
+    HeaderComponent,
+    CategoriesComponent,
+    BooksComponent,
+    ExpandedSearchComponent,
+    AuthorsSliderComponent,
+    FooterComponent,
+    SectionsComponent,
   ],
   imports: [
     BrowserModule,
