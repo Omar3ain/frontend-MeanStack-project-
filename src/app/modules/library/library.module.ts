@@ -11,6 +11,8 @@ import { NavbarComponent } from 'src/app/sharedComponents/navbar/navbar.componen
 import { HeaderComponent } from './libModules/header/header.component';
 import { CategoriesComponent } from './libModules/sections/categories/categories.component';
 import { BooksComponent } from './libModules/sections/books/books.component';
+import { ExpandedSearchComponent } from 'src/app/sharedComponents/expanded-search/expanded-search.component';
+import { AuthorsSliderComponent } from './libModules/sections/authors-slider/authors-slider.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { BooksComponent } from './libModules/sections/books/books.component';
     NavbarComponent,
     HeaderComponent,
     CategoriesComponent,
-    BooksComponent
+    BooksComponent,
+    ExpandedSearchComponent,
+    AuthorsSliderComponent
   ],
   imports: [
     CommonModule,

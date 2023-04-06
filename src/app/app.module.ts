@@ -10,11 +10,12 @@ import { NotFoundComponent } from './sharedComponents/not-found/not-found.compon
 import { AuthInterceptor } from './Interceptors/auth/auth.interceptor';
 import { RouterModule } from '@angular/router';
 import { AdminGuard } from './Guard/admin/admin.guard';
+// import { ExpandedSearchComponent } from './sharedComponents/expanded-search/expanded-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
