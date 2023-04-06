@@ -1,7 +1,7 @@
 import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { CategoryService } from '../../../services/category.service';
-import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
+import { MatFormField } from '@angular/material/form-field';
+
 
 @Component({
   selector: 'app-create',
@@ -9,21 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
-  createCategoryForm: FormGroup;
-  name: string | undefined;
-  categoryCover: File | undefined;
-  constructor(private formBuilder: FormBuilder) {
-    this.createCategoryForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      categoryCover: ['', Validators.required]
-    });
-   }
+  form: FormGroup = new FormGroup({
+  username: new FormControl(''),
+  password: new FormControl(''),
+});
 
-  onFileSelected(event: any) {
-    this.categoryCover = event.target.files[0];
+submit() {
+  if (this.form.valid) {
+    this.submitEM.emit(this.form.value);
   }
+}
+@Input() error: string | undefined;
 
-  save() {
-    // Handle save logic here
-  }
+@Output() submitEM = new EventEmitter();
+
 }

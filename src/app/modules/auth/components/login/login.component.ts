@@ -14,16 +14,19 @@ export class LoginComponent {
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required,
+      Validators.minLength(6),
+      Validators.pattern("^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()])(?=.*[0-9]).+$")]]
     });
   }
-
   onSubmit() {
     this.authService.login(this.loginForm.value).subscribe(res => {
       document.cookie = `jwtToken=${res.token};`;
+      document.cookie = `isAdmin=${res.isAdmin};`;
       this.router.navigate(['/']);
     },
       error => { console.log(error); }
     );
   }
 }
+
