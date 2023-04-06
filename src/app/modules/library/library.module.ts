@@ -16,6 +16,7 @@ import { AuthorsSliderComponent } from './libModules/sections/authors-slider/aut
 import { FooterComponent } from 'src/app/sharedComponents/footer/footer.component';
 
 
+
 @NgModule({
   declarations: [
     LibraryComponent,
@@ -25,7 +26,8 @@ import { FooterComponent } from 'src/app/sharedComponents/footer/footer.componen
     BooksComponent,
     ExpandedSearchComponent,
     AuthorsSliderComponent,
-    FooterComponent
+    FooterComponent,
+
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,7 @@ import { FooterComponent } from 'src/app/sharedComponents/footer/footer.componen
     CategoryModule,
     ProfileModule,
     AuthorModule
-    
+
   ]
 })
 export class LibraryModule { }
