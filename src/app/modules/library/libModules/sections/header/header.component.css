@@ -6,3 +6,37 @@ header {
     background-image: linear-gradient( 95.2deg, rgb(144, 255, 229) 26.8%, rgba(192,229,246,1) 64% );
     height: 500px;
 }
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 60px 15px 5px;
+    text-decoration: none;
+    text-align: left;
+    display: inline;
+    position: relative;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: black;
+  }
+
+  .button::after{
+    content: "\21D7";
+    border: none;
+    color: white;
+    position: absolute;
+    padding: 15px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    border-left: 1px solid white;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: black;
+    
+  }
