@@ -32,7 +32,7 @@ aside div a {
   display: block;
   padding: 12px;
   font-size: 1.3rem;
-  font-family: var(--bold-font-family);
+  font-family:var(--header-text);
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -40,7 +40,7 @@ aside div a {
 aside div a:hover {
   color: var(--text-color);
   background-color: var( --background-color );
-  width: 130%;
+  width: 132%;
   border-radius: 1vw 0 0 1vw;
   transition: all 0.2s;
 }
@@ -76,6 +76,15 @@ aside div p {
 
 .social {
   height: 0;
+}
+.logout-box button{
+  width: 5vw;
+  aspect-ratio: 1/1;
+  font-size: 1rem;
+  font-family: var(--header-text);
+  border-radius: 3vw;
+  color: #1d1c29;
+  background: #d4d8cb;
 }
 
 /* Media queries for responsive design */

@@ -1,15 +1,54 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { EventEmitter, Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  books: any = [];
-  booksUrl = 'http://localhost:3000/books/';
+  domin : string = "http://localhost:3000"
+  booksUrl = `${this.domin}/books/`;
+  buttonClicked =new EventEmitter();
+  
   constructor(private http: HttpClient) { }
+  handleError(error: HttpErrorResponse) {
+    return throwError(() => error);
+  }
+
   getBooks(): Observable<any> {
-    return this.http.get(this.booksUrl);
+    return this.http.get(this.booksUrl).pipe(catchError((this.handleError)));
+  }
+  addNewBook(formValue :any, coverPhoto: File) : Observable<any> {
+    const formData: FormData = new FormData();
+
+    formData.append('coverPhoto', coverPhoto);
+    formData.append('name', formValue['name']);
+    formData.append('authorId', formValue['authorId']);
+    formData.append('description', formValue['description']);
+    formData.append('categoryId', formValue['categoryId']);
+
+    return this.http.post(`${this.domin}/admin/book`, formData).pipe(catchError((this.handleError)));
+  }
+
+  deleteBook(id : string) : Observable<any> {
+    return this.http.delete(`${this.domin}/admin/book/${id}`).pipe(catchError((this.handleError)));
+  }
+  getBook(id : string) : Observable<any>  {
+    return this.http.get(`${this.domin}/admin/book/${id}`).pipe(catchError((this.handleError)));
+  }
+  updateBook(formValue :any, id: string, coverPhoto: File ) : Observable<any> {
+    const formData: FormData = new FormData();
+
+    if(coverPhoto)  formData.append('coverPhoto', coverPhoto);
+    
+    formData.append('name', formValue['name']);
+    formData.append('authorId', formValue['authorId']);
+    formData.append('description', formValue['description']);
+    formData.append('categoryId', formValue['categoryId']);
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+  
+    return this.http.patch(`${this.domin}/admin/book/${id}`,formData).pipe(catchError((this.handleError)));
   }
 }

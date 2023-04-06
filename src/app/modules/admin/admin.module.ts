@@ -16,6 +16,7 @@ import { CreateComponent } from './components/categories/create/create.component
 import { AddBookComponent } from './components/books/add-book/add-book.component';
 import { ListBooksComponent } from './components/books/list-books/list-books.component';
 import { AdminAsideBarComponent } from '../../sharedComponents/admin-aside-bar/admin-aside-bar.component';
+import { UpdateBookComponent } from './components/books/update-book/update-book.component';
 
 
 
@@ -25,7 +26,8 @@ import { AdminAsideBarComponent } from '../../sharedComponents/admin-aside-bar/a
     CreateComponent,
     AddBookComponent,
     ListBooksComponent,
-    AdminAsideBarComponent 
+    AdminAsideBarComponent,
+    UpdateBookComponent 
   ],
   imports: [
     CommonModule,

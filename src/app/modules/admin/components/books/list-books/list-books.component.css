@@ -33,6 +33,27 @@
   transform: scale(1.5);
   transition: 0.25s;
 }
+.table{
+  --bs-table-striped-bg: #fff !important;
+}
+.addBook{
+  display: flex;
+  width: 10vw;
+  justify-content: space-evenly;
+  margin-bottom: 1vw;
+}
+.addBook span {
+  font-size: 1.1rem;
+}
+.addBook i {
+  cursor: pointer;
+  transform: scale(1.3);
+  transition: 0.25s;
+}
+.addBook i:hover{
+  transform: scale(1.5);
+  transition: 0.25s;
+}
 @media (max-width: 767px) {
   .d-flex {
     flex-direction: column;

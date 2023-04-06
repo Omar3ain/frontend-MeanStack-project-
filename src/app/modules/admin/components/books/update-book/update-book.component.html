@@ -1,7 +1,7 @@
-<h2 mat-dialog-title>Add new book</h2>
+<h2 mat-dialog-title>Update book</h2>
 <mat-dialog-content class="mat-typography bg">
   <div class="m-3 color">
-    <form class="form" [formGroup]="bookForm" (submit)="onSubmit()">
+    <form class="form" [formGroup]="bookForm" (submit)="onUpdate()">
       <div class="form-body">
   
         <div class="row">
@@ -50,7 +50,7 @@
       </div>
       
       <div class="form-actions right d-flex justify-content-end">
-        <button [disabled]="bookForm.invalid" mat-dialog-close type="submit" class="btn btn-dark"><i class="fa fa-check-square-o"></i>Create</button>
+        <button [disabled]="bookForm.invalid" mat-dialog-close type="submit" class="btn btn-dark"><i class="bi bi-check-circle-fill"></i> Update</button>
       </div>
   
     </form>

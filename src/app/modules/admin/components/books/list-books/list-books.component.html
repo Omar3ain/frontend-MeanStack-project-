@@ -11,7 +11,13 @@
           </div>
       </div>
   </form> -->
-  <i (click)="openDialog()" class="bi bi-plus-square"></i>
+  <div class="d-flex justify-content-end">
+    <div class="addBook">
+      <span>Add new book</span>
+      <i (click)="openAddDialog()" class="bi bi-plus-square"></i>
+    </div>
+    <div></div>
+  </div>
   <ng-container>
     <div class="row text-left">
       <ng-container>
@@ -46,8 +52,8 @@
                         <td>{{book.authorId}}</td>
                         <td >
                           <div class="action">
-                          <i class="bi bi-trash"></i>
-                          <i class="bi bi-pencil-fill"></i>
+                          <i (click)="deleteBook(book._id)" class="bi bi-trash"></i>
+                          <i (click)="openUpdateDialog(book._id)" class="bi bi-pencil-fill"></i>
                           </div>
                           
                         </td>
