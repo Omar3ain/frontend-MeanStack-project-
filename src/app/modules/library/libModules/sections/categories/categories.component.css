@@ -11,6 +11,7 @@
   transform: perspective(800px);
   transform-style: preserve-3d;
   cursor: pointer;
+  max-width: 250px;
 }
 .card-wrap:hover .card-info {
   transform: translateY(0);
