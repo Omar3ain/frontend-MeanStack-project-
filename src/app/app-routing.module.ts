@@ -23,7 +23,7 @@ const routes: Routes = [
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: '',
+    path: 'home',
     loadChildren: () =>
       import('./modules/library/library.module').then((m) => m.LibraryModule),
   },
@@ -36,9 +36,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    // AdminRoutingModule,
-    // AuthRoutingModule,
-    // LibraryRoutingModule,
   ],
   exports: [RouterModule],
 })
