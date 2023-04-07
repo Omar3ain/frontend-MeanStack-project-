@@ -54,22 +54,20 @@
   transform: scale(1.5);
   transition: 0.25s;
 }
-@media (max-width: 767px) {
-  .d-flex {
-    flex-direction: column;
+@media (max-width: 992px) {
+  .page{
+    flex-direction: column !important;
+    transition: 0.25s;
   }
+  .table-area {
+    width: 100%;
+  }
+  .addBook {
+    width: 27vw;
+}
+.addBook{
+  margin: 3vw;
+}
 }
 
-/* For screens larger than 768px */
-@media (min-width: 768px) {
-  .table-area {
-    width: 70%;
-  }
-}
 
-/* For screens larger than 992px */
-@media (min-width: 992px) {
-  .table-area {
-    width: 90%;
-  }
-}

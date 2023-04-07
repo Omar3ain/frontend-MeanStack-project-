@@ -1,8 +1,7 @@
-<div class="d-flex justify-content-between ">
+<div class="d-flex justify-content-between page">
 
   <app-admin-aside-bar></app-admin-aside-bar>
-  <div class="table-area">
-    
+  <div class="table-area container-fluid">
     <!-- <form class="navbar-form  leftx" role="search">
       <div class="position-relative has-icon-right">
           <input [(ngModel)]='filterBooks' type="text" class="form-control round" placeholder="Search">
@@ -10,65 +9,66 @@
               <i class="ft-search"></i>
           </div>
       </div>
-  </form> -->
-  <div class="d-flex justify-content-end">
-    <div class="addBook">
-      <span>Add new book</span>
-      <i (click)="openAddDialog()" class="bi bi-plus-square"></i>
-    </div>
-    <div></div>
-  </div>
-  <ng-container>
-    <div class="row text-left">
-      <ng-container>
-        <div class="col-sm-12">
-          <div class="card">
-            <div class="card-header">
-              <h1 class="card-title">Books</h1>
+    </form> -->
 
-            </div>
-            <div class="card-content">
-              <div class="card-body">
-                <table class="table table-responsive-md table-striped text-center">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>name</th>
-                      <th>coverPhoto</th>
-                      <th>categoryId</th>
-                      <th>authorId</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <ng-container *ngFor="let book of books | paginate: { itemsPerPage:6, currentPage: page }">
-                      <tr class="tr">
-                        <td>{{book.id}}</td>
-                        <td>{{book.name}}</td>
-                        <td>
-                          <img class="media-object round-media img-fluid image-size" crossorigin="anonymous" [src]="book.coverPhoto"/>
-                        </td>
-                        <td>{{book.categoryId}}</td>
-                        <td>{{book.authorId}}</td>
-                        <td >
-                          <div class="action">
-                          <i (click)="deleteBook(book._id)" class="bi bi-trash"></i>
-                          <i (click)="openUpdateDialog(book._id)" class="bi bi-pencil-fill"></i>
-                          </div>
-                          
-                        </td>
-                      </tr>
-                    </ng-container>
-                  </tbody>
-                </table>
+    <div class="d-flex justify-content-end">
+      <div class="addBook">
+        <span>Add new book</span>
+        <i (click)="openAddDialog()" class="bi bi-plus-square"></i>
+      </div>
+      <div></div>
+    </div>
+    <ng-container>
+      <div class="row text-left">
+        <ng-container>
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <h1 class="card-title">Books</h1>
+
               </div>
-              <pagination-controls (pageChange)="page = $event"></pagination-controls>
+              <div class="card-content">
+                <div class="card-body">
+                  <table class="table table-responsive-md table-striped text-center">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>name</th>
+                        <th>coverPhoto</th>
+                        <th>categoryId</th>
+                        <th>authorId</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let book of books | paginate: { itemsPerPage:6, currentPage: page }">
+                        <tr class="tr">
+                          <td>{{book.id}}</td>
+                          <td>{{book.name}}</td>
+                          <td>
+                            <img class="media-object round-media img-fluid image-size" crossorigin="anonymous" [src]="book.coverPhoto"/>
+                          </td>
+                          <td>{{book.categoryId}}</td>
+                          <td>{{book.authorId}}</td>
+                          <td >
+                            <div class="action">
+                            <i (click)="deleteBook(book._id)" class="bi bi-trash"></i>
+                            <i (click)="openUpdateDialog(book._id)" class="bi bi-pencil-fill"></i>
+                            </div>
+                            
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+              </div>
             </div>
           </div>
-        </div>
-      </ng-container>
-    </div>
-  </ng-container>
+        </ng-container>
+      </div>
+    </ng-container>
   </div>
   
 </div>

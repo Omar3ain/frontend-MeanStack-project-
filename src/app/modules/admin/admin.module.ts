@@ -11,19 +11,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 
-import { ListComponent } from './components/categories/list/list.component';
-import { CreateComponent } from './components/categories/create/create.component';
+
+import { AdminAsideBarComponent } from '../../sharedComponents/admin-aside-bar/admin-aside-bar.component';
 import { AddBookComponent } from './components/books/add-book/add-book.component';
 import { ListBooksComponent } from './components/books/list-books/list-books.component';
-import { AdminAsideBarComponent } from '../../sharedComponents/admin-aside-bar/admin-aside-bar.component';
 import { UpdateBookComponent } from './components/books/update-book/update-book.component';
 
 
 
 @NgModule({
   declarations: [
-    ListComponent,
-    CreateComponent,
     AddBookComponent,
     ListBooksComponent,
     AdminAsideBarComponent,

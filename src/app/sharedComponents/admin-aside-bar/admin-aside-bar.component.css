@@ -92,26 +92,32 @@ aside div p {
 @media screen and (max-width: 992px) {
   aside {
     width: 100%;
-    height: auto;
+    height: 15vh;
     border-top-right-radius: 0;
     flex-direction: row;
     background-image: var( --sub-bg-color);
     transition: flex-direction 0.5s;
-    padding: 5px;
+    padding: 1vw;
   }
 
-aside div a {
-  color: var( --sub-bg-color);
-  font-size: 5vw;
-}
+    aside div a {
+      color: var( --sub-bg-color);
+      font-size: 3vw;
+      font-weight: 500;
+    }
+  .logout-box button{
+      width: 15vw;
+      font-size: 2vw;
+      font-weight: 900;
+      height: 5vh;
+  }
 
   aside img {
+    padding: 0.2vw;
     width: 100%;
-    max-width: 20vw;
+    max-width: 10vh;
   }
-  .divider{
-    display: none;
-  }
+  
 
   aside div {
     display: flex;
@@ -134,4 +140,13 @@ aside div a {
   aside div a:hover::before {
     display: none;
   }
+  .divider{
+    display: none !important;
+  }
+}
+@media screen and (max-width: 556px) {
+    .logout-box button{
+      font-size: 3vw;
+  }
+
 }
