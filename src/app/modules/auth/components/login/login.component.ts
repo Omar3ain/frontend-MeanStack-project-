@@ -21,8 +21,7 @@ export class LoginComponent {
   }
   onSubmit() {
     this.authService.login(this.loginForm.value).subscribe(res => {
-      document.cookie = `jwtToken=${res.token};`;
-      document.cookie = `isAdmin=${res.isAdmin};`;
+      this.authService.setCookie(res.token, res.isAdmin);
       this.router.navigate(['/']);
     },
       error => { console.log(error); }

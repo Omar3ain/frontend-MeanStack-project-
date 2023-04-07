@@ -21,6 +21,7 @@ import { SectionsComponent } from './modules/library/libModules/sections/section
 // import { ExpandedSearchComponent } from './sharedComponents/expanded-search/expanded-search.component';
 import { FooterComponent } from './sharedComponents/footer/footer.component';
 import { BookCoverComponent } from './modules/library/libModules/sections/header/book-cover/book-cover.component';
+import { AuthService } from './modules/auth/services/auth.service';
 // import { ExpandedSearchComponent } from './sharedComponents/expanded-search/expanded-search.component';
 
 @NgModule({
@@ -53,6 +54,7 @@ import { BookCoverComponent } from './modules/library/libModules/sections/header
   ],
   providers: [
     AdminGuard,
+    AuthService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]

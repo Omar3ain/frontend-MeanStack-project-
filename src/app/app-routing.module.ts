@@ -10,17 +10,12 @@ import { AdminGuard } from './Guard/admin/admin.guard';
 import { SectionsComponent } from './modules/library/libModules/sections/sections.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
   {
-    path: '',
-    canActivate: [AdminGuard],
-    children: [
-      {
-        path: 'admin',
-        loadChildren: () =>
-          import('./modules/admin/admin.module').then((m) => m.AdminModule),
-      },
-    ],
+    path: 'admin',
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AdminGuard]
   },
   {
     path: 'auth',
@@ -47,4 +42,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

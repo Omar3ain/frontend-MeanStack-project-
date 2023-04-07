@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthService } from './services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -24,6 +26,10 @@ import { RegisterComponent } from './components/register/register.component';
     MatFormFieldModule,
     MatInputModule,
     AuthRoutingModule
+  ],
+  providers: [
+    AuthService,
+    CookieService
   ]
 })
 export class AuthModule { }
