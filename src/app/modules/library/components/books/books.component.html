@@ -1,0 +1,34 @@
+<div id="large-th" class="pt-5">
+  <div class="container">
+    <h1>Pubular books</h1>
+    <br />
+    <div id="list-th">
+      <div class="book" *ngFor="let book of books;">
+        <div class="cover">
+          <img
+            src="https://alysbcohen.files.wordpress.com/2015/01/little-princess-book-cover.jpg"
+          />
+        </div>
+        <div class="description">
+          <div class="title">
+            <div class="text-center h4">
+              <a href="/books/{{book?._id}}">{{ bookTitle }}</a>
+            </div>
+            <div class="author">
+              <a href="/authors/{{ book?.authorId}}">
+                Author : Muhammed adel
+              </a>
+            </div>
+            <div class="rating">
+              <span class="text-success">&#9733;</span>
+              <span class="text-success">&#9733;</span>
+              <span class="text-success">&#9733;</span>
+              <span class="text-success">&#9733;</span>
+              <span class="text-secondry">&#9733;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
