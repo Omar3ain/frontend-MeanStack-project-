@@ -14,12 +14,19 @@
                     <div class="product__details__text">
                         <h3>{{ book?.name }}</h3>
                         <div class="rating">
-                          <span class="text-success">&#9733;</span>
-                          <span class="text-success">&#9733;</span>
-                          <span class="text-success">&#9733;</span>
-                          <span class="text-success">&#9733;</span>
-                          <span class="text-secondry">&#9733;</span>
-                          <span> (1 reviews)</span>
+                            <span class="text-success" *ngIf="book?.averageRating > 0">&#9733;</span>
+                            <span class="text-secondry" *ngIf="book?.averageRating < 1">&#9733;</span>
+                            <span class="text-success" *ngIf="book?.averageRating > 1">&#9733;</span>
+                            <span class="text-secondry" *ngIf="book?.averageRating < 2">&#9733;</span>
+                            <span class="text-success" *ngIf="book?.averageRating > 2">&#9733;</span>
+                            <span class="text-secondry" *ngIf="book?.averageRating < 3">&#9733;</span>
+                            <span class="text-success" *ngIf="book?.averageRating > 3">&#9733;</span>
+                            <span class="text-secondry" *ngIf="book?.averageRating < 4">&#9733;</span>
+                            <span class="text-success" *ngIf="book?.averageRating > 4">&#9733;</span>
+                            <span class="text-secondry" *ngIf="book?.averageRating < 5">&#9733;</span>
+                            
+                          
+                          <span> ({{book?.reviews?.length}} reviews)</span>
                         </div>
                         <p>{{ book?.description }}</p>
                         <ul>

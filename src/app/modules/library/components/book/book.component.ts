@@ -25,6 +25,8 @@ export class BookComponent implements OnInit {
     });
     this.BookService.getBook(this.id).subscribe((book) => {
       this.book = book;
+      this.book.averageRating = Math.floor(this.book.reviews.reduce((average: any, review:any) => average + review.rating, 0) / this.book.reviews.length);
+      console.log(this.book.averageRating)
       CategoryService.getCategory(book.categoryId).subscribe((category) => {
         book.category = category.category.name;
       });
