@@ -11,12 +11,20 @@
       </div>
     </form> -->
 
-    <div class="d-flex justify-content-end">
-      <div class="addBook">
-        <span>Add new Category </span>
-        <i (click)="openAddDialog()" class="bi bi-plus-square"></i>
+    <div class="d-flex justify-content-between m-1">
+      
+      <div class="position-relative has-icon-right">
+        <label for="">Search for a Categroy</label>
+        <input [(ngModel)]='searchTerm' type="text" class="form-control round" placeholder="Search">
+        <div class="form-control-position">
+            <i class="ft-search"></i>
+        </div>
       </div>
-      <div></div>
+
+      <div class="addBook">
+      <span>Add new Categroy</span>
+      <i (click)="openAddDialog()" class="bi bi-plus-square"></i>
+      </div>
     </div>
     <ng-container>
       <div class="row text-left">
@@ -40,7 +48,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <ng-container *ngFor="let categroy of categroies | paginate: { itemsPerPage:6, currentPage: page }">
+                      <ng-container *ngFor="let categroy of filteredCategories | paginate: { itemsPerPage:6, currentPage: page }">
                         <tr class="tr">
                           <td>{{categroy.id}}</td>
                           <td>{{categroy.name}}</td>

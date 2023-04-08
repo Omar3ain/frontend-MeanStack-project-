@@ -17,11 +17,17 @@ export class ListAuthorsComponent {
   authors: authorElement[] = [];
   page: number = 1;
   dialogConfig = new MatDialogConfig();
-
+  searchTerm : string = '';
   constructor(private _authorService: AuthorService, private toastr: ToastrService, public dialog: MatDialog) {
     this._authorService.buttonClicked.subscribe(() => {
       this.getAuthors();
     })
+  }
+  get filteredAuthors(): authorElement[] {
+    return this.authors.filter(author =>
+      author.firstName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      author.lastName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 
   ngOnInit() {

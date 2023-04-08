@@ -16,12 +16,18 @@ export class ListCategoriesComponent {
   categroies: categroyElement[] = [];
   page: number = 1;
   dialogConfig = new MatDialogConfig();
-
+  searchTerm : string = '';
   constructor(private _categoryService: CategoryService, private toastr: ToastrService, public dialog: MatDialog) {
     this._categoryService.buttonClicked.subscribe(() => {
       this.getcategroies();
     })
   }
+  get filteredCategories(): categroyElement[] {
+    return this.categroies.filter(category =>
+      category.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
 
   ngOnInit() {
     this.getcategroies();
@@ -51,8 +57,6 @@ export class ListCategoriesComponent {
   getcategroies() {
       this._categoryService.getCategories().subscribe({
         next: (data: any) => {
-          console.log(data);
-          
           this.categroies = data.categories.map((categroy: any, index: number) => ({
             ...categroy,
             id: index + 1

@@ -2,21 +2,20 @@
 
   <app-admin-aside-bar></app-admin-aside-bar>
   <div class="table-area container-fluid">
-    <!-- <form class="navbar-form  leftx" role="search">
+    <div class="d-flex justify-content-between m-1">
+      
       <div class="position-relative has-icon-right">
-          <input [(ngModel)]='filterBooks' type="text" class="form-control round" placeholder="Search">
-          <div class="form-control-position">
-              <i class="ft-search"></i>
-          </div>
+        <label for="">Search for an Author</label>
+        <input [(ngModel)]='searchTerm' type="text" class="form-control round" placeholder="Search">
+        <div class="form-control-position">
+            <i class="ft-search"></i>
+        </div>
       </div>
-    </form> -->
 
-    <div class="d-flex justify-content-end">
       <div class="addBook">
-        <span>Add new Author </span>
-        <i (click)="openAddDialog()" class="bi bi-plus-square"></i>
+      <span>Add new Author</span>
+      <i (click)="openAddDialog()" class="bi bi-plus-square"></i>
       </div>
-      <div></div>
     </div>
     <ng-container>
       <div class="row text-left">
@@ -40,7 +39,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <ng-container *ngFor="let author of authors | paginate: { itemsPerPage:5, currentPage: page }">
+                      <ng-container *ngFor="let author of filteredAuthors | paginate: { itemsPerPage:5, currentPage: page }">
                         <tr class="tr">
                           <td>{{author.id}}</td>
                           <td>
