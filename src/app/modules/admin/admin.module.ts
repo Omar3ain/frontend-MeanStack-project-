@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { AdminAsideBarComponent } from '../../sharedComponents/admin-aside-bar/admin-aside-bar.component';
 
@@ -23,6 +24,7 @@ import { UpdateCategoryComponent } from './components/categories/update-category
 import { UpdateAuthorComponent } from './components/authors/update-author/update-author.component';
 import { ListAuthorsComponent } from './components/authors/list-authors/list-authors.component';
 import { AddAuthorComponent } from './components/authors/add-author/add-author.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -51,6 +53,8 @@ import { AddAuthorComponent } from './components/authors/add-author/add-author.c
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class AdminModule { }

@@ -22,9 +22,6 @@
 .outer:hover .card{
   animation-play-state: paused;
 }
-.wrapper .card:last-child{
-  animation-delay: calc(-3s * var(--delay));
-}
 @keyframes animate {
   0%{
     opacity: 0;

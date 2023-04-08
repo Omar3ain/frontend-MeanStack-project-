@@ -2,60 +2,15 @@
 <h2 class="categories-header">
     Categories
 </h2>
-  <div  data-aos="fade-up" data-aos-duration="800" class="card-wrap col-md-3">
+  <div (click)="openCategory(category._id)" data-aos="fade-up" data-aos-duration="800" class="card-wrap col-md-3" *ngFor="let category of categories">
     <div class="card">
       <div class="card-bg">
-        <img [src]="categoryImagePath" alt="" class="">
+        <img crossorigin="anonymous" [src]="category.categoryCover" alt="" class="">
       </div>
       <div class="card-info">
-        <h1 slot="header">Programming</h1>
+        <h1 slot="header">{{ category.name }}</h1>
         <p slot="content">
-          every book about programming like css html cpp c$
-        </p>
-      </div>
-    </div>
-  </div>
-
-  
-  <div  data-aos="fade-up" data-aos-duration="800" class="card-wrap col-md-3">
-    <div class="card">
-      <div class="card-bg">
-        <img [src]="categoryImagePath" alt="" class="">
-      </div>
-      <div class="card-info">
-        <h1 slot="header">Programming</h1>
-        <p slot="content">
-          every book about programming like css html cpp c$
-        </p>
-      </div>
-    </div>
-  </div>
-
-  
-  <div  data-aos="fade-up" data-aos-duration="800" class="card-wrap col-md-3">
-    <div class="card">
-      <div class="card-bg">
-        <img [src]="categoryImagePath" alt="" class="">
-      </div>
-      <div class="card-info">
-        <h1 slot="header">Programming</h1>
-        <p slot="content">
-          every book about programming like css html cpp c$
-        </p>
-      </div>
-    </div>
-  </div>
-
-  
-  <div  data-aos="fade-up" data-aos-duration="800" class="card-wrap col-md-3">
-    <div class="card">
-      <div class="card-bg">
-        <img [src]="categoryImagePath" alt="" class="">
-      </div>
-      <div class="card-info">
-        <h1 slot="header">Programming</h1>
-        <p slot="content">
-          every book about programming like css html cpp c$
+          best books here in {{ category.name }} category
         </p>
       </div>
     </div>

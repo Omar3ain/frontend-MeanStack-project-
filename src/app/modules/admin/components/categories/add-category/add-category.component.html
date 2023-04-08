@@ -1,1 +1,29 @@
-<p>add-category works!</p>
+<h2 mat-dialog-title>Add new Category</h2>
+<mat-dialog-content class="mat-typography bg">
+  <div class="m-3 color">
+    <form class="form" [formGroup]="categoryForm" (submit)="onSubmit()">
+      <div class="form-body">
+        <div class="row">
+          <div class="custom-file  mx-auto d-block">
+            <label class="custom-file-label" for="coverPhoto">Choose Category Photo</label>
+            <input type="file" accept="image/*" (change)="uploadImage($event.target)" class="custom-file-input form-control"
+              id="coverPhoto">
+          </div>
+          <br>
+          <div class="form-group col-md-12 mb-2">
+            <label for="name">Name</label>
+            <input formControlName="name" type="text" id="name" class="form-control border-primary"
+              placeholder="Name">
+              <p *ngIf="categoryForm.controls['name'].touched && categoryForm.get('name')?.hasError('required')" class="text-danger">Name is required</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-actions right d-flex justify-content-end">
+        <button [disabled]="categoryForm.invalid" mat-dialog-close type="submit" class="btn btn-dark"><i class="fa fa-check-square-o"></i>Create</button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

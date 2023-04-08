@@ -18,8 +18,7 @@ export class ListBooksComponent implements OnInit {
   page: number = 1;
   dialogConfig = new MatDialogConfig();
 
-  // filterBooks : string = '';
-  // _filterBooks : string = '';
+  searchTerm : string = '';
 
   constructor(private _bookService: BookService, private toastr: ToastrService, public dialog: MatDialog) {
     this._bookService.buttonClicked.subscribe(() => {
@@ -27,24 +26,13 @@ export class ListBooksComponent implements OnInit {
     })
   }
 
-  // filteredBooks: any[] = [];
-  // get listFilter(): string {
-  //   return this. _filterBooks;
-  // }
+  get filteredBooks(): bookElement[] {
+    return this.books.filter(book =>
+      book.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
 
-  // set listFilter(value: string) {
-  //   this. _filterBooks = value;
-  //   this.filteredBooks = this.listFilter ? this.performFilter(this.listFilter) : this.books;
-  // }
-
-  // performFilter(filterBy: string): any[] {
-  //   filterBy = filterBy.toLocaleLowerCase();
-
-  //   return this.books.filter((book: any) => {
-  //     return (book.name != null && book.name.toLocaleLowerCase().indexOf(filterBy) !== -1) 
-  //   })
-  // }
-
+  
   ngOnInit() {
     this.getBooks();
   }

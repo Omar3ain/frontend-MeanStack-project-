@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&family=PT+Sans+Narrow:wght@400;700&family=Sawarabi+Mincho&display=swap');
 
 :root {
-   /* colors */
-  --background-color:#f0f0e2;
+  /* colors */
+  --background-color: #f0f0e2;
   --sub-bg-color: #d5d6cc;
   --text-color: #1c1e28;
   --button-color: #282835;
@@ -13,20 +13,27 @@
   --text-font-family: 'PT Sans Narrow', sans-serif;
   --bold-font-family: 'Changa One', cursive;
 }
+
 * {
   padding: 0;
   border: 0;
   box-sizing: border-box;
 }
-html, body {
+
+html,
+body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: var(--text-font-family);
   background-color: var(---background-color);
+
 }
+
+
+
 ::ng-deep .ngx-pagination .current {
   background: var(--button-color) !important;
 }
-

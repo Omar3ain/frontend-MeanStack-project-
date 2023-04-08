@@ -1,0 +1,41 @@
+<div id="large-th" class="pt-5">
+  <div class="container">
+    <h1>Pubular books</h1>
+    <br />
+    <div id="list-th">
+      <div class="book" *ngFor="let book of books;">
+        <div class="cover">
+          <img
+            crossorigin="anonymous"
+            src="{{book?.coverPhoto}}"
+          />
+        </div>
+        <div class="description">
+          <div class="title">
+            <div class="text-center h4">
+              <a href="/books/{{book?._id}}">{{ book.name }}</a>
+            </div>
+            <div class="author">
+              <a href="/authors/{{ book?.authorId}}">
+                Author : {{ book.author }}
+              </a>
+            </div>
+            <div class="rating">
+                <span class="text-success" *ngIf="book?.averageRating > 0">&#9733;</span>
+                <span class="text-secondry" *ngIf="book?.averageRating < 1">&#9733;</span>
+                <span class="text-success" *ngIf="book?.averageRating > 1">&#9733;</span>
+                <span class="text-secondry" *ngIf="book?.averageRating < 2">&#9733;</span>
+                <span class="text-success" *ngIf="book?.averageRating > 2">&#9733;</span>
+                <span class="text-secondry" *ngIf="book?.averageRating < 3">&#9733;</span>
+                <span class="text-success" *ngIf="book?.averageRating > 3">&#9733;</span>
+                <span class="text-secondry" *ngIf="book?.averageRating < 4">&#9733;</span>
+                <span class="text-success" *ngIf="book?.averageRating > 4">&#9733;</span>
+                <span class="text-secondry" *ngIf="book?.averageRating < 5">&#9733;</span>
+              <span> ({{book?.reviews?.length}} reviews)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

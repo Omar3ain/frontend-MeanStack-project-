@@ -2,7 +2,78 @@
 
   <app-admin-aside-bar></app-admin-aside-bar>
   <div class="table-area container-fluid">
-    
+    <!-- <form class="navbar-form  leftx" role="search">
+      <div class="position-relative has-icon-right">
+          <input [(ngModel)]='filterBooks' type="text" class="form-control round" placeholder="Search">
+          <div class="form-control-position">
+              <i class="ft-search"></i>
+          </div>
+      </div>
+    </form> -->
+
+    <div class="d-flex justify-content-between m-1">
+      
+      <div class="position-relative has-icon-right">
+        <label for="">Search for a Categroy</label>
+        <input [(ngModel)]='searchTerm' type="text" class="form-control round" placeholder="Search">
+        <div class="form-control-position">
+            <i class="ft-search"></i>
+        </div>
+      </div>
+
+      <div class="addBook">
+      <span>Add new Categroy</span>
+      <i (click)="openAddDialog()" class="bi bi-plus-square"></i>
+      </div>
+    </div>
+    <ng-container>
+      <div class="row text-left">
+        <ng-container>
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <h1 class="card-title">Categroies</h1>
+
+              </div>
+              <div class="card-content">
+                <div class="card-body">
+                  <table class="table table-responsive-md table-striped text-center">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>name</th>
+                        <!-- <th>Cover</th> -->
+
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let categroy of filteredCategories | paginate: { itemsPerPage:6, currentPage: page }">
+                        <tr class="tr">
+                          <td>{{categroy.id}}</td>
+                          <td>{{categroy.name}}</td>
+                          <!-- <td>
+                            <img class="media-object round-media img-fluid image-size" crossorigin="anonymous" [src]="categroy.cover"/>
+                          </td> -->
+                          <td >
+                            <div class="action">
+                            <i (click)="deleteCategroy(categroy._id!)" class="bi bi-trash"></i>
+                            <i (click)="openUpdateDialog(categroy._id!)" class="bi bi-pencil-fill"></i>
+                            </div>
+                            
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
   </div>
   
 </div>

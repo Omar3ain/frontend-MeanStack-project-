@@ -14,7 +14,7 @@ import { ExpandedSearchComponent } from 'src/app/sharedComponents/expanded-searc
 import { AuthorsSliderComponent } from './libModules/sections/authors-slider/authors-slider.component';
 import { FooterComponent } from 'src/app/sharedComponents/footer/footer.component';
 import { SectionsComponent } from './libModules/sections/sections.component';
-import { MainComponent } from './componets/main/main.component';
+import { MainComponent } from './components/main/main.component';
 import { BookCoverComponent } from './libModules/sections/header/book-cover/book-cover.component';
 
 

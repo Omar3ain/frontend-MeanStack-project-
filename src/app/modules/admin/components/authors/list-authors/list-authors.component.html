@@ -2,7 +2,70 @@
 
   <app-admin-aside-bar></app-admin-aside-bar>
   <div class="table-area container-fluid">
-    
+    <div class="d-flex justify-content-between m-1">
+      
+      <div class="position-relative has-icon-right">
+        <label for="">Search for an Author</label>
+        <input [(ngModel)]='searchTerm' type="text" class="form-control round" placeholder="Search">
+        <div class="form-control-position">
+            <i class="ft-search"></i>
+        </div>
+      </div>
+
+      <div class="addBook">
+      <span>Add new Author</span>
+      <i (click)="openAddDialog()" class="bi bi-plus-square"></i>
+      </div>
+    </div>
+    <ng-container>
+      <div class="row text-left">
+        <ng-container>
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <h1 class="card-title">Authors</h1>
+
+              </div>
+              <div class="card-content">
+                <div class="card-body">
+                  <table class="table table-responsive-md table-striped text-center">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Photo</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let author of filteredAuthors | paginate: { itemsPerPage:5, currentPage: page }">
+                        <tr class="tr">
+                          <td>{{author.id}}</td>
+                          <td>
+                            <img class="media-object round-media img-fluid image-size" crossorigin="anonymous" [src]="author.photo"/>
+                          </td>
+                          <td>{{author.firstName}}</td>
+                          <td>{{author.lastName}}</td>
+                          <td >
+                            <div class="action">
+                            <i (click)="deleteAuthor(author._id!)" class="bi bi-trash"></i>
+                            <i (click)="openUpdateDialog(author._id!)" class="bi bi-pencil-fill"></i>
+                            </div>
+                            
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
   </div>
   
 </div>
