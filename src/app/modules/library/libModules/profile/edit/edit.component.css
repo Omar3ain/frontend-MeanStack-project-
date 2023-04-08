@@ -1,0 +1,67 @@
+.form-control:focus {
+  box-shadow: none;
+  border-color: #BA68C8
+}
+
+.profile-button {
+  background: var(--input-background-color);
+  box-shadow: none;
+  border: none
+}
+
+.profile-button:hover {
+  background: var(--input-background-color)
+}
+
+.profile-button:focus {
+  background: var(--input-background-color);
+  box-shadow: none
+}
+
+.profile-button:active {
+  background: var(--input-background-color);
+  box-shadow: none
+}
+
+.back:hover {
+  color: var(--input-background-color);
+  cursor: pointer
+}
+
+.labels {
+  font-size: 11px
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btnupload{
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.form-group
+.dataInput {
+background-color: var(--input-background-color);
+color:  var(--sub-bg-color);
+}
+
+.my-form .dataInput:focus {
+background-color: var(--input-background-color);
+}

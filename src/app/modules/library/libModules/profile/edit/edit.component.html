@@ -1,0 +1,57 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" >
+  <div class="p-3 py-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="text-right">Profile Settings</h2>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-6 form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control dataInput" id="firstName" formControlName="firstName"
+          placeholder="Enter your first name">
+      </div>
+      <div class="col-md-6 form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control dataInput" id="lastName" formControlName="lastName"
+          placeholder="Enter your last name">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12 form-group">
+        <label for="email">E-mail address</label>
+        <input type="email" class="form-control dataInput" id="email" formControlName="email"
+          placeholder="Enter your email address">
+        <p class="warn" *ngIf="editForm.get('email')?.touched && editForm.get('email')?.errors?.['email']">
+          E-mail is not valid!</p>
+      </div>
+      <div class="col-md-12 form-group mt-3">
+        <label for="oldPassword">Old Password</label>
+        <input type="password" class="form-control dataInput" id="oldPassword" formControlName="oldPassword"
+          placeholder="Enter your password">
+      </div>
+      <div class="col-md-12 form-group mt-3">
+        <label for="newPassword">New Password</label>
+        <input type="password" class="form-control dataInput" id="newPassword" formControlName="newPassword"
+          placeholder="Enter your password">
+        <p class="warn"
+          *ngIf="editForm.get('newPassword')?.invalid && (editForm.get('newPassword')?.dirty || editForm.get('newPassword')?.touched)">
+          <span *ngIf="editForm.get('newPassword')?.errors?.['minlength']">Password should be at
+            least 6 characters
+            long!</span>
+          <span *ngIf="editForm.get('newPassword')?.errors?.['pattern']">Password should contain
+            at least one
+            uppercase letter, one lowercase letter, one number, and one special
+            character!</span>
+        </p>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="mb-3">
+        <label for="avatar" class="form-label">Avatar</label>
+        <input class="form-control" type="file" id="avatar" (change)="onFileChange($event)">
+      </div>
+    </div>
+    <div class="mt-5 text-center">
+      <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+    </div>
+  </div>
+</form>

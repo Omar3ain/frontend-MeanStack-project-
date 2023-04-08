@@ -17,8 +17,8 @@ export class AddBookComponent implements OnInit{
   categories : any = [];
   coverPhoto: File | undefined ;
   constructor(
-    private formBuilder: FormBuilder, 
-    private  _authorService: AuthorService, 
+    private formBuilder: FormBuilder,
+    private  _authorService: AuthorService,
     private _categoryService : CategoryService,
     private _bookService : BookService,
     private toastr: ToastrService,) {
@@ -36,6 +36,10 @@ export class AddBookComponent implements OnInit{
     this.showCategories()
   }
   onSubmit() {
+    if (!this.coverPhoto) {
+      this.toastr.error( 'Missing Cover Photo','Could not add book',toastr_options);
+      return;
+    }
     this._bookService.addNewBook(this.bookForm.value,this.coverPhoto!).subscribe({
       next : () =>{
         this._bookService.buttonClicked.emit();

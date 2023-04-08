@@ -10,14 +10,14 @@
 
 .form-group
 .dataInput {
-  background-color: #3f3d56;
+  background-color: var(--input-background-color);
   height: 2.7rem;
   color: var(--sub-bg-color);
   width: 70%;
  }
 
 .my-form .dataInput:focus {
-  background-color: #3f3d56;
+  background-color: var(--input-background-color);
 }
 
 .link{

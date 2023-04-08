@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
@@ -11,12 +11,16 @@ export class AuthService {
   private registerUrl = 'http://localhost:3000/auth/register';
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
+  handleError(error: HttpErrorResponse) {
+    return throwError(() => error);
+  }
+
   login(formData: FormData): Observable<any> {
-    return this.http.post(this.loginUrl, formData);
+    return this.http.post(this.loginUrl, formData).pipe(catchError((this.handleError)));
   }
 
   register(formData: FormData): Observable<any> {
-    return this.http.post(this.registerUrl, formData);
+    return this.http.post(this.registerUrl, formData).pipe(catchError((this.handleError)));
   }
 
   logOut(){

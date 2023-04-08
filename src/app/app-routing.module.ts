@@ -10,12 +10,12 @@ import { AdminGuard } from './Guard/admin/admin.guard';
 import { SectionsComponent } from './modules/library/libModules/sections/sections.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   {
     path: 'admin',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
-    // canActivate: [AdminGuard]
+    canActivate: [AdminGuard]
   },
   {
     path: 'auth',

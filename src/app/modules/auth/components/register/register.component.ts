@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import toastr_options from 'src/app/utils/toastr.options';
+
 
 @Component({
   selector: 'app-register',
@@ -12,7 +15,7 @@ export class RegisterComponent {
   registerForm: FormGroup;
   avatar!: File;
 
-  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder, private toastr: ToastrService) {
 
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
@@ -26,6 +29,7 @@ export class RegisterComponent {
   onSubmit() {
 
     if (!this.registerForm.valid || !this.avatar) {
+      this.toastr.error( 'Missing Field','Could not register',toastr_options);
       return;
     }
 
@@ -36,11 +40,17 @@ export class RegisterComponent {
     formData.append('password', this.registerForm.get('password')?.value);
     formData.append('avatar', this.avatar);
 
-    this.authService.register(formData).subscribe(res => {
-      this.router.navigate(['/login']);
-    },
-      error => { console.log(error); }
-    );
+    this.authService.register(formData).subscribe({
+      next: () => {
+        this.toastr.success(`Registered successfully`,'Insert status',toastr_options);
+        this.router.navigate(['/login']);
+      },
+      error : (error) => {
+        let {error : {message}}  = error;
+        if(!message) message = error.message;
+        this.toastr.error(`MESSAGE : ${message}`,'Could not register',toastr_options);
+      }
+    })
   }
   onFileChange(event: any) {
     this.avatar = event.target.files[0];

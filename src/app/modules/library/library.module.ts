@@ -38,7 +38,6 @@ import { BookCoverComponent } from './libModules/sections/header/book-cover/book
     LibraryRoutingModule,
     BookModule,
     CategoryModule,
-    ProfileModule,
     AuthorModule
 
   ]

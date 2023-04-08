@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import toastr_options from 'src/app/utils/toastr.options';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder, private toastr: ToastrService) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required,
@@ -20,14 +22,22 @@ export class LoginComponent {
     });
   }
   onSubmit() {
-    this.authService.login(this.loginForm.value).subscribe(res => {
-      this.authService.setCookie(res.token, res.isAdmin);
-      this.router.navigate(['/']);
-    },
-      error => { console.log(error); }
-    );
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        this.authService.setCookie(res.token, res.isAdmin);
+        if(res.isAdmin) {
+          this.router.navigate(['/admin/books/list']);
+        }else{
+          this.router.navigate(['/home']);
+        }
+      },
+      error: (error) => {
+        let { error: { message } } = error;
+        if (!message) message = error.message;
+        this.toastr.error(`MESSAGE : ${message}`, 'Could not log in', toastr_options);
+      },
+    })
   }
-
   navigate() {
     this.router.navigate(['/auth/register']);
   }
