@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { AuthorService } from '../../services/author.service';
 
-
-
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-list-authors',
+  templateUrl: './list-authors.component.html',
+  styleUrls: ['./list-authors.component.css']
 })
-export class ListComponent {
+export class ListAuthorsComponent {
   authors: author[] = []
   constructor(private _author: AuthorService) {
 
@@ -21,11 +19,9 @@ export class ListComponent {
   }
 }
 
-interface author {
+export interface author {
   firstName: string
   lastName: string
   dob: Date
   photo: string
 }
-
-

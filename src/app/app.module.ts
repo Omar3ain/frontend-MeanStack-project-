@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,10 +17,12 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './sharedComponents/not-found/not-found.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+
 
   ],
   imports: [
@@ -32,15 +34,15 @@ import { NotFoundComponent } from './sharedComponents/not-found/not-found.compon
     AuthModule,
     RouterModule,
     ToastrModule.forRoot({
-    positionClass: 'toast-top-right',
-    preventDuplicates: true,
-    closeButton: true
-  }),
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      closeButton: true
+    }),
   ],
   providers: [
     AdminGuard,
     AuthService,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
