@@ -6,6 +6,9 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthorService {
+  static getAuthor(authorId: any) {
+    throw new Error('Method not implemented.');
+  }
 
   domin : string = "http://localhost:3000"
   authorsUrl = `${this.domin}/authors`;

@@ -22,6 +22,7 @@ export class BooksComponent {
       this.books.map((book) => {
         book.name =
           book.name.length > 50 ? book.name.substring(0, 30) : book.name;
+          book.averageRating = Math.floor(book.reviews.reduce((average: any, review:any) => average + review.rating, 0) / book.reviews.length);
         CategoryService.getCategory(book.categoryId).subscribe((category) => {
           book.category = category.category.name;
         });

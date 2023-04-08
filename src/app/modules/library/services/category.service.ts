@@ -20,4 +20,8 @@ export class CategoryService {
   getCategory(id : string) : Observable<any>  {
     return this.http.get(`${this.categoriesUrl}/${id}`).pipe(catchError((this.handleError)));
   }
+
+  getTopFive(): Observable<any> {
+    return this.http.get(`${this.categoriesUrl}?skip=0&limit=5`)
+  }
 }
