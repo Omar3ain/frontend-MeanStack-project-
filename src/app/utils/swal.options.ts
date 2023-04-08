@@ -15,5 +15,11 @@ const deleteCategoryOptions: SweetAlertOptions = {
   confirmButtonColor: '#282835',
   confirmButtonText: 'Yes, delete it',
 };
-
-export default { deleteBookOptions , deleteCategoryOptions }
+const deleteAuthorOptions: SweetAlertOptions = {
+  title: 'Do you sure to delete this Author?',
+  showCancelButton: true,
+  icon:'warning',
+  confirmButtonColor: '#282835',
+  confirmButtonText: 'Yes, delete it',
+};
+export default { deleteBookOptions , deleteCategoryOptions ,deleteAuthorOptions}
