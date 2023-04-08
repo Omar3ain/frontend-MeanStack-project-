@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 
@@ -8,7 +8,6 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class BookService {
   domin : string = "http://localhost:3000"
   booksUrl = `${this.domin}/books`;
-  buttonClicked = new EventEmitter();
   
   constructor(private http: HttpClient) { }
   handleError(error: HttpErrorResponse) {

@@ -12,11 +12,11 @@
         <div class="description">
           <div class="title">
             <div class="text-center h4">
-              <a href="/books/{{book?._id}}">{{ bookTitle }}</a>
+              <a href="/books/{{book?._id}}">{{ book.name }}</a>
             </div>
             <div class="author">
               <a href="/authors/{{ book?.authorId}}">
-                Author : Muhammed adel
+                Author : {{ book.author }}
               </a>
             </div>
             <div class="rating">
