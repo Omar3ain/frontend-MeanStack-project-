@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthorService } from '../../services/author.service';
+import { author } from '../list-authors/list-authors.component';
 
 
 @Component({
@@ -8,6 +9,12 @@ import { AuthorService } from '../../services/author.service';
   styleUrls: ['./author.component.css']
 })
 export class AuthorComponent {
+  @Input() author: author = {
+    firstName: '',
+    lastName: '',
+    dob: new Date(),
+    photo: ''
+  }
   authors: author[] = []
   constructor(private _author: AuthorService) {
 
@@ -18,10 +25,4 @@ export class AuthorComponent {
       this.authors = res;
     })
   }
-}
-interface author {
-  firstName: string
-  lastName: string
-  dob: Date
-  photo: string
 }

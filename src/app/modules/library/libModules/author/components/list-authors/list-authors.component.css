@@ -1,0 +1,11 @@
+.author-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
+
+h1 {
+  font-family: var(--text-font-family);
+  color: var(--text-color);
+  font-size: xx-large;
+}

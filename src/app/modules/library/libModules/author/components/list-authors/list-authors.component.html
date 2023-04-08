@@ -1,1 +1,13 @@
-<p>list-authors works!</p>
+<section class="vh-200">
+  <div class="container mt-5">
+    <h1>Authors</h1>
+    <div class="row">
+
+      <div class="author-grid">
+
+        <app-author *ngFor="let author of authors" [author]="author"></app-author>
+
+      </div>
+    </div>
+  </div>
+</section>
