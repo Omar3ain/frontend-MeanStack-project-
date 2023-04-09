@@ -31,7 +31,7 @@ import { BookCoverComponent } from './libModules/sections/header/book-cover/book
     CategoriesComponent,
     BooksComponent,
     SectionsComponent,
-    BookCoverComponent
+    BookCoverComponent,
   ],
   imports: [
     CommonModule,

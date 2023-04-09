@@ -11,6 +11,7 @@ import { AuthorService } from '../../services/author.service';
 export class BooksComponent {
   title = 'hello wrold hello world hello  aweqw qwe ae qweqweqwe qwe qwworld';
   bookTitle = this.title.length > 50 ? this.title.substring(0, 30) : this.title;
+  searchValue: string = '';
   books: any[] = [];
   constructor(
     private BookService: BookService,
@@ -31,5 +32,11 @@ export class BooksComponent {
         });
       });
     });
+  }
+
+
+  handleSearchValue(e: Event) {
+    this.searchValue = (e?.target as HTMLInputElement)?.value;
+    console.log(this.searchValue)
   }
 }
