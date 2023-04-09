@@ -35,23 +35,21 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     const jwtToken = this.getJwtToken();
-    return jwtToken !== null;
+    return jwtToken !== '' && jwtToken !== null ;
   }
 
   isAdmin(): any {
     const isAdmin = this.getAdmin();
-    try {
+    if(isAdmin && isAdmin !== ''){
       return JSON.parse(isAdmin)
-    } catch (error) {
-      console.log(error);
     }
   }
 
   getJwtToken(): any {
-    try{
+    try {
       return this.cookieService.get('jwtToken');
-    }catch(err){
-      console.log(err);
+    } catch (err) {
+      return null;
     }
   }
 
@@ -59,7 +57,7 @@ export class AuthService {
     try{
       return this.cookieService.get('isAdmin');
     }catch(err){
-      console.log(err);
+      return null;
     }
   }
 }

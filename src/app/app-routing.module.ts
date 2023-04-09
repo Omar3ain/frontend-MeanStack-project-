@@ -7,10 +7,9 @@ import { LibraryRoutingModule } from './modules/library/library-routing.module';
 
 import { NotFoundComponent } from './sharedComponents/not-found/not-found.component';
 import { AdminGuard } from './Guard/admin/admin.guard';
-import { SectionsComponent } from './modules/library/libModules/sections/sections.component';
+
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   {
     path: 'admin',
     loadChildren: () =>

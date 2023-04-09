@@ -12,12 +12,15 @@
   --header-font-family: 'Sawarabi Mincho', serif;
   --text-font-family: 'PT Sans Narrow', sans-serif;
   --bold-font-family: 'Changa One', cursive;
+  /* spinner */
+  --trans-dur: 0.3s;
 }
 
 * {
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html,

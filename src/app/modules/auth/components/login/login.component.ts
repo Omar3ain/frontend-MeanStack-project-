@@ -28,7 +28,7 @@ export class LoginComponent {
         if(res.isAdmin) {
           this.router.navigate(['/admin/books/list']);
         }else{
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         }
       },
       error: (error) => {

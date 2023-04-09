@@ -1,0 +1,21 @@
+<app-spinner *ngIf="!user"></app-spinner>
+<div *ngIf="user" class="container rounded bg-white mt-5 mb-5" >
+  <div   class="row">
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5 img">
+
+        <div class="circular-image">
+          <img  crossorigin="anonymous" [src]="user.avatar" class="rounded-circle shadow-4"
+            style="width: 150px; height: 150px;" alt="Avatar" />
+        </div>
+
+        <h5 class="mb-2 mt-2 name"><strong>{{user.firstName}} {{user.lastName}}</strong></h5>
+        <p class="text-muted name">{{user.email}}</p>
+
+      </div>
+    </div>
+
+    <app-edit class="col-md-5 border-right"></app-edit>
+
+  </div>
+</div>

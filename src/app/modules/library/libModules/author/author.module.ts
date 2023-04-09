@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListAuthorsComponent } from './components/list-authors/list-authors.component';
-import { AuthorComponent } from './components/author/author.component';
-import { AuthorDetailesComponent } from './components/author-detailes/author-detailes.component';
 
+import { AuthorRoutingModule } from './author-routing.module';
+import { ListAuthorsComponent } from './components/list-authors/list-authors.component';
+import { AuthorDetailesComponent } from './components/author-detailes/author-detailes.component';
+import { AuthorComponent } from './components/author/author.component';
 
 
 @NgModule({
-  declarations: [
-
-    ListAuthorsComponent,
-    AuthorComponent,
-    AuthorDetailesComponent
-  ],
+  declarations: [ListAuthorsComponent,AuthorDetailesComponent,AuthorComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    AuthorRoutingModule
   ]
 })
 export class AuthorModule { }

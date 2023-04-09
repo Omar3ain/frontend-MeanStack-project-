@@ -18,11 +18,11 @@ import { NotFoundComponent } from './sharedComponents/not-found/not-found.compon
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-
 
   ],
   imports: [

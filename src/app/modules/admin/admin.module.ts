@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
-import { AdminAsideBarComponent } from '../../sharedComponents/admin-aside-bar/admin-aside-bar.component';
+import { AdminAsideBarComponent } from '../../sharedComponents/admin/admin-aside-bar/admin-aside-bar.component';
 
 import { AddBookComponent } from './components/books/add-book/add-book.component';
 import { ListBooksComponent } from './components/books/list-books/list-books.component';
