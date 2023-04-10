@@ -1,1 +1,75 @@
-<p>author-detailes works!</p>
+<!-- <div class='background'> </div> -->
+<section class="vh-150 ">
+
+  <div class="container " *ngIf="myauthor">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card author-card">
+          <div class="img-container">
+            <div class="img">
+              <img [src]="myauthor.photo" crossorigin="anonymous" class="img-fluid">
+            </div>
+            <div class="description card">
+              <h3>{{myauthor.firstName}}{{myauthor.lastName}}</h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-9">
+        <div class="row mt-5">
+          <div class="col-12">
+            <h2>{{myauthor.firstName}}{{myauthor.lastName}}</h2>
+
+          </div>
+          <div class="col-12 ">
+            <p>{{myauthor.dob | date:'shortDate'}}</p>
+          </div>
+          <div class="col-12">
+            <p>{{myauthor.description}}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container>
+    <div class="row text-center">
+      <ng-container>
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h1 class="card-title">Authors</h1>
+
+            </div>
+            <div class="card-content">
+              <div class="card-body">
+                <table class="table table-responsive-md table-striped text-center">
+
+                  <tbody>
+                    <ng-container *ngFor="let book of books ">
+                      <tr class="tr">
+                        <td>
+                          <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
+                            [src]="book.coverPhoto" />
+                        </td>
+                        <td>{{book.name }}</td>
+                        <td>
+                          <mat-icon *ngFor="let star of getStarList(getBookRating(book.reviews ?? []))">
+                            {{ star.filled ? 'star' : 'star_border' }}
+                          </mat-icon>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</section>
