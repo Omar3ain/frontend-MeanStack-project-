@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { UserService } from '../../libModules/profile/services/user.service';
 import IUserUpdate from '../../libModules/profile/Interfaces/user';
@@ -15,14 +15,26 @@ export class NavbarComponent implements OnInit{
   siteName = 'Booky Tooky';
   navbarCollapsed = true;
   isAuthenticated : boolean = false;
+  isScrolled:  boolean  = false;
   user!: IUserUpdate; 
   constructor(private _authService : AuthService,
     private _userService: UserService,
-    private toastr: ToastrService){
+    private toastr: ToastrService,
+    private renderer: Renderer2, private el: ElementRef){
     this.isAuthenticated = this._authService.isAuthenticated();
     this
 
   }
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (scrollTop > 0) {
+      this.isScrolled = true;
+    } else {
+      this.isScrolled = false;
+    }
+  }
+
   ngOnInit(): void {
     this.isAuthenticated = this._authService.isAuthenticated()
     this._userService.getUser().subscribe({
@@ -37,7 +49,8 @@ export class NavbarComponent implements OnInit{
     })
   }
   navbarToggler(){
-    document.getElementById('navbarNavDropdown')?.classList.toggle('show');
+    document.getElementById('menu')?.classList.toggle('show');
+    document.getElementById('plate')?.classList.toggle('active');
   }
 
   dropDownToggler(){
