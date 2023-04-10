@@ -24,12 +24,6 @@ export class BooksComponent {
         book.name =
           book.name.length > 50 ? book.name.substring(0, 30) : book.name;
           book.averageRating = Math.floor(book.reviews.reduce((average: any, review:any) => average + review.rating, 0) / book.reviews.length);
-        CategoryService.getCategory(book.categoryId).subscribe((category) => {
-          book.category = category.category.name;
-        });
-        AuthorService.getAuthor(book.authorId).subscribe((author) => {
-          book.author = author.firstName + ' ' + author.lastName;
-        });
       });
     });
   }
