@@ -18,8 +18,13 @@
               <a href="/books/{{book?._id}}">{{ book.name }}</a>
             </div>
             <div class="author">
-              <a href="/authors/{{ book?.authorId}}">
-                Author : {{ book.author }}
+              <a href="/authors/{{ book?.author._id }}">
+                Author : {{ book.author.firstName }} {{ book.author.lastName }}
+              </a>
+            </div>
+            <div class="category">
+              <a class="badge bg-dark"href="/categories/{{ book?.category._id }}">
+                {{ book.category.name }}
               </a>
             </div>
             <div class="rating">
