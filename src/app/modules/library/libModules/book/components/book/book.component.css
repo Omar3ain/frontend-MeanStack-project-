@@ -52,6 +52,7 @@ select:focus,
 button:focus,
 textarea:focus {
 	outline: none;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 a:hover,
@@ -3500,6 +3501,7 @@ ol {
 }
 .supaview__title {
   margin: 20px auto;
+  line-height: 40pt;
 }
 .supaview__copy input, .supaview__copy textarea {
   width: calc(100% - 20px);
@@ -3507,7 +3509,7 @@ ol {
   margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #16181A;
-  color: #FFFFFF;
+  color: var(--text-color);
   background-color: transparent;
   outline: none;
 }

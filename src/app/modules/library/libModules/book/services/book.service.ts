@@ -14,13 +14,18 @@ export class BookService {
     return throwError(() => error);
   }
 
-  getBooks(query: string): Observable<any> {
+  getBooks(query: string = ''): Observable<any> {
     return this.http.get(this.booksUrl + query).pipe(catchError((this.handleError)));
   }
-  getBooksCount(query: string): Observable<any> {
+  getBooksCount(query: string = ''): Observable<any> {
     return this.http.get(this.booksUrl + query).pipe(catchError((this.handleError)));
   }
   getBook(id: string): Observable<any> {
     return this.http.get(`${this.booksUrl}/${id}`).pipe(catchError((this.handleError)));
   }
+
+  postReview(bookId: string, review: {rating: number, comment: string}): Observable<any> {
+    return this.http.patch(`${this.booksUrl}/${bookId}/review`, review).pipe(catchError((this.handleError)));
+  }
+  
 }

@@ -43,10 +43,10 @@ export class BooksComponent {
 
   initial() {
     this.route.queryParams.subscribe(params => {
-      this.bookName = params['name'];
-      this.category = params['category'];
-      this.author = params['author'];
-      this.pageIndex = params['page'];
+      this.bookName = params['name'] || '';
+      this.category = params['category'] || '';
+      this.author = params['author'] || '';
+      this.pageIndex = params['page'] || 1;
     })
   }
 
