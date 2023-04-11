@@ -10,6 +10,7 @@ import { ExpandedSearchComponent } from './components/expanded-search/expanded-s
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthorsSliderComponent } from './components/authors-slider/authors-slider.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,11 +20,12 @@ import { AuthorsSliderComponent } from './components/authors-slider/authors-slid
     ExpandedSearchComponent,
     FooterComponent,
     NavbarComponent,
-    AuthorsSliderComponent
+    AuthorsSliderComponent,
+
   ],
   imports: [
     CommonModule,
-    LibraryRoutingModule,
+    LibraryRoutingModule
   ]
 })
 export class LibraryModule { }

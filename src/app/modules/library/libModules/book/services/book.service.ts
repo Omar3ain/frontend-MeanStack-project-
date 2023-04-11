@@ -14,8 +14,8 @@ export class BookService {
     return throwError(() => error);
   }
 
-  getBooks(): Observable<any> {
-    return this.http.get(this.booksUrl).pipe(catchError((this.handleError)));
+  getBooks(query: string): Observable<any> {
+    return this.http.get(this.booksUrl + query).pipe(catchError((this.handleError)));
   }
   getBook(id : string) : Observable<any>  {
     return this.http.get(`${this.booksUrl}/${id}`).pipe(catchError((this.handleError)));

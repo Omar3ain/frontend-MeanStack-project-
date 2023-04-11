@@ -14,7 +14,8 @@ import { BookComponent } from './components/book/book.component';
   imports: [
     CommonModule,
     BookRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ]
 })
 export class BookModule { }

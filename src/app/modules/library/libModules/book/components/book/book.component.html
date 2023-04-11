@@ -34,7 +34,18 @@
         </div>
     </section>
     <!-- Product Details Section End -->
-
+            <div class="supaview">
+                <h1 class="supaview__title">Add a new review</h1>
+                <form id="review">
+                    <div class="supaview__copy">
+                        <input type="text" name="name" placeholder="Name"/>
+                        <textarea name="message" placeholder="Message" rows="5"></textarea>
+                    </div>
+                    <button class="supaview__submit">Submit review</button>
+                </form>
+            </div>
+    
+    
     <!-- Related Product Section Begin -->
     <section class="related-product">
         <div class="container">
@@ -47,7 +58,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card"  *ngFor="let review of book.reviews " style="width: 18rem;">
+                    <div class="card"  *ngFor="let review of book?.reviews " style="width: 18rem;">
                         <div class="card-body">
                           <h5 class="card-title">
                             

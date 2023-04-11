@@ -1,8 +1,28 @@
 <div id="large-th" class="pt-5">
   <div class="container">
-    <h1>Popular books</h1>
+    <h1>books</h1>
     <hr />
     <!-- <app-search-bar (searchValue)="handleSearchValue($event)"></app-search-bar> -->
+    <div class="row">
+      <div class="col-md-8">
+        <input type="search" [(ngModel)]="bookName" class="search-field" (keyup)="onSearchByChange($event)" (change)="onSearchByChange($event)" placeholder="search by book name" value="" name="s" title="" />
+      </div>
+      <div class="col-md-4">
+        <button type="button" (click)="clearFilter()" class="button hover-btn">clear</button>
+      </div>
+      <div class="col-md-8">
+        <input type="search" [(ngModel)]="author" class="search-field" (keyup)="onAuthorByChange($event)" (change)="onAuthorByChange($event)" placeholder="search by author" value="" name="s" title="" />
+      </div>
+      <div class="col-md-4">
+        <div class="select_mate" data-mate-select="active">
+          <select name="" [(ngModel)]="category" (change)="onCategoryByChange($event)"  id="">
+            <option value="">select category</option>
+            <option *ngFor="let category of categories;" value="{{category.name}}">{{category.name}}</option>
+          </select>
+        </div>
+        <!-- Custom select structure -->
+      </div>
+    </div>
     <br />
     <div id="list-th">
       <div class="book" *ngFor="let book of books;">
@@ -28,16 +48,12 @@
               </a>
             </div>
             <div class="rating">
-                <span class="text-success" *ngIf="book?.averageRating > 0">&#9733;</span>
-                <span class="text-secondry" *ngIf="book?.averageRating < 1">&#9733;</span>
-                <span class="text-success" *ngIf="book?.averageRating > 1">&#9733;</span>
-                <span class="text-secondry" *ngIf="book?.averageRating < 2">&#9733;</span>
-                <span class="text-success" *ngIf="book?.averageRating > 2">&#9733;</span>
-                <span class="text-secondry" *ngIf="book?.averageRating < 3">&#9733;</span>
-                <span class="text-success" *ngIf="book?.averageRating > 3">&#9733;</span>
-                <span class="text-secondry" *ngIf="book?.averageRating < 4">&#9733;</span>
-                <span class="text-success" *ngIf="book?.averageRating > 4">&#9733;</span>
-                <span class="text-secondry" *ngIf="book?.averageRating < 5">&#9733;</span>
+              <ngb-rating [rate]="book?.averageRating" [readonly]="true" [max]="5" class="my-rating">
+                  <ng-template let-fill="fill" let-index="index">
+                      <i class="bi-star{{fill === 100 ? '-fill' : ''}}" [class.filled]="fill === 100"></i>
+                  </ng-template>
+              </ngb-rating>
+                
               <span> ({{book?.reviews?.length}} reviews)</span>
             </div>
           </div>
