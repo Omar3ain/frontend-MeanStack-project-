@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class BookComponent implements OnInit {
   id: string = '';
   book: any;
-  ratingInputValue = '';
+  ratingInputValue = 0;
   commentInputValue = '';
   CategoryService: any;
   reviewForm: FormGroup;
@@ -43,14 +43,14 @@ export class BookComponent implements OnInit {
       return console.log("must change rating input value from 1 star to 5")
     }
     this.BookService.postReview(this.book._id, {rating: Number(this.ratingInputValue), comment: this.reviewForm.value.comment}).subscribe((response) => {
-      this.ratingInputValue = '';
+      this.ratingInputValue = 0;
       this.reviewForm.reset();
       this.getBookDetails();
     })
   }
 
   ratingInputValueChange(e: number) {
-    this.ratingInputValue = e.toString();
+    this.ratingInputValue = e;
   }
 
   async ngOnInit() {}

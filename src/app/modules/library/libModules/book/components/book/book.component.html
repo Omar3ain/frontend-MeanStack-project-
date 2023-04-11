@@ -58,6 +58,7 @@
     <form (ngSubmit)="submitReview()" [formGroup]="reviewForm" id="review">
       <ngb-rating
         (rateChange)="ratingInputValueChange($event)"
+        [rate]="ratingInputValue"
         [rate]="0"
         [max]="5"
         class="my-rating"
