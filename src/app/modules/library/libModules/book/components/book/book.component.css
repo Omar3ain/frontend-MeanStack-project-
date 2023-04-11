@@ -3520,7 +3520,7 @@ ol {
   padding: 10px 15px;
   font-weight: 700;
   color: #FFFFFF;
-  background-color: #64B883;
+  background-color: var(--button-color);
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -3528,7 +3528,7 @@ ol {
   transition: 0.2s ease-in-out;
 }
 .supaview__submit:hover {
-  background-color: #6ECB90;
+  background-color: #000000;
 }
 
 .supaerror {
