@@ -19,6 +19,7 @@ import { UserBooksComponent } from './components/user-books/user-books.component
     CommonModule,
     ProfileRoutingModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     SharedModuleModule,
     NgxPaginationModule
   ]

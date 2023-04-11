@@ -14,7 +14,7 @@
           <path class="line line3" d="M 50,50 H 30 C 30,50 12.288136,47.749959 12.288136,60.169492 C 12.288136,67.738339 16.712974,73.305085 40.677966,73.305085 C 73.791674,73.305085 108.47458,-19.915254 108.47458,-19.915254" />
           <path class="line line4" d="M 50,50 H 70 C 70,50 81.779661,50.277128 81.779661,36.607372 C 81.779661,28.952694 77.941689,25 69.067797,25 C 39.95532,25 -16.949153,119.91525 -16.949153,119.91525" />
           <path class="line line5" d="M 50,65 H 30 C 30,65 17.79661,64.618439 17.79661,74.152543 C 17.79661,80.667556 25.093813,81.355932 38.559322,81.355932 C 89.504001,81.355932 135.59322,-21.186441 135.59322,-21.186441" />
-          <path class="line line6" d="M 50,35 H 30 C 30,35 16.525424,35.528154 16.525424,24.152542 C 16.525424,17.535987 22.597755,13.559322 39.40678,13.559322 C 80.617882,13.559322 94.067797,111.01695 94.067797,111.01695" />
+          <path class="line line6" d="M 50,35 H 30 C 30,35 16.525424,35.528154 16. 525424,24.152542 C 16.525424,17.535987 22.597755,13.559322 39.40678,13.559322 C 80.617882,13.559322 94.067797,111.01695 94.067797,111.01695" />
         </svg>
         <svg class="x" version="1.1" height="100" width="100" viewBox="0 0 100 100">
           <path class="line" d="M 34,32 L 66,68" />
@@ -29,8 +29,8 @@
   <img [routerLink]="isAuthenticated? ['/profile'] : ['/']" [src]="logoPath" width="120" height="120" class="d-inline-block pointer" alt="" />
   <br>
   <br>
- 
-  <ul> 
+
+  <ul>
     <li class="nav-item">
       <a class="nav-link" [routerLink]="isAuthenticated? ['/profile'] : ['/']">Home</a>
     </li>
@@ -45,10 +45,10 @@
     </li>
     <li class="nav__item">
       <div *ngIf="isAuthenticated"  class="dropdown">
-        <button class="nav__drop-btn primary-btn font-family">{{user.firstName}} {{user.lastName}}<i class="fa-solid fa-caret-down"></i></button>
+        <button *ngIf="user" class="nav__drop-btn primary-btn font-family">{{user.firstName}} {{user.lastName}}<i class="fa-solid fa-caret-down"></i></button>
         <div class="dropdown__list">
-          <li class="dropdown__item"><a class="dropdown__btn primary-btn" routerLink="/admin/books/list">Admin dashboard</a></li>
           <li class="dropdown__item"><a class="dropdown__btn primary-btn" [routerLink]="['/profile']" >Profile</a></li>
+          <li class="dropdown__item"><a class="dropdown__btn primary-btn" routerLink="/profile/user-books">My Books</a></li>
           <li class="dropdown__item"><a (click)="logOut()" [routerLink]="['/']"  class="dropdown__btn primary-btn">Logout</a></li>
         </div>
         </div>
@@ -70,7 +70,7 @@
 
 <!-- <nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark px-5">
   <a class="navbar-brand" style="background-color: white; color:black; border-radius: 50%;" href="#">
-    
+
     {{ siteName }}
   </a>
   <button (click)="navbarToggler()" class="navbar-toggler" type="button" data-toggle="collapse"

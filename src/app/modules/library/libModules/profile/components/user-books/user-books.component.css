@@ -32,7 +32,7 @@ aside div a {
 aside div a:hover {
   color: var(--text-color);
   background-color: var( --background-color );
-  width: 123.5%;
+  width: 114.5%;
   border-radius: 1vw 0 0 1vw;
   transition: all 0.2s;
 }
@@ -71,9 +71,14 @@ aside div p {
 }
 
 .table-area {
-  width: 90%;
+  overflow-x: auto;
+  max-width: 100%;
   margin: 1vw;
   color: var(--text-color);
+}
+.table-scrollable {
+  /* height: 400px; */
+  overflow-y: auto;
 }
 .card-title{
   font-family: var(--header-font-family);
