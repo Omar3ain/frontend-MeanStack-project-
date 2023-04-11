@@ -28,7 +28,7 @@ export class AuthorDetailesComponent {
     this._author.getAuthorById(this.id).subscribe((response) => {
       this.myauthor = response;
     })
-    this._book.getBooks().subscribe((book: any[]) => {
+    this._book.getBooks('').subscribe((book: any[]) => {
       return this.books = book;
       console.log(this.books);
 

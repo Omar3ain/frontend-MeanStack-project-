@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from 'src/app/sharedComponents/search-bar/search-bar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BookRoutingModule } from './book-routing.module';
@@ -17,7 +17,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BookRoutingModule,
     NgbModule,
     FormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
   ]
 })
 export class BookModule { }

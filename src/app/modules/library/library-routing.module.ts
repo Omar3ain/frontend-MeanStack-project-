@@ -19,7 +19,7 @@ const routes: Routes = [
       {
         path: 'books', 
         loadChildren: () => import('./libModules/book/book.module').then(m => m.BookModule),
-        canActivate: []
+        canActivate: [AuthGuard]
       },
       {
         path: 'categories', 
