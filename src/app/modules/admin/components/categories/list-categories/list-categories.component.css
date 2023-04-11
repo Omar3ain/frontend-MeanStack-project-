@@ -6,6 +6,9 @@
 .card-title{
   font-family: var(--header-font-family);
 }
+.card-body{
+  overflow-x: auto;
+}
 .table-area {
   font-family: var(--text-font-family);
 }
@@ -63,10 +66,8 @@
     width: 100%;
   }
   .addBook {
-    width: 27vw;
-}
-.addBook{
-  margin: 3vw;
+    width: 27vh;
+    margin: 3vw;
 }
 }
 

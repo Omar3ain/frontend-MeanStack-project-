@@ -1,6 +1,6 @@
 :root {
     --color-background: #222;
-    --color-foreground: #ddd;
+    --color-foreground: var(--text-color);
   }
   
   *,
@@ -15,7 +15,7 @@
     --easing: cubic-bezier(0.4, 0, 0.2, 1);
     --font-size: .75rem;
     --color: var(--color-foreground);
-    --color-highlight: rgb(240, 240, 240);
+    --color-highlight: rgb var(--text-color);
     --transition-time-icon: 0.2s;
     --transition-time-input: 0.3s 0.25s;
     color: var(--color-highlight);

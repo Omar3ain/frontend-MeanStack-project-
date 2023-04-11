@@ -1,23 +1,27 @@
-<aside>
-  <img src="/assets/logo.png" alt="">
-  <div class="divider"></div>
-  <div>
-    <a [routerLink]="['/admin/books/list']">
-      <i class="fa fa-user-o" aria-hidden="true"></i>
-      Books
-    </a>
-    <a [routerLink]="['/admin/categories/list']">
-      <i class="fa fa-laptop" aria-hidden="true"></i>
-      Categories
-    </a>
-    <a [routerLink]="['/admin/authors/list']">
-      <i class="fa fa-clone" aria-hidden="true"></i>
-      Authors
-    </a>
-  </div>
-  <div class="logout-box">
-      <button (click)="logout()" routerLinkActive="router-link-active" >Logout <i class="bi bi-box-arrow-left"></i></button>
+<div class="row">
+  <aside class="col-sm-12 col-md-12">
+    <img src="/assets/logo.png" alt="">
+    <div class="divider"></div>
+    <div>
+      <a [routerLink]="['/admin/books/list']">
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+        Books
+      </a>
+      <a [routerLink]="['/admin/categories/list']">
+        <i class="fa fa-laptop" aria-hidden="true"></i>
+        Categories
+      </a>
+      <a [routerLink]="['/admin/authors/list']">
+        <i class="fa fa-clone" aria-hidden="true"></i>
+        Authors
+      </a>
+    </div>
+    <div class="logout-box">
+        <button (click)="logout()" routerLinkActive="router-link-active" >Logout <i class="bi bi-box-arrow-left"></i></button>
+  
+    </div>
+  
+  </aside>
+</div>
 
-  </div>
 
-</aside>

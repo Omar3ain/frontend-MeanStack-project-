@@ -15,23 +15,23 @@
   /* spinner */
   --trans-dur: 0.3s;
   /* nav */
-    --white:#FFF;
-    --black:#000;
-    --dark:#1b1b1b;
-    --gray:rgba(1,1,1,0.6);
-    --lite:rgba(255,255,255,0.6);
-    --primary:var(--logo-color);
-    --primary_dark:var(--text-color);
-    --default_font:'Montserrat', sans-serif;
-    --title_font:'Abril Fatface', cursive;
-    --cursive_font:'Dancing Script', cursive;
+  --white: #FFF;
+  --black: #000;
+  --dark: #1b1b1b;
+  --gray: rgba(1, 1, 1, 0.6);
+  --lite: rgba(255, 255, 255, 0.6);
+  --primary: var(--logo-color);
+  --primary_dark: var(--text-color);
+  --default_font: 'Montserrat', sans-serif;
+  --title_font: 'Abril Fatface', cursive;
+  --cursive_font: 'Dancing Script', cursive;
 }
 
 * {
-	border: 0;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
