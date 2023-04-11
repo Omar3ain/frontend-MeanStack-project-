@@ -20,6 +20,8 @@ export class BooksComponent {
   books: any[] = [];
   query:string ='';
   categories: any[] = [];
+  countOfBooks: number = 0;
+  pageIndex: number = 1;
   subjectsKeyUp = {
     category : new Subject(),
     author: new Subject(),
@@ -34,6 +36,9 @@ export class BooksComponent {
     this.initial();
     this.query = `?name=${this.bookName}&category=${this.category}&author=${this.author}`;
     this.getBooks(this.query);
+    this.BookService.getBooksCount(this.query).subscribe(booksCount => {
+      this.countOfBooks = booksCount;
+    })
   }
 
   initial() {
@@ -41,13 +46,15 @@ export class BooksComponent {
       this.bookName = params['name'];
       this.category = params['category'];
       this.author = params['author'];
+      this.pageIndex = params['page'];
     })
   }
 
   clearFilter (){
     this.bookName = this.category = this.author = '';
+    this.pageIndex = 1;
     this.router.navigate([], {
-      queryParams: {name: '', category: '', author:''},
+      queryParams: {name: '', category: '', author:'', page: this.pageIndex},
       queryParamsHandling: 'merge'
     });
   }
@@ -66,7 +73,7 @@ export class BooksComponent {
   }
 
   getBooks(query: string){
-    this.BookService.getBooks(`?name=${this.bookName}&category=${this.category}&author=${this.author}`).subscribe((books) => {
+    this.BookService.getBooks(`?name=${this.bookName}&category=${this.category}&author=${this.author}&page=${this.pageIndex}`).subscribe((books) => {
       this.books = books;
       this.books.map((book) => {
         book.name =
@@ -87,6 +94,21 @@ export class BooksComponent {
       queryParamsHandling: 'merge',
     });
     this.subjectsKeyUp.bookName.next(this.bookName)
+  }
+
+  changePage(e:any){ //: {pageIndex: number, length: number, pageSize: number, previousPageIndex: number}) {
+    if(e.pageIndex <= 0) {
+      this.pageIndex = 1;
+      this.router.navigate([], {
+        queryParams: { page: this.pageIndex },
+        queryParamsHandling: 'merge',
+      });
+    }else {
+      this.router.navigate([], {
+        queryParams: { page: this.pageIndex },
+        queryParamsHandling: 'merge',
+      });
+    }
   }
 
   onAuthorByChange(input: Event) {

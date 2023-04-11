@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BookRoutingModule } from './book-routing.module';
 import { BooksComponent  } from './components/books/books.component';
 import { BookComponent } from './components/book/book.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [BooksComponent , BookComponent,
@@ -15,7 +16,8 @@ import { BookComponent } from './components/book/book.component';
     CommonModule,
     BookRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule
   ]
 })
 export class BookModule { }
