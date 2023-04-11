@@ -5,6 +5,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModuleModule } from 'src/app/modules/shared-module/shared-module.module';
 import { UserBooksComponent } from './components/user-books/user-books.component';
 
@@ -19,6 +20,7 @@ import { UserBooksComponent } from './components/user-books/user-books.component
     CommonModule,
     ProfileRoutingModule,
     ReactiveFormsModule,
+    NgbModule,
     NgxPaginationModule,
     SharedModuleModule,
     NgxPaginationModule

@@ -49,15 +49,23 @@
                         <ng-container *ngFor="let book of books | paginate: { itemsPerPage:6, currentPage: page }">
                           <tr class="tr">
                             <td>
-                              <img class="media-object round-media img-fluid image-size" crossorigin="anonymous" [src]="book.coverPhoto" />
+                              <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
+                                [src]="book.coverPhoto" />
                             </td>
                             <td>{{book.name}}</td>
                             <td>{{book.authorId.firstName}} {{book.authorId.lastName}}</td>
                             <td></td>
-                            <td></td>
+                            <td>
+                              <ngb-rating [rate]="book?.rating" [readonly]="true" [max]="5" class="my-rating">
+                                <ng-template let-fill="fill" let-index="index">
+                                  <i class="bi-star{{ fill === 100 ? '-fill' : '' }}" [class.filled]="fill === 100"></i>
+                                </ng-template>
+                              </ngb-rating>
+                            </td>
                             <td>
                               <select id="shelf">
-                                <option *ngFor="let option of shelfOptionKeys" [ngValue]="option" [selected]="book.shelve === option">
+                                <option *ngFor="let option of shelfOptionKeys" [ngValue]="option"
+                                  [selected]="book.shelve === option">
                                   {{ shelfOptions[option] }}
                                 </option>
                               </select>
