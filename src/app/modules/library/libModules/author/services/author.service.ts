@@ -9,7 +9,7 @@ import { author } from '../components/list-authors/list-authors.component';
 export class AuthorService {
 
   currentPage = 1;
-  authorsPerPage = 3;
+  authorsPerPage = 6;
   authors: author[] = [];
   authorUrl = 'http://localhost:3000/authors';
   bookUrl = 'http://localhost:3000/books'
@@ -54,5 +54,7 @@ export class AuthorService {
   totalPages(): number {
     return Math.ceil(this.authors.length / this.authorsPerPage);
   }
+
+
 
 }

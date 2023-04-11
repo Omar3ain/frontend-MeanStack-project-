@@ -1,9 +1,9 @@
 <!-- <div class='background'> </div> -->
 <section class="vh-150 ">
 
-  <div class="container " *ngIf="myauthor">
-    <div class="row">
-      <div class="col-md-3">
+  <div class="container pt-5 pb-2" *ngIf="myauthor">
+    <div class="d-flex flex-row justify-content-center">
+      <div class="p-2 mr-5">
         <div class="card author-card">
           <div class="img-container">
             <div class="img">
@@ -17,16 +17,16 @@
 
       </div>
 
-      <div class="col-md-9">
-        <div class="row mt-5">
-          <div class="col-12">
-            <h2>{{myauthor.firstName}}{{myauthor.lastName}}</h2>
+      <div class="p-2 content">
+        <div class="d-inline-flex flex-column">
+          <div class="p-2">
+            <h2> {{myauthor.firstName}} {{myauthor.lastName}}</h2>
 
           </div>
-          <div class="col-12 ">
-            <p>{{myauthor.dob | date:'shortDate'}}</p>
+          <div class="p-2 ">
+            <p>Date of birth: {{myauthor.dob | date:'shortDate'}}</p>
           </div>
-          <div class="col-12">
+          <div class="p-2">
             <p>{{myauthor.description}}</p>
           </div>
 
@@ -41,7 +41,7 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
-              <h1 class="card-title">Authors</h1>
+              <h1 class="card-title">Author Books</h1>
 
             </div>
             <div class="card-content">
@@ -54,12 +54,13 @@
                         <td>
                           <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
                             [src]="book.coverPhoto" />
-                        </td>
-                        <td>{{book.name }}</td>
-                        <td>
                           <mat-icon *ngFor="let star of getStarList(getBookRating(book.reviews ?? []))">
                             {{ star.filled ? 'star' : 'star_border' }}
                           </mat-icon>
+                        </td>
+                        <td>{{book.name }}</td>
+                        <td>
+
                         </td>
                       </tr>
                     </ng-container>

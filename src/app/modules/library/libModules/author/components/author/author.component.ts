@@ -18,6 +18,7 @@ export class AuthorComponent {
     photo: '',
     description: ''
   }
+
   authors: author[] = []
   constructor(private _author: AuthorService, private _router: Router) {
 

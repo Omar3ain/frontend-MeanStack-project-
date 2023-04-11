@@ -13,6 +13,10 @@ h2 {
 
 }
 
+.content {
+  width: 50%;
+}
+
 .author-card {
   width: 200px;
   height: min-content;
@@ -38,7 +42,7 @@ h2 {
 }
 
 .img-container {
-  display: grid;
+  /* display: grid; */
   border-radius: .5rem 2rem;
   height: 270px;
   overflow: hidden;
@@ -75,7 +79,8 @@ h3 {
 
 .row {
   margin-bottom: 50px;
-  width: 80%;
+  width: 100%;
+  display: flex;
 
 }
 
@@ -146,6 +151,15 @@ h3 {
 .addBook i:hover {
   transform: scale(1.5);
   transition: 0.25s;
+}
+
+h2 {
+  font-family: var(--header-font-family);
+
+}
+
+p {
+  font-family: var(--text-font-family);
 }
 
 @media (max-width: 992px) {

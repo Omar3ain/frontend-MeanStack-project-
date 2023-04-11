@@ -34,3 +34,7 @@ a:hover {
   margin-bottom: 20px;
 
 }
+
+.text-center {
+  font-family: var(--title_font);
+}
