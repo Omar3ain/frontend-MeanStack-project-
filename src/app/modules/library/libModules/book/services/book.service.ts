@@ -6,9 +6,9 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class BookService {
-  domin : string = "http://localhost:3000"
+  domin: string = "http://localhost:3000"
   booksUrl = `${this.domin}/books`;
-  
+
   constructor(private http: HttpClient) { }
   handleError(error: HttpErrorResponse) {
     return throwError(() => error);
@@ -20,7 +20,7 @@ export class BookService {
   getBooksCount(query: string): Observable<any> {
     return this.http.get(this.booksUrl + query).pipe(catchError((this.handleError)));
   }
-  getBook(id : string) : Observable<any>  {
+  getBook(id: string): Observable<any> {
     return this.http.get(`${this.booksUrl}/${id}`).pipe(catchError((this.handleError)));
   }
 }
