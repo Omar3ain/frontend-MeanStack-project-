@@ -78,8 +78,8 @@
         
         <p class="warn"
         *ngIf="reviewForm.get('comment')?.invalid && (reviewForm.get('comment')?.dirty || reviewForm.get('comment')?.touched)">
-        <span *ngIf="reviewForm.get('comment')?.errors?.['required']">Password is required!</span>
-        <span *ngIf="reviewForm.get('comment')?.errors?.['minlength']">Password should be at least 4 characters
+        <span *ngIf="reviewForm.get('comment')?.errors?.['required']">comment is required!</span>
+        <span *ngIf="reviewForm.get('comment')?.errors?.['minlength']">comment should be at least 4 characters
           long!</span>
       </p>
       </div>

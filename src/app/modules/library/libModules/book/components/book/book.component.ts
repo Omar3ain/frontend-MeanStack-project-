@@ -25,13 +25,16 @@ export class BookComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
     });
+    this.getBookDetails();
+    this.reviewForm = this.formBuilder.group({
+      comment: ['', [Validators.required, Validators.minLength(3)]]
+    });
+  }
+
+  getBookDetails() {
     this.BookService.getBook(this.id).subscribe((book) => {
       this.book = book;
       this.book.averageRating = Math.floor(this.book.reviews.reduce((average: any, review:any) => average + review.rating, 0) / this.book.reviews.length);
-    });
-
-    this.reviewForm = this.formBuilder.group({
-      comment: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
@@ -42,7 +45,7 @@ export class BookComponent implements OnInit {
     this.BookService.postReview(this.book._id, {rating: Number(this.ratingInputValue), comment: this.reviewForm.value.comment}).subscribe((response) => {
       this.ratingInputValue = '';
       this.reviewForm.reset();
-      console.log(response)
+      this.getBookDetails();
     })
   }
 
