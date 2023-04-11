@@ -3,24 +3,26 @@
     <h1>books</h1>
     <hr />
     <!-- <app-search-bar (searchValue)="handleSearchValue($event)"></app-search-bar> -->
-    <div class="row">
-      <div class="col-md-8">
-        <input type="search" [(ngModel)]="bookName" class="search-field" (keyup)="onSearchByChange($event)" (change)="onSearchByChange($event)" placeholder="search by book name" value="" name="s" title="" />
+    
+    <div class="row form-group">
+      <div class="col-md-4">
+        <input type="search" [(ngModel)]="bookName" class="search-field form-control" (keyup)="onSearchByChange($event)" (change)="onSearchByChange($event)" placeholder="search by book name" value="" name="s" title="" />
       </div>
       <div class="col-md-4">
-        <button type="button" (click)="clearFilter()" class="button hover-btn">clear</button>
-      </div>
-      <div class="col-md-8">
-        <input type="search" [(ngModel)]="author" class="search-field" (keyup)="onAuthorByChange($event)" (change)="onAuthorByChange($event)" placeholder="search by author" value="" name="s" title="" />
+        <input type="search" [(ngModel)]="author" class="search-field form-control" (keyup)="onAuthorByChange($event)" (change)="onAuthorByChange($event)" placeholder="search by author" value="" name="s" title="" />
       </div>
       <div class="col-md-4">
         <div class="select_mate" data-mate-select="active">
-          <select name="" [(ngModel)]="category" (change)="onCategoryByChange($event)"  id="">
+          <select class="form-control" name="" [(ngModel)]="category" (change)="onCategoryByChange($event)"  id="">
             <option value="">all category</option>
             <option *ngFor="let category of categories;" value="{{category.name}}">{{category.name}}</option>
           </select>
         </div>
         <!-- Custom select structure -->
+      </div>
+      
+      <div class="col-md-2 mt-2 ms-auto">
+        <button type="button" (click)="clearFilter()" class="button hover-btn">clear</button>
       </div>
     </div>
     <br />
