@@ -22,7 +22,10 @@ export class UserService {
   }
 
   editUser(formData: FormData): Observable<IUserUpdate> {
-    return this._http.patch<IUserUpdate>(this.userUrl, formData).pipe(catchError((this.handleError)))
+    return this._http.patch<IUserUpdate>(this.userUrl, formData).pipe(catchError((this.handleError)));
   }
 
+  getuserBooks(shelf: string, skip: number, limit: number) {
+    return this._http.get(`${this.userUrl}books?shelve=${shelf}&skip=${skip}&limit=${limit}`).pipe(catchError((this.handleError)));
+  }
 }

@@ -14,6 +14,11 @@
   --bold-font-family: 'Changa One', cursive;
   /* spinner */
   --trans-dur: 0.3s;
+  /* user side bar */
+  --bg-color: #000811;
+  --primary-color: #006ce0;
+  --border-radius: 6px;
+  --color: #51c6cc;
 }
 
 * {
