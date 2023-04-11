@@ -24,6 +24,12 @@ export class BookService {
     return this.http.get(`${this.booksUrl}/${id}`).pipe(catchError((this.handleError)));
   }
 
+  patchShelve(id: string, shelve: string) {
+    return this.http.patch(`${this.booksUrl}/${id}/shelve`, {
+      shelve
+    });
+  }
+
   postReview(bookId: string, review: {rating: number, comment: string}): Observable<any> {
     return this.http.patch(`${this.booksUrl}/${bookId}/review`, review).pipe(catchError((this.handleError)));
   }

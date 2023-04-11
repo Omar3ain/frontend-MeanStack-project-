@@ -17,6 +17,13 @@
       <div class="col-lg-6 col-md-6">
         <div class="product__details__text">
           <h3>{{ book?.name }}</h3>
+          <select class="form-select" name="" [(ngModel)]="shelve" (change)="onShelveChange($event)"  id="">
+            <option value="" disabled>select shelve</option>
+            <option value="want_to_read">want to read</option>
+            <option value="currently_reading">currently reading</option>
+            <option value="read">read</option>
+            
+          </select>
           <div class="rating">
             <ngb-rating
               [rate]="book?.averageRating"
@@ -53,7 +60,7 @@
 </section>
 <!-- Product Details Section End -->
 <div class="supaview">
-  <h2 class="supaview__title text-center"> reviewing </h2>
+  <h2 class="supaview__title text-center">reviewing</h2>
   <div class="rating">
     <form (ngSubmit)="submitReview()" [formGroup]="reviewForm" id="review">
       <ngb-rating
@@ -71,18 +78,23 @@
         </ng-template>
       </ngb-rating>
       <div class="supaview__copy">
-        <textarea
-          name="comment"
-          formControlName="comment"
-          rows="2"
-        ></textarea>
-        
-        <p class="warn"
-        *ngIf="reviewForm.get('comment')?.invalid && (reviewForm.get('comment')?.dirty || reviewForm.get('comment')?.touched)">
-        <span *ngIf="reviewForm.get('comment')?.errors?.['required']">comment is required!</span>
-        <span *ngIf="reviewForm.get('comment')?.errors?.['minlength']">comment should be at least 4 characters
-          long!</span>
-      </p>
+        <textarea name="comment" formControlName="comment" rows="2"></textarea>
+
+        <p
+          class="warn"
+          *ngIf="
+            reviewForm.get('comment')?.invalid &&
+            (reviewForm.get('comment')?.dirty ||
+              reviewForm.get('comment')?.touched)
+          "
+        >
+          <span *ngIf="reviewForm.get('comment')?.errors?.['required']"
+            >comment is required!</span
+          >
+          <span *ngIf="reviewForm.get('comment')?.errors?.['minlength']"
+            >comment should be at least 4 characters long!</span
+          >
+        </p>
       </div>
       <button class="supaview__submit">Submit review</button>
     </form>
@@ -99,35 +111,33 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div
-            class="card"
-            *ngFor="let review of book?.reviews"
-            style="width: 18rem"
-          >
-            <div class="card-body">
-              <h5 class="card-title">
-                <h6 class="card-subtitle mb-2 text-md-center h4">
-                  {{ review.username }}
-                </h6>
-                <ngb-rating
-                  [(rate)]="review.rating"
-                  [readonly]="true"
-                  [max]="5"
-                  class="my-rating"
-                >
-                  <ng-template let-fill="fill" let-index="index">
-                    <i
-                      class="bi-star{{ fill === 100 ? '-fill' : '' }}"
-                      [class.filled]="fill === 100"
-                    ></i>
-                  </ng-template>
-                </ngb-rating>
-              </h5>
-              <p class="card-text">
-                {{ review.comment }}
-              </p>
-            </div>
+        <div
+          class="card col-lg-3 col-md-4 col-sm-6"
+          *ngFor="let review of book?.reviews"
+          style="width: 18rem"
+        >
+          <div class="card-body">
+            <h5 class="card-title">
+              <h6 class="card-subtitle mb-2 text-md-center h4">
+                {{ review.username }}
+              </h6>
+              <ngb-rating
+                [(rate)]="review.rating"
+                [readonly]="true"
+                [max]="5"
+                class="my-rating"
+              >
+                <ng-template let-fill="fill" let-index="index">
+                  <i
+                    class="bi-star{{ fill === 100 ? '-fill' : '' }}"
+                    [class.filled]="fill === 100"
+                  ></i>
+                </ng-template>
+              </ngb-rating>
+            </h5>
+            <p class="card-text">
+              {{ review.comment }}
+            </p>
           </div>
         </div>
       </div>
