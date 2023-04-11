@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AuthorService } from '../../services/author.service';
 import { author } from '../list-authors/list-authors.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,19 +11,25 @@ import { author } from '../list-authors/list-authors.component';
 })
 export class AuthorComponent {
   @Input() author: author = {
+    _id: '',
     firstName: '',
     lastName: '',
     dob: new Date(),
-    photo: ''
+    photo: '',
+    description: ''
   }
+
   authors: author[] = []
-  constructor(private _author: AuthorService) {
+  constructor(private _author: AuthorService, private _router: Router) {
 
   }
 
   ngOnInit(): void {
-    this._author.getAuthors().subscribe((res: any) => {
-      this.authors = res;
-    })
+
+  }
+  // onAuthorSelected(author: author) {
+  //   this._router.navigate(['/author', author._id])
+  // }
+  print() {
   }
 }

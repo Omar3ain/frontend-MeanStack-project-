@@ -1,1 +1,76 @@
-<p>author-detailes works!</p>
+<!-- <div class='background'> </div> -->
+<section class="vh-150 ">
+
+  <div class="container pt-5 pb-2" *ngIf="myauthor">
+    <div class="d-flex flex-row justify-content-center">
+      <div class="p-2 mr-5">
+        <div class="card author-card">
+          <div class="img-container">
+            <div class="img">
+              <img [src]="myauthor.photo" crossorigin="anonymous" class="img-fluid">
+            </div>
+            <div class="description card">
+              <h3>{{myauthor.firstName}}{{myauthor.lastName}}</h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="p-2 content">
+        <div class="d-inline-flex flex-column">
+          <div class="p-2">
+            <h2> {{myauthor.firstName}} {{myauthor.lastName}}</h2>
+
+          </div>
+          <div class="p-2 ">
+            <p>Date of birth: {{myauthor.dob | date:'shortDate'}}</p>
+          </div>
+          <div class="p-2">
+            <p>{{myauthor.description}}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container>
+    <div class="row text-center">
+      <ng-container>
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h1 class="card-title">Author Books</h1>
+
+            </div>
+            <div class="card-content">
+              <div class="card-body">
+                <table class="table table-responsive-md table-striped text-center">
+
+                  <tbody>
+                    <ng-container *ngFor="let book of books ">
+                      <tr class="tr">
+                        <td>
+                          <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
+                            [src]="book.coverPhoto" />
+                          <mat-icon *ngFor="let star of getStarList(getBookRating(book.reviews ?? []))">
+                            {{ star.filled ? 'star' : 'star_border' }}
+                          </mat-icon>
+                        </td>
+                        <td>{{book.name }}</td>
+                        <td>
+
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</section>

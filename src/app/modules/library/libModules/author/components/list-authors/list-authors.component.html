@@ -1,13 +1,19 @@
-<section class="vh-200">
-  <div class="container mt-5">
-    <h1>Authors</h1>
-    <div class="row">
+<section class="vh-200 ">
+  <div class="container pt-5 pb-2">
+    <h1 class="text-center  mb-5">Top Authors</h1>
+    <div class="row justify-content-center">
+      <div class=" col-lg-4 col-md-6 my-lg-0 my-3" *ngFor="let author of getAuthorsForPage()">
+        <app-author [author]="author"> </app-author>
 
-      <div class="author-grid">
-
-        <!-- <app-author *ngFor="let author of authors" [author]="author"></app-author> -->
+      </div>
+      <div class="button-wrapper text-center mt-5 mb-3">
+        <a class="previous" (click)="previousPage()">
+          << previous </a>
+            <a class="next" (click)="nextPage()"> next>></a>
 
       </div>
     </div>
+
   </div>
+
 </section>
