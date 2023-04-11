@@ -57,6 +57,7 @@ export class BooksComponent {
       queryParams: {name: '', category: '', author:'', page: this.pageIndex},
       queryParamsHandling: 'merge'
     });
+    this.search()
   }
 
   ngOnInit() {

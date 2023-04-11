@@ -16,7 +16,7 @@
       <div class="col-md-4">
         <div class="select_mate" data-mate-select="active">
           <select name="" [(ngModel)]="category" (change)="onCategoryByChange($event)"  id="">
-            <option value="">select category</option>
+            <option value="">all category</option>
             <option *ngFor="let category of categories;" value="{{category.name}}">{{category.name}}</option>
           </select>
         </div>
