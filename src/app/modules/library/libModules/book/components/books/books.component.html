@@ -3,73 +3,167 @@
     <h1>books</h1>
     <hr />
     <!-- <app-search-bar (searchValue)="handleSearchValue($event)"></app-search-bar> -->
-    
+
     <div class="row form-group">
       <div class="col-md-4">
-        <input type="search" [(ngModel)]="bookName" class="search-field form-control" (keyup)="onSearchByChange($event)" (change)="onSearchByChange($event)" placeholder="search by book name" value="" name="s" title="" />
+        <input
+          type="search"
+          [(ngModel)]="bookName"
+          class="search-field form-control"
+          (keyup)="onSearchByChange($event)"
+          (change)="onSearchByChange($event)"
+          placeholder="search by book name"
+          value=""
+          name="s"
+          title=""
+        />
       </div>
       <div class="col-md-4">
-        <input type="search" [(ngModel)]="author" class="search-field form-control" (keyup)="onAuthorByChange($event)" (change)="onAuthorByChange($event)" placeholder="search by author" value="" name="s" title="" />
+        <input
+          type="search"
+          [(ngModel)]="author"
+          class="search-field form-control"
+          (keyup)="onAuthorByChange($event)"
+          (change)="onAuthorByChange($event)"
+          placeholder="search by author"
+          value=""
+          name="s"
+          title=""
+        />
       </div>
       <div class="col-md-4">
         <div class="select_mate" data-mate-select="active">
-          <select class="form-control" name="" [(ngModel)]="category" (change)="onCategoryByChange($event)"  id="">
+          <select
+            class="form-control"
+            name=""
+            [(ngModel)]="category"
+            (change)="onCategoryByChange($event)"
+            id=""
+          >
             <option value="">all category</option>
-            <option *ngFor="let category of categories;" value="{{category.name}}">{{category.name}}</option>
+            <option
+              *ngFor="let category of categories"
+              value="{{ category.name }}"
+            >
+              {{ category.name }}
+            </option>
           </select>
         </div>
         <!-- Custom select structure -->
       </div>
-      
+
       <div class="col-md-2 mt-2 ms-auto">
-        <button type="button" (click)="clearFilter()" class="button hover-btn">clear</button>
+        <button type="button" (click)="clearFilter()" class="button hover-btn">
+          clear
+        </button>
       </div>
     </div>
     <br />
-    <div id="list-th">
-      <div class="book" *ngFor="let book of books;">
+    <div id="list-th" class="row justify-content-around">
+      <div class="book-card col-md-4" *ngFor="let book of books">
+        <div class="book-card__cover">
+          <div class="book-card__book">
+            <div class="book-card__book-front">
+              <a href="/books/{{ book?._id }}">
+                <img
+                  class="book-card__img"
+                  crossorigin="anonymous"
+                  src="{{ book?.coverPhoto }}"
+                />
+              </a>
+            </div>
+            <div class="book-card__book-back"></div>
+            <div class="book-card__book-side"></div>
+          </div>
+        </div>
+        <div>
+          <div class="book-card__title">
+            <a href="/books/{{ book?._id }}">{{ book.name }}</a>
+          </div>
+          <div class="book-card__author">
+            <a href="/authors/{{ book?.author?._id }}">
+              {{ book?.author?.firstName }} {{ book?.author?.lastName }}
+            </a>
+          </div>
+          <div class="category">
+            <a
+              class="badge bg-dark"
+              href="/categories/{{ book?.category?._id }}"
+            >
+              {{ book?.category?.name }}
+            </a>
+          </div>
+          <div class="rating">
+            <ngb-rating
+              [rate]="book?.averageRating"
+              [readonly]="true"
+              [max]="5"
+              class="my-rating"
+            >
+              <ng-template let-fill="fill" let-index="index">
+                <i
+                  class="bi-star{{ fill === 100 ? '-fill' : '' }}"
+                  [class.filled]="fill === 100"
+                ></i>
+              </ng-template>
+            </ngb-rating>
+            <span> ({{ book?.reviews?.length }} reviews)</span>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="book" *ngFor="let book of books">
         <div class="cover">
-          <img crossorigin="anonymous"
-            src="{{book?.coverPhoto}}"
-          />
+          <img crossorigin="anonymous" src="{{ book?.coverPhoto }}" />
         </div>
         <div class="description">
           <div class="title">
             <div class="text-center h4">
-              <a href="/books/{{book?._id}}">{{ book.name }}</a>
+              <a href="/books/{{ book?._id }}">{{ book.name }}</a>
             </div>
             <div class="author">
               <a href="/authors/{{ book?.author?._id }}">
-                Author : {{ book?.author?.firstName }} {{ book?.author?.lastName }}
+                Author : {{ book?.author?.firstName }}
+                {{ book?.author?.lastName }}
               </a>
             </div>
             <div class="category">
-              <a class="badge bg-dark"href="/categories/{{ book?.category?._id }}">
+              <a
+                class="badge bg-dark"
+                href="/categories/{{ book?.category?._id }}"
+              >
                 {{ book?.category?.name }}
               </a>
             </div>
             <div class="rating">
-              <ngb-rating [rate]="book?.averageRating" [readonly]="true" [max]="5" class="my-rating">
-                  <ng-template let-fill="fill" let-index="index">
-                      <i class="bi-star{{fill === 100 ? '-fill' : ''}}" [class.filled]="fill === 100"></i>
-                  </ng-template>
+              <ngb-rating
+                [rate]="book?.averageRating"
+                [readonly]="true"
+                [max]="5"
+                class="my-rating"
+              >
+                <ng-template let-fill="fill" let-index="index">
+                  <i
+                    class="bi-star{{ fill === 100 ? '-fill' : '' }}"
+                    [class.filled]="fill === 100"
+                  ></i>
+                </ng-template>
               </ngb-rating>
-              <span> ({{book?.reviews?.length}} reviews)</span>
+              <span> ({{ book?.reviews?.length }} reviews)</span>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
-  <mat-paginator 
-  [hidePageSize]="true"
-  [length]="countOfBooks"
-  [pageIndex]="pageIndex"
-  [pageSize]="10"
-  [pageSizeOptions]="[10]"
-  (page)="changePage($event)"
-  aria-label="Select page">
-</mat-paginator>
-
+  <mat-paginator
+    [hidePageSize]="true"
+    [length]="countOfBooks"
+    [pageIndex]="pageIndex"
+    [pageSize]="10"
+    [pageSizeOptions]="[10]"
+    (page)="changePage($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
 </div>
