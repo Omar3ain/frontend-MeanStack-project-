@@ -37,16 +37,19 @@ export class NavbarComponent implements OnInit{
 
   ngOnInit(): void {
     this.isAuthenticated = this._authService.isAuthenticated()
-    this._userService.getUser().subscribe({
-      next : (data) => {
-        this.user = data
-      },
-      error : (error) => {
-        let {error : {message}}  = error;
-        if(!message) message = error.message;
-        this.toastr.error(`MESSAGE : ${message}`,'Could not Load user data',toastr_options);
-      }
-    })
+    if(this.isAuthenticated) {
+      this._userService.getUser().subscribe({
+        next : (data) => {
+          this.user = data
+        },
+        error : (error) => {
+          let {error : {message}}  = error;
+          if(!message) message = error.message;
+          this.toastr.error(`MESSAGE : ${message}`,'Could not Load user data',toastr_options);
+        }
+      })
+    }
+    
   }
   navbarToggler(){
     document.getElementById('menu')?.classList.toggle('show');
