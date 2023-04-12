@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { bookElement } from 'src/app/modules/admin/components/books/list-books/list-books.component';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import toastr_options from 'src/app/utils/toastr.options';
@@ -40,5 +39,4 @@ export class UserBooksComponent implements OnInit {
 
     })
   }
-
 }

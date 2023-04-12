@@ -22,7 +22,6 @@
       </a>
     </div>
   </aside>
-
   <div class="table-area container-fluid">
     <ng-container>
       <div class="row text-left">
@@ -31,45 +30,51 @@
             <div class="card">
               <div class="card-header">
                 <h1 class="card-title">My Books</h1>
-
               </div>
               <div class="card-content">
                 <div class="card-body">
-                  <table class="table table-responsive-md table-striped text-center">
-                    <thead>
-                      <tr>
-                        <th>Cover</th>
-                        <th>Name</th>
-                        <th>Author</th>
-                        <th>Avg Rate</th>
-                        <th>Rating</th>
-                        <th>Shelf</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <ng-container *ngFor="let book of books | paginate: { itemsPerPage:6, currentPage: page }">
-                        <tr class="tr">
-                          <td>
-                            <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
-                              [src]="book.coverPhoto" />
-                          </td>
-                          <td>{{book.name}}</td>
-                          <td>{{book.authorId.firstName}} {{book.authorId.lastName}}</td>
-                          <td></td>
-                          <td></td>
-                          <td>
-                            <select id="shelf">
-                              <option value="all">All</option>
-                              <option *ngFor="let option of shelfOptionKeys" [ngValue]="option"
-                                [selected]="book.shelve === option">
-                                {{ shelfOptions[option] }}
-                              </option>
-                            </select>
-                          </td>
+                  <div class="table-scrollable">
+                    <table class="table table-responsive-md table-striped text-center">
+                      <thead>
+                        <tr>
+                          <th>Cover</th>
+                          <th>Name</th>
+                          <th>Author</th>
+                          <th>Avg Rate</th>
+                          <th>Rating</th>
+                          <th>Shelf</th>
                         </tr>
-                      </ng-container>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let book of books | paginate: { itemsPerPage:6, currentPage: page }">
+                          <tr class="tr">
+                            <td>
+                              <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
+                                [src]="book.coverPhoto" />
+                            </td>
+                            <td>{{book.name}}</td>
+                            <td>{{book.authorId.firstName}} {{book.authorId.lastName}}</td>
+                            <td></td>
+                            <td>
+                              <ngb-rating [rate]="book?.rating" [readonly]="true" [max]="5" class="my-rating">
+                                <ng-template let-fill="fill" let-index="index">
+                                  <i class="bi-star{{ fill === 100 ? '-fill' : '' }}" [class.filled]="fill === 100"></i>
+                                </ng-template>
+                              </ngb-rating>
+                            </td>
+                            <td>
+                              <select id="shelf">
+                                <option *ngFor="let option of shelfOptionKeys" [ngValue]="option"
+                                  [selected]="book.shelve === option">
+                                  {{ shelfOptions[option] }}
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <pagination-controls (pageChange)="page = $event"></pagination-controls>
               </div>
