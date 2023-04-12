@@ -133,7 +133,7 @@ export class BooksComponent {
   search() {
     this.BookService.getBooks(`?name=${this.bookName}&category=${this.category}&author=${this.author}`).subscribe(books => {
       this.books = books
+      console.log(books)
     });
-    console.log(`?name=${this.bookName}&category=${this.category}&author=${this.author}`)
   }
 }
