@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&family=PT+Sans+Narrow:wght@400;700&family=Sawarabi+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Dancing+Script:wght@400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   /* colors */
@@ -20,13 +21,18 @@
   --dark: #1b1b1b;
   --gray: rgba(1, 1, 1, 0.6);
   --lite: rgba(255, 255, 255, 0.6);
-  --primary: var(--logo-color);
+  --primary: #bae3f9;
   --primary_dark: var(--text-color);
   --default_font: 'Montserrat', sans-serif;
   --title_font: 'Abril Fatface', cursive;
   --cursive_font: 'Dancing Script', cursive;
 }
 
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 * {
   border: 0;
   box-sizing: border-box;

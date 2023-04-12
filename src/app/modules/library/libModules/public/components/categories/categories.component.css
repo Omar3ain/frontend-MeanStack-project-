@@ -128,7 +128,7 @@ h4 {
 
   height: 0;
 
-  border-top: 100px solid var(--logo-color);
+  border-top: 100px solid var(--primary);
 
   border-right: 100px solid transparent;
 
