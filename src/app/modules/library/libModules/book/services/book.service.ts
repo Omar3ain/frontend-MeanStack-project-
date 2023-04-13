@@ -20,7 +20,7 @@ export class BookService {
     return this.http.get(this.booksUrl + query).pipe(catchError((this.handleError)));
   }
   getBooksCount(query: string = ''): Observable<any> {
-    return this.http.get(this.booksUrl + query).pipe(catchError((this.handleError)));
+    return this.http.get(this.booksUrl + '/getCountSearch' + query).pipe(catchError((this.handleError)));
   }
   getBook(id: string): Observable<any> {
     return this.http.get(`${this.booksUrl}/${id}`).pipe(catchError((this.handleError)));
@@ -36,7 +36,7 @@ export class BookService {
     return this.http.patch(`${this.booksUrl}/${bookId}/review`, review).pipe(catchError((this.handleError)));
   }
 
-  getReview(bookId: string): Observable<any> {
-    return this.http.get(`${this.booksUrl}/${bookId}/reviews`).pipe(catchError((this.handleError)));
+  editUserRate(bookId: string, formData: FormData) {
+    return this.http.patch(`${this.booksUrl}/${bookId}/rate`, formData).pipe(catchError((this.handleError)));
   }
 }

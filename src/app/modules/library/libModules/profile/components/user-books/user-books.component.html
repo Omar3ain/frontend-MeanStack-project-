@@ -52,11 +52,19 @@
                               <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
                                 [src]="book.coverPhoto" />
                             </td>
-                            <td>{{book.name}}</td>
-                            <td>{{book.authorId.firstName}} {{book.authorId.lastName}}</td>
-                            <td></td>
+                            <td (click)="navigateBook(book._id)" class="link">{{book.name}}</td>
+                            <td (click)="navigateAuthor(book.authorId._id)" class="link">{{book.authorId.firstName}}
+                              {{book.authorId.lastName}}</td>
                             <td>
-                              <ngb-rating [rate]="book?.rating" [readonly]="true" [max]="5" class="my-rating">
+                              <ngb-rating [rate]="book.avgRate" [readonly]="true" [max]="5" class="my-rating">
+                                <ng-template let-fill="fill" let-index="index">
+                                  <i class="bi-star{{ fill === 100 ? '-fill' : '' }}" [class.filled]="fill === 100"></i>
+                                </ng-template>
+                              </ngb-rating>
+                            </td>
+                            <td>
+                              <ngb-rating [rate]="book.rating" [max]="5" class="my-rating"
+                                (rateChange)="editRate(book, $event)">
                                 <ng-template let-fill="fill" let-index="index">
                                   <i class="bi-star{{ fill === 100 ? '-fill' : '' }}" [class.filled]="fill === 100"></i>
                                 </ng-template>

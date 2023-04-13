@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import toastr_options from 'src/app/utils/toastr.options';
+import { Router } from '@angular/router';
+import { BookService } from '../../../book/services/book.service';
 
 @Component({
   selector: 'app-user-books',
@@ -18,7 +20,8 @@ export class UserBooksComponent implements OnInit {
     currently_reading: 'Currently Reading'
   };
   shelfOptionKeys = Object.keys(this.shelfOptions);
-  constructor(private userService: UserService, private toastr: ToastrService) { }
+
+  constructor(private userService: UserService, private toastr: ToastrService, private router: Router, private bookService: BookService) { }
 
   ngOnInit() {
     this.getBooks('all');
@@ -30,6 +33,7 @@ export class UserBooksComponent implements OnInit {
     this.userService.getuserBooks(shelf, skip, limit).subscribe({
       next: (data) => {
         this.books = data;
+        console.log(this.books);
       },
       error: (error) => {
         let { error: { message } } = error;
@@ -38,5 +42,31 @@ export class UserBooksComponent implements OnInit {
       }
 
     })
+  }
+
+  editRate(book: any, newRating: number) {
+    book.rating = newRating;
+    if (book.rating) {
+      const formData = new FormData();
+      formData.append('rating', book.rating);
+      this.bookService.editUserRate(book._id, formData).subscribe({
+        next: () => {
+          this.toastr.success(`you updated your rate ${book.rating}`, 'Rating is changed successfully', toastr_options);
+        },
+        error: (error) => {
+          let { error: { message } } = error;
+          if (!message) message = error.message;
+          this.toastr.error(`MESSAGE : ${message}`, 'Could not update Rating', toastr_options);
+        }
+      });
+    }
+  }
+
+  navigateBook(id: string) {
+    this.router.navigate([`/books/${id}`]);
+  }
+
+  navigateAuthor(id: string) {
+    this.router.navigate([`/authors/${id}`]);
   }
 }

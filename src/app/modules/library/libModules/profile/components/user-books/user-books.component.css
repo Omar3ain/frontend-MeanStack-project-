@@ -118,6 +118,9 @@ aside div p {
 	color: rgb(30, 128, 53);
   }
 
+.link{
+  cursor: pointer;
+}
 /* Media queries for responsive design */
 
 @media screen and (max-width: 992px) {
