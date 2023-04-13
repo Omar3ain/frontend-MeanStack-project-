@@ -33,6 +33,7 @@ export class UserBooksComponent implements OnInit {
     this.userService.getuserBooks(shelf, skip, limit).subscribe({
       next: (data) => {
         this.books = data;
+        console.log(this.books);
       },
       error: (error) => {
         let { error: { message } } = error;
