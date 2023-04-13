@@ -61,7 +61,13 @@
                         </td>
                         <td [routerLink]="['/books',book._id]">{{book.name }}</td>
                         <td>
-
+                          <!-- <select class="form-select" name="" [(ngModel)]="shelve" (change)="onShelveChange($event)"
+                            id="">
+                            <option value="" disabled>select shelve</option>
+                            <option value="want_to_read">want to read</option>
+                            <option value="currently_reading">currently reading</option>
+                            <option value="read">read</option>
+                          </select> -->
                         </td>
                       </tr>
                     </ng-container>
