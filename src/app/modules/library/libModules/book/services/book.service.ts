@@ -33,5 +33,8 @@ export class BookService {
   postReview(bookId: string, review: {rating: number, comment: string}): Observable<any> {
     return this.http.patch(`${this.booksUrl}/${bookId}/review`, review).pipe(catchError((this.handleError)));
   }
-  
+
+  editUserRate(bookId: string , formData: FormData) {
+    return this.http.patch(`${this.booksUrl}/${bookId}/rate`, formData).pipe(catchError((this.handleError)));
+  }
 }
