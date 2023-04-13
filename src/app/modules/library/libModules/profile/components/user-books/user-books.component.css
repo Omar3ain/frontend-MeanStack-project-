@@ -16,7 +16,7 @@ aside {
   transition: flex-direction 0.2s;
 }
 aside div{
-  margin: 1vw;
+  margin: 1vw 0 1vw  1vw;
 }
 aside div a {
   font-size: 12px;
@@ -29,10 +29,10 @@ aside div a {
   -webkit-tap-highlight-color: transparent;
 }
 
-aside div a:hover {
-  color: var(--text-color);
+aside div a:hover, .selected {
+  color: var(--text-color)!important;
   background-color: var( --background-color );
-  width: 114.5%;
+  width: 100%;
   border-radius: 1vw 0 0 1vw;
   transition: all 0.2s;
 }

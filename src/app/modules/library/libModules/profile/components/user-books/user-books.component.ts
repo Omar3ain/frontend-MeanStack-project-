@@ -13,6 +13,7 @@ import { BookService } from '../../../book/services/book.service';
 export class UserBooksComponent implements OnInit {
   books: any = [];
   pageSize: number = 10;
+  selected : string = 'all';
   page: number = 1;
   shelfOptions: { [key: string]: string } = {
     read: 'Read',
@@ -27,13 +28,15 @@ export class UserBooksComponent implements OnInit {
     this.getBooks('all');
   };
 
+  changeSelected(shelf : string){
+    return this.selected = shelf;
+  }
   getBooks(shelf: string) {
     let skip: number = (this.page - 1) * this.pageSize;
     let limit: number = this.pageSize;
     this.userService.getuserBooks(shelf, skip, limit).subscribe({
       next: (data) => {
         this.books = data;
-        console.log(this.books);
       },
       error: (error) => {
         let { error: { message } } = error;
@@ -61,6 +64,14 @@ export class UserBooksComponent implements OnInit {
       });
     }
   }
+
+  updateShelve(bookId: string, shelve: string, oldShelve: string) {
+    this.bookService.patchShelve(bookId, shelve).subscribe(res => {
+      this.toastr.success(`you put this book in : ${shelve} shelve`, 'selve change successfully', toastr_options);
+      this.getBooks(oldShelve);
+    })
+  }
+
 
   navigateBook(id: string) {
     this.router.navigate([`/books/${id}`]);

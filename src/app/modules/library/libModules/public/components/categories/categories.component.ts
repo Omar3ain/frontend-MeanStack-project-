@@ -16,12 +16,9 @@ export class CategoriesComponent {
       this.categories = categories.categories;
     })
   }
-
   openCategory(id: string) {
-    console.log(id)
     this.router.navigate(['categories',id]);
   }
-
   ngOnInit() {
     AOS.init();
   }

@@ -32,7 +32,7 @@ export class BooksComponent {
     private categoryService: CategoryService,
     private route: ActivatedRoute,
     private router: Router
-  ) { 
+  ) {
     this.initial();
     this.query = `?name=${this.bookName}&category=${this.category}&author=${this.author}`;
     this.getBooks(this.query);
@@ -62,13 +62,13 @@ export class BooksComponent {
 
   ngOnInit() {
     this.categoryService.getCategories().subscribe(categories => this.categories = categories.categories);
-    this.subjectsKeyUp.bookName.pipe(debounceTime(1000)).subscribe( bookName => {
+    this.subjectsKeyUp.bookName.pipe(debounceTime(3000)).subscribe( bookName => {
       this.search()
     })
-    this.subjectsKeyUp.category.pipe(debounceTime(1000)).subscribe( category => {
+    this.subjectsKeyUp.category.pipe(debounceTime(3000)).subscribe( category => {
       this.search()
     })
-    this.subjectsKeyUp.author.pipe(debounceTime(1000)).subscribe( author => {
+    this.subjectsKeyUp.author.pipe(debounceTime(3000)).subscribe( author => {
       this.search()
     })
   }
@@ -133,7 +133,6 @@ export class BooksComponent {
   search() {
     this.BookService.getBooks(`?name=${this.bookName}&category=${this.category}&author=${this.author}`).subscribe(books => {
       this.books = books
-      console.log(books)
     });
   }
 }

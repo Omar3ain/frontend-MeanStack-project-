@@ -9,7 +9,7 @@ export class BookService {
   domin : string = "http://localhost:3000"
   booksUrl = `${this.domin}/books/`;
   buttonClicked =new EventEmitter();
-  
+
   constructor(private http: HttpClient) { }
   handleError(error: HttpErrorResponse) {
     return throwError(() => error);
@@ -40,15 +40,12 @@ export class BookService {
     const formData: FormData = new FormData();
 
     if(coverPhoto)  formData.append('coverPhoto', coverPhoto);
-    
+
     formData.append('name', formValue['name']);
     formData.append('authorId', formValue['authorId']);
     formData.append('description', formValue['description']);
     formData.append('categoryId', formValue['categoryId']);
-    formData.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
-    });
-  
+
     return this.http.patch(`${this.domin}/admin/book/${id}`,formData).pipe(catchError((this.handleError)));
   }
 }

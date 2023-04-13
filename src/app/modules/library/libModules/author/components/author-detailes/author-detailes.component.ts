@@ -30,8 +30,6 @@ export class AuthorDetailesComponent {
     })
     this._book.getBooks('').subscribe((book: any[]) => {
       return this.books = book;
-      console.log(this.books);
-
     })
 
   }
