@@ -18,7 +18,7 @@ export class BookService {
     return this.http.get(this.booksUrl + query).pipe(catchError((this.handleError)));
   }
   getBooksCount(query: string = ''): Observable<any> {
-    return this.http.get(this.booksUrl + query).pipe(catchError((this.handleError)));
+    return this.http.get(this.booksUrl + '/getCountSearch' + query).pipe(catchError((this.handleError)));
   }
   getBook(id: string): Observable<any> {
     return this.http.get(`${this.booksUrl}/${id}`).pipe(catchError((this.handleError)));
