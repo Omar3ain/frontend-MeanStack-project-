@@ -11,7 +11,7 @@ export class CategoryService {
   categories: any = [];
 
   buttonClicked =new EventEmitter();
-  
+
   constructor(private http: HttpClient) {}
   handleError(error: HttpErrorResponse ) {
     return throwError(() => error);
@@ -31,8 +31,6 @@ export class CategoryService {
   }
 
   deleteCategroy(id : string) : Observable<any> {
-    console.log("id in service" , id);
-    
     return this.http.delete(`${this.domin}/admin/categories/${id}`).pipe(catchError((this.handleError)));
   }
   getCategroy(id : string) : Observable<any>  {

@@ -1,28 +1,29 @@
 <div class="d-flex justify-content-between page">
   <aside>
-    <div>
-      <a (click)="getBooks('all')">
+    <div class="container-fluid">
+      <a (click)="getBooks('all'); changeSelected('all')" [ngClass]="{ selected : selected == 'all'}">
         <i class="bi bi-journals"></i>
         <span class="textlink"> ALL</span>
       </a>
       <div class="divider"></div>
-      <a (click)="getBooks('want_to_read')">
+      <a (click)="getBooks('want_to_read'); changeSelected('want_to_read')" [ngClass]="{ selected : selected == 'want_to_read'}">
         <i class="bi bi-bookmark-plus"></i>
         <span class="textlink"> Want to read</span>
       </a>
       <div class="divider"></div>
-      <a (click)="getBooks('currently_reading')">
+      <a (click)="getBooks('currently_reading'); changeSelected('currently_reading')" [ngClass]="{ selected : selected == 'currently_reading'}">
         <i class="bi bi-book-half"></i>
         <span class="textlink"> Continue reading</span>
       </a>
       <div class="divider"></div>
-      <a (click)="getBooks('read')">
+      <a (click)="getBooks('read'); changeSelected('read')" [ngClass]="{ selected : selected == 'read'}">
         <i class="bi bi-journal-check"></i>
         <span class="textlink"> Read</span>
       </a>
     </div>
   </aside>
-  <div class="table-area container-fluid">
+
+  <div class="table-area container-fluid mt-5">
     <ng-container>
       <div class="row text-left">
         <ng-container>
@@ -71,10 +72,10 @@
                               </ngb-rating>
                             </td>
                             <td>
-                              <select id="shelf">
+                              <select id="shelf" #shelfSelect (change)="updateShelve(book?._id, shelfSelect.value, book.shelve)">
                                 <option *ngFor="let option of shelfOptionKeys" [ngValue]="option"
-                                  [selected]="book.shelve === option">
-                                  {{ shelfOptions[option] }}
+                                  [selected]="book?.shelve === option">
+                                  {{ option }}
                                 </option>
                               </select>
                             </td>

@@ -11,7 +11,6 @@ export class ListComponent {
   constructor(private categoryService: CategoryService) {
     this.categoryService.getCategories().subscribe(categories =>{
       this.categories = categories.categories;
-      console.log(categories)
     });
   }
 }

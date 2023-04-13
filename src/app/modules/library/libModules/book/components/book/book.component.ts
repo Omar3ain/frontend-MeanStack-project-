@@ -38,10 +38,8 @@ export class BookComponent implements OnInit {
   }
 
   onShelveChange(e: Event) {
-    console.log(this.shelve);
     this.bookService.patchShelve(this.id, this.shelve).subscribe(res => {
       this.toastr.success(`you put this book in : ${this.shelve} shelve`, 'selve change successfully', toastr_options);
-      console.log(res)
     })
   }
 
@@ -51,7 +49,6 @@ export class BookComponent implements OnInit {
         return book._id === bookId
       })
       this.shelve = this.userBookDetails.shelve;
-      console.log(this.userBookDetails)
     })
   }
 
@@ -63,9 +60,8 @@ export class BookComponent implements OnInit {
     });
   }
 
-  submitReview() {
-    if (!this.ratingInputValue || Number(this.ratingInputValue) > 5 || Number(this.ratingInputValue) < 0) {
-      // return console.log("must change rating input value from 1 star to 5")
+  submitReview(){
+    if(!this.ratingInputValue || Number(this.ratingInputValue) > 5 || Number(this.ratingInputValue) < 0){
       this.toastr.error(`must change rating input value from 1 star to 5`, 'Validation Error', toastr_options);
       return;
     }

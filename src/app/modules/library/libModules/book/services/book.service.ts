@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Book } from '../../author/components/author-detailes/author-detailes.component';
@@ -8,6 +8,7 @@ import { Book } from '../../author/components/author-detailes/author-detailes.co
   providedIn: 'root'
 })
 export class BookService {
+  btnClicked = new EventEmitter();
   domin: string = "http://localhost:3000"
   booksUrl = `${this.domin}/books`;
   books!: Book[];
