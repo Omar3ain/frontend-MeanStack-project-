@@ -54,11 +54,12 @@
                         <td>
                           <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
                             [src]="book.coverPhoto" />
-                          <mat-icon *ngFor="let star of getStarList(getBookRating(book.reviews ?? []))">
+                          <mat-icon *ngFor="let star of getStarList(getBookRating(book.reviews ?? []))"
+                            class="material-icons {{ star.cssClass }}">
                             {{ star.filled ? 'star' : 'star_border' }}
                           </mat-icon>
                         </td>
-                        <td>{{book.name }}</td>
+                        <td [routerLink]="['/books',book._id]">{{book.name }}</td>
                         <td>
 
                         </td>

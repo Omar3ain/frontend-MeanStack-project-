@@ -22,7 +22,6 @@
             <option value="want_to_read">want to read</option>
             <option value="currently_reading">currently reading</option>
             <option value="read">read</option>
-            
           </select>
           <div class="rating">
             <ngb-rating
@@ -110,9 +109,9 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row justify-content-around">
         <div
-          class="card col-lg-3 col-md-4 col-sm-6"
+          class="card col-md-4"
           *ngFor="let review of book?.reviews"
           style="width: 18rem"
         >

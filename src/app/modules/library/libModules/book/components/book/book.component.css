@@ -10,30 +10,6 @@ h6 {
 	font-family: "Cairo", sans-serif;
 }
 
-h1 {
-	font-size: 70px;
-}
-
-h2 {
-	font-size: 36px;
-}
-
-h3 {
-	font-size: 30px;
-}
-
-h4 {
-	font-size: 24px;
-}
-
-h5 {
-	font-size: 18px;
-}
-
-h6 {
-	font-size: 16px;
-}
-
 p {
 	font-size: 16px;
 	font-family: "Cairo", sans-serif;
@@ -1642,8 +1618,11 @@ ol {
 
 .product__details__text h3 {
 	color: #252525;
-	font-weight: 700;
+	font-weight: 800;
+	font-size: 3rem;
+	line-height: 55px;
 	margin-bottom: 16px;
+	font-family: var(--header-font-family);
 }
 
 .product__details__text .product__details__rating {
