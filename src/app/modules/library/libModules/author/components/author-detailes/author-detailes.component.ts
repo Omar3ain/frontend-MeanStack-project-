@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AuthorService } from 'src/app/modules/admin/services/author.service';
+
 import { author } from '../list-authors/list-authors.component';
 import { BookService } from '../../../book/services/book.service';
+import { AuthorService } from '../../services/author.service';
 
 
 @Component({
@@ -25,23 +26,23 @@ export class AuthorDetailesComponent {
     this.id = this._activatedRouter.snapshot.params['id']
 
 
-    this._author.getAuthorById(this.id).subscribe((response) => {
+    this._author.getAuthorsById(this.id).subscribe((response) => {
       this.myauthor = response;
     })
-    this._book.getBooks('').subscribe((book: any[]) => {
-      return this.books = book;
-      console.log(this.books);
-
+    this._author.getAuthorBooks(this.id).subscribe((response) => {
+      this.books = response;
     })
+
+
 
   }
   getStarList(rating: number): any[] {
     let starList: any[] = [];
     for (let i = 1; i <= 5; i++) {
       if (i <= rating) {
-        starList.push({ filled: true });
+        starList.push({ filled: true, cssClass: 'filled-star' });
       } else {
-        starList.push({ filled: false });
+        starList.push({ filled: false, cssClass: 'empty-star' });
       }
     }
     return starList;
@@ -67,7 +68,8 @@ export class AuthorDetailesComponent {
   }
 
 }
-interface Book {
+export interface Book {
+  _id: string
   coverPhoto: string;
   name: string;
   authorId: string;
@@ -77,7 +79,7 @@ interface Book {
   reviews?: Review[];
 }
 
-interface Review {
+export interface Review {
   userId: string;
   username: string;
   rating: number;

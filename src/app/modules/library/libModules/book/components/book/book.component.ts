@@ -47,7 +47,7 @@ export class BookComponent implements OnInit {
 
   getUserBookDetails(bookId: string) {
     this.userService.getUser().subscribe(user => {
-      this.userBookDetails = user.books?.find((book :any) => {
+      this.userBookDetails = user.books?.find((book: any) => {
         return book._id === bookId
       })
       this.shelve = this.userBookDetails.shelve;
@@ -58,32 +58,32 @@ export class BookComponent implements OnInit {
   getBookDetails() {
     this.BookService.getBook(this.id).subscribe((book) => {
       this.book = book;
-      this.book.averageRating = Math.floor(this.book.reviews.reduce((average: any, review:any) => average + review.rating, 0) / this.book.reviews.length);
+      this.book.averageRating = Math.floor(this.book.reviews.reduce((average: any, review: any) => average + review.rating, 0) / this.book.reviews.length);
       this.getUserBookDetails(this.book._id);
     });
   }
 
-  submitReview(){
-    if(!this.ratingInputValue || Number(this.ratingInputValue) > 5 || Number(this.ratingInputValue) < 0){
+  submitReview() {
+    if (!this.ratingInputValue || Number(this.ratingInputValue) > 5 || Number(this.ratingInputValue) < 0) {
       // return console.log("must change rating input value from 1 star to 5")
       this.toastr.error(`must change rating input value from 1 star to 5`, 'Validation Error', toastr_options);
       return;
     }
-    this.BookService.postReview(this.book._id, {rating: Number(this.ratingInputValue), comment: this.reviewForm.value.comment}).subscribe(
-    {
-      next: () => {
-        this.toastr.success(`reviewing successfully`, 'Insert status', toastr_options);
-        this.ratingInputValue = 0;
-        this.reviewForm.reset();
-        this.getBookDetails();
-      },
-      error: (error) => {
-        let { error: { message } } = error;
-        if (!message) message = error.message;
-        this.toastr.error(`MESSAGE : ${message}`, 'Could not reviwing', toastr_options);
-        this.reviewForm.reset();
+    this.BookService.postReview(this.book._id, { rating: Number(this.ratingInputValue), comment: this.reviewForm.value.comment }).subscribe(
+      {
+        next: () => {
+          this.toastr.success(`reviewing successfully`, 'Insert status', toastr_options);
+          this.ratingInputValue = 0;
+          this.reviewForm.reset();
+          this.getBookDetails();
+        },
+        error: (error) => {
+          let { error: { message } } = error;
+          if (!message) message = error.message;
+          this.toastr.error(`MESSAGE : ${message}`, 'Could not reviwing', toastr_options);
+          this.reviewForm.reset();
+        }
       }
-    }
     )
   }
 
@@ -91,7 +91,7 @@ export class BookComponent implements OnInit {
     this.ratingInputValue = e;
   }
 
-  async ngOnInit() {}
+  async ngOnInit() { }
   getBook(): any {
     return this.book;
   }

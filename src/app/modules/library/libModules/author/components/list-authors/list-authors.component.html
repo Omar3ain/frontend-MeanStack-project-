@@ -1,8 +1,25 @@
-<section class="vh-200 ">
-  <div class="container pt-5 pb-2">
-    <h1 class="text-center  mb-5">Top Authors</h1>
+<div class="container hero">
+  <div class="row">
+    <div class="col-6">
+      <h1>Discover your Author </h1>
+      <p>Spread yoyr love with your favorite author <br></p>
+
+    </div>
+
+    <div class="iphone-mockup col-6">
+      <img class="device"
+        src="../../../../../../../assets/Green and Yellow Simple National Authors Day Instagram Post (1).png">
+
+    </div>
+
+  </div>
+</div>
+
+<main class=" vh-200 " id=" main">
+  <div class="container ">
+    <h1 class="text-left  mb-5"> Authors</h1>
     <div class="row justify-content-center">
-      <div class=" col-lg-4 col-md-6 my-lg-0 my-3" *ngFor="let author of getAuthorsForPage()">
+      <div class=" col-lg-4 col-md-6 my-lg-0 my-0" *ngFor="let author of getAuthorsForPage()">
         <app-author [author]="author"> </app-author>
 
       </div>
@@ -16,4 +33,4 @@
 
   </div>
 
-</section>
+</main>
