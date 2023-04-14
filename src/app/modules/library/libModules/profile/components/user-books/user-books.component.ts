@@ -13,7 +13,7 @@ import { BookService } from '../../../book/services/book.service';
 export class UserBooksComponent implements OnInit {
   books: any = [];
   pageSize: number = 10;
-  selected : string = 'all';
+  selected: string = 'all';
   page: number = 1;
   shelfOptions: { [key: string]: string } = {
     read: 'Read',
@@ -28,7 +28,7 @@ export class UserBooksComponent implements OnInit {
     this.getBooks('all');
   };
 
-  changeSelected(shelf : string){
+  changeSelected(shelf: string) {
     return this.selected = shelf;
   }
   getBooks(shelf: string) {

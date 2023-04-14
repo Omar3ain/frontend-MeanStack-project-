@@ -36,7 +36,7 @@ a:hover {
 }
 
 .text-left {
-
+  font-size: 50px;
   font-family: var(--bold-font-family);
   color: var(--text-color);
 }
@@ -58,6 +58,7 @@ a:hover {
 .hero {
   margin-top: 20px;
   text-align: center;
+  margin-bottom: 100px;
 }
 
 @media (min-width:768px) {
@@ -70,7 +71,7 @@ a:hover {
 .hero h1 {
   color: var(--text-color);
   font-family: var(--bold-font-family);
-  font-size: 40px;
+  font-size: 50px;
   margin-top: 0;
   margin-bottom: 15px;
   font-weight: 300;

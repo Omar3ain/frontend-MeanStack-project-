@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import toastr_options from 'src/app/utils/toastr.options';
+import { ToastrService } from 'ngx-toastr';
 import { author } from '../list-authors/list-authors.component';
 import { BookService } from '../../../book/services/book.service';
 import { AuthorService } from '../../services/author.service';
@@ -14,62 +15,62 @@ import { AuthorService } from '../../services/author.service';
 export class AuthorDetailesComponent {
   id: string = '';
   myauthor!: author
-  books!: Book[];
+  books!: any;
   maxRating: number = 5;
-  maxRatingArray = [];
-  shelve: string = ''
 
-  constructor(private _author: AuthorService, private _activatedRouter: ActivatedRoute, private _book: BookService) {
+  shelve: string = ''
+  shelfOptions: { [key: string]: string } = {
+    read: 'Read',
+    want_to_read: 'Want to Read',
+    currently_reading: 'Currently Reading'
+  };
+  shelfOptionKeys = Object.keys(this.shelfOptions);
+  constructor(private _author: AuthorService, private toastr: ToastrService, private _activatedRouter: ActivatedRoute, private _book: BookService) {
 
   }
   ngOnInit(): void {
     this.id = this._activatedRouter.snapshot.params['id']
-
-
     this._author.getAuthorsById(this.id).subscribe((response) => {
       this.myauthor = response;
     })
     this._author.getAuthorBooks(this.id).subscribe((response) => {
       this.books = response;
     })
-
-
-
   }
-  getStarList(rating: number): any[] {
-    let starList: any[] = [];
-    for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
-        starList.push({ filled: true, cssClass: 'filled-star' });
-      } else {
-        starList.push({ filled: false, cssClass: 'empty-star' });
-      }
-    }
-    return starList;
-  }
+  // getStarList(rating: number): any[] {
+  //   let starList: any[] = [];
+  //   for (let i = 1; i <= 5; i++) {
+  //     if (i <= rating) {
+  //       starList.push({ filled: true, cssClass: 'filled-star' });
+  //     } else {
+  //       starList.push({ filled: false, cssClass: 'empty-star' });
+  //     }
+  //   }
+  //   return starList;
+  // }
 
-  getAuthorRatings(authorId: string): number[] {
-    const ratings: number[] = [];
-    this.books.forEach((book) => {
-      if (book.authorId.toString() === authorId.toString()) {
-        book.reviews?.forEach((review) => {
-          ratings.push(review.rating);
-        });
-      }
-    });
-    return ratings;
-  }
-  getBookRating(reviews: Review[]): number {
-    if (!reviews || reviews.length === 0) {
-      return 0;
-    }
-    const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
-    return sum / reviews.length;
-  }
+  // getAuthorRatings(authorId: string): number[] {
+  //   const ratings: number[] = [];
+  //   this.books.forEach((book) => {
+  //     if (book.authorId.toString() === authorId.toString()) {
+  //       book.reviews?.forEach((review) => {
+  //         ratings.push(review.rating);
+  //       });
+  //     }
+  //   });
+  //   return ratings;
+  // }
+  // getBookRating(reviews: Review[]): number {
+  //   if (!reviews || reviews.length === 0) {
+  //     return 0;
+  //   }
+  //   const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
+  //   return sum / reviews.length;
+  // }
 
-  onShelveChange(e: Event) {
-
-    this._book.patchShelve(this.id, this.shelve).subscribe(res => {
+  updateShelve(bookId: string, shelve: string, oldShelve: string) {
+    this._book.patchShelve(bookId, shelve).subscribe(res => {
+      this.toastr.success(`you put this book in : ${shelve} shelve`, 'selve change successfully', toastr_options);
 
     })
   }

@@ -7,8 +7,8 @@ import { AuthorRoutingModule } from './author-routing.module';
 import { ListAuthorsComponent } from './components/list-authors/list-authors.component';
 import { AuthorDetailesComponent } from './components/author-detailes/author-detailes.component';
 import { AuthorComponent } from './components/author/author.component';
-
-
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [ListAuthorsComponent, AuthorDetailesComponent, AuthorComponent],
   imports: [
@@ -16,7 +16,9 @@ import { AuthorComponent } from './components/author/author.component';
     AuthorRoutingModule,
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    NgbModule
   ]
 })
 export class AuthorModule { }

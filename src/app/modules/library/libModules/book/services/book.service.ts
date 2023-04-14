@@ -40,4 +40,6 @@ export class BookService {
   editUserRate(bookId: string, formData: FormData) {
     return this.http.patch(`${this.booksUrl}/${bookId}/rate`, formData).pipe(catchError((this.handleError)));
   }
+
+
 }

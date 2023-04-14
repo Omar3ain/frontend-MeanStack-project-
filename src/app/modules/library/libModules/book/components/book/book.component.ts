@@ -60,8 +60,8 @@ export class BookComponent implements OnInit {
     });
   }
 
-  submitReview(){
-    if(!this.ratingInputValue || Number(this.ratingInputValue) > 5 || Number(this.ratingInputValue) < 0){
+  submitReview() {
+    if (!this.ratingInputValue || Number(this.ratingInputValue) > 5 || Number(this.ratingInputValue) < 0) {
       this.toastr.error(`must change rating input value from 1 star to 5`, 'Validation Error', toastr_options);
       return;
     }
