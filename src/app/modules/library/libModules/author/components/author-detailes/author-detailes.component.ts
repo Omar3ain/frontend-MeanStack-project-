@@ -17,7 +17,7 @@ export class AuthorDetailesComponent {
   books!: Book[];
   maxRating: number = 5;
   maxRatingArray = [];
-
+  shelve: string = ''
 
   constructor(private _author: AuthorService, private _activatedRouter: ActivatedRoute, private _book: BookService) {
 
@@ -65,6 +65,13 @@ export class AuthorDetailesComponent {
     }
     const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
     return sum / reviews.length;
+  }
+
+  onShelveChange(e: Event) {
+
+    this._book.patchShelve(this.id, this.shelve).subscribe(res => {
+
+    })
   }
 
 }
