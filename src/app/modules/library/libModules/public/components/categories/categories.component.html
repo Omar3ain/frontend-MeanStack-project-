@@ -3,28 +3,14 @@
     <h6 class="title">Popular Authors</h6>
     <div class="card">
       <div class="container-flex card-css">
-        <div class="card-design">
+        <div class="card-design" *ngFor="let author of authors"  [routerLink]="['/authors',author._id]">
           <div class="imgBox">
+            <img crossorigin="anonymous" [src]="author.photo" alt="">
           </div>
           <div class="textBox">
-            <p>Author name</p>
+            <p>{{author.firstName}} {{author.lastName}}</p>
           </div>
         </div>
-        <div class="card-design">
-          <div class="imgBox">
-          </div>
-          <div class="textBox">
-            <p>Author name</p>
-          </div>
-        </div>
-        <div class="card-design">
-          <div class="imgBox">
-          </div>
-          <div class="textBox">
-            <p>Author name</p>
-          </div>
-        </div>
-  
       </div>
       
       <div class="corner rigth-top-corner"></div>
@@ -36,28 +22,14 @@
     <h6 class="title">Popular Books</h6>
     <div class="card">
       <div class="container-flex card-css">
-        <div class="card-design">
+        <div class="card-design" *ngFor="let book of populars" [routerLink]="['/books',book._id]">
           <div class="imgBox">
+            <img crossorigin="anonymous" [src]="book.coverPhoto" alt="">
           </div>
           <div class="textBox">
-            <p>Author name</p>
+            <p>{{book.name}}</p>
           </div>
         </div>
-        <div class="card-design">
-          <div class="imgBox">
-          </div>
-          <div class="textBox">
-            <p>Author name</p>
-          </div>
-        </div>
-        <div class="card-design">
-          <div class="imgBox">
-          </div>
-          <div class="textBox">
-            <p>Author name</p>
-          </div>
-        </div>
-  
       </div>
       
       <div class="corner rigth-top-corner"></div>
@@ -69,28 +41,14 @@
     <h6 class="title">Popular Categories</h6>
     <div class="card">
       <div class="container-flex card-css">
-        <div class="card-design">
+        <div class="card-design" *ngFor="let category of categories" (click)="getCategory(category.name)">
           <div class="imgBox">
+            <img crossorigin="anonymous" [src]="category.categoryCover" alt="">
           </div>
           <div class="textBox">
-            <p>Author name</p>
+            <p>{{category.name}}</p>
           </div>
         </div>
-        <div class="card-design">
-          <div class="imgBox">
-          </div>
-          <div class="textBox">
-            <p>Author name</p>
-          </div>
-        </div>
-        <div class="card-design">
-          <div class="imgBox">
-          </div>
-          <div class="textBox">
-            <p>Author name</p>
-          </div>
-        </div>
-  
       </div>
       
       <div class="corner rigth-top-corner"></div>

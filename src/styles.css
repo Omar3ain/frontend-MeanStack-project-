@@ -48,8 +48,7 @@ body {
 body {
   margin: 0;
   font-family: var(--text-font-family);
-  background-color: #bde4f7;
-
+  background:  url('/assets/library/wallpaperflare.com_wallpaper2.jpg');
 }
 
 

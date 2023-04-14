@@ -14,22 +14,22 @@ const routes: Routes = [
       {
         path: 'authors', 
         loadChildren: () => import('./libModules/author/author.module').then(m => m.AuthorModule),
-        canActivate: [AuthGuard]
+        // canActivate: [AuthGuard]
       },
       {
         path: 'books', 
         loadChildren: () => import('./libModules/book/book.module').then(m => m.BookModule),
-        canActivate: [AuthGuard]
+        // canActivate: [AuthGuard]
       },
       {
         path: 'categories', 
         loadChildren: () => import('./libModules/category/category.module').then(m => m.CategoryModule),
-        canActivate: [AuthGuard]
+        // canActivate: [AuthGuard]
       },
       {
         path: 'profile',
         loadChildren: () => import('./libModules/profile/profile.module').then(m => m.ProfileModule),
-        canActivate: [AuthGuard]
+        // canActivate: [AuthGuard]
       },
     ]
   }
