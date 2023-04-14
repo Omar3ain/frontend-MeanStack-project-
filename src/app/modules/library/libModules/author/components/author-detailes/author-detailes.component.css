@@ -20,7 +20,7 @@ h2 {
 
 .author-card {
   width: 100%;
-  height: 100%;
+  /* height: 77%; */
   transition: all .3s;
   position: relative;
   border-radius: .5rem 2rem;
@@ -103,38 +103,37 @@ h3 {
 
 .image-size {
   border-radius: .5vw;
-  width: 10%;
-
+  width: 20%;
   object-fit: contain;
   height: 10%;
   margin-right: 8px;
-}
-
-::ng-deep .ngx-pagination .current {
-  background: var(--button-color) !important;
-}
-
-.action {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.action i {
   cursor: pointer;
-  transition: 0.25s;
 }
 
-.action i:hover {
-  cursor: pointer;
-  transform: scale(1.5);
-  transition: 0.25s;
+td {
+  width: 5vw
 }
+
+
 
 /* tabel */
 .table {
   --bs-table-striped-bg: #fff !important;
+}
+
+@media (max-width: 992px) {
+  .page {
+    flex-direction: column !important;
+    transition: 0.25s;
+  }
+
+  .table-area {
+    width: 100%;
+  }
+
+  .image-size {
+    width: 8vh;
+  }
 }
 
 
@@ -185,6 +184,7 @@ p {
 
 #class {
   width: 25%;
+  height: 50%;
 }
 
 a {
@@ -192,4 +192,8 @@ a {
   cursor: pointer;
   color: var(--text-color);
   font-family: var(--text-font-family);
+}
+
+a:hover {
+  color: blue;
 }

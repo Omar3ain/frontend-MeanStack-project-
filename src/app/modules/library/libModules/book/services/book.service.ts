@@ -41,5 +41,7 @@ export class BookService {
     return this.http.patch(`${this.booksUrl}/${bookId}/rate`, formData).pipe(catchError((this.handleError)));
   }
 
-
+  getReviews(bookId: string) {
+    return this.http.get(`${this.booksUrl}/${bookId}/reviews`).pipe(catchError((this.handleError)));
+  }
 }
