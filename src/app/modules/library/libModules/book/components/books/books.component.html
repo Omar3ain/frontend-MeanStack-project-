@@ -114,7 +114,19 @@
     </div>
   </div>
 
-  <mat-paginator [hidePageSize]="true" [length]="countOfBooks" [pageIndex]="pageIndex" [pageSize]="10"
-    [pageSizeOptions]="[10]" (page)="changePage($event)" aria-label="Select page">
-  </mat-paginator>
+  <!-- <mat-paginator [hidePageSize]="true" [length]="countOfBooks" [pageIndex]="pageIndex" [pageSize]="10"
+    [pageSizeOptions]="[10]" (page)="changePage($event)" showFirstLastButtons>
+  </mat-paginator> -->
+  <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="changePage($event)"
+               [length]="countOfBooks"
+               [pageSize]="10"
+               [disabled]="false"
+               [showFirstLastButtons]="true"
+               [pageSizeOptions]="[]"
+               [hidePageSize]="false"
+               [pageIndex]="pageIndex"
+               aria-label="Select page">
+</mat-paginator>
 </div>
