@@ -55,6 +55,7 @@ export class UserBooksComponent implements OnInit {
       this.bookService.editUserRate(book._id, formData).subscribe({
         next: () => {
           this.toastr.success(`you updated your rate ${book.rating}`, 'Rating is changed successfully', toastr_options);
+          this.getBooks(this.selected);
         },
         error: (error) => {
           let { error: { message } } = error;

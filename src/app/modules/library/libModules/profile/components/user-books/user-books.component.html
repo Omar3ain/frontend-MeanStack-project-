@@ -54,8 +54,8 @@
                                 [src]="book.coverPhoto" />
                             </td>
                             <td (click)="navigateBook(book._id)" class="link">{{book.name}}</td>
-                            <td (click)="navigateAuthor(book.authorId._id)" class="link">{{book.authorId.firstName}}
-                              {{book.authorId.lastName}}</td>
+                            <td (click)="navigateAuthor(book.author._id)" class="link">{{book.author.firstName}}
+                              {{book.author.lastName}}</td>
                             <td>
                               <ngb-rating [rate]="book.avgRate" [readonly]="true" [max]="5" class="my-rating">
                                 <ng-template let-fill="fill" let-index="index">
@@ -64,7 +64,7 @@
                               </ngb-rating>
                             </td>
                             <td>
-                              <ngb-rating [rate]="book.rating" [max]="5" class="my-rating"
+                              <ngb-rating [rate]="book.reviews.rating" [max]="5" class="my-rating"
                                 (rateChange)="editRate(book, $event)">
                                 <ng-template let-fill="fill" let-index="index">
                                   <i class="bi-star{{ fill === 100 ? '-fill' : '' }}" [class.filled]="fill === 100"></i>
