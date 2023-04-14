@@ -15,8 +15,9 @@ import { AuthorService } from '../../services/author.service';
 export class AuthorDetailesComponent {
   id: string = '';
   myauthor!: author
-  books!: any;
+  books!: Book[];
   maxRating: number = 5;
+  avgRate: number = 0;
 
   shelve: string = ''
   shelfOptions: { [key: string]: string } = {
@@ -35,38 +36,22 @@ export class AuthorDetailesComponent {
     })
     this._author.getAuthorBooks(this.id).subscribe((response) => {
       this.books = response;
+
     })
   }
-  // getStarList(rating: number): any[] {
-  //   let starList: any[] = [];
-  //   for (let i = 1; i <= 5; i++) {
-  //     if (i <= rating) {
-  //       starList.push({ filled: true, cssClass: 'filled-star' });
-  //     } else {
-  //       starList.push({ filled: false, cssClass: 'empty-star' });
-  //     }
-  //   }
-  //   return starList;
-  // }
 
-  // getAuthorRatings(authorId: string): number[] {
-  //   const ratings: number[] = [];
-  //   this.books.forEach((book) => {
-  //     if (book.authorId.toString() === authorId.toString()) {
-  //       book.reviews?.forEach((review) => {
-  //         ratings.push(review.rating);
-  //       });
-  //     }
-  //   });
-  //   return ratings;
-  // }
-  // getBookRating(reviews: Review[]): number {
-  //   if (!reviews || reviews.length === 0) {
-  //     return 0;
-  //   }
-  //   const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
-  //   return sum / reviews.length;
-  // }
+
+  getAvgRating(book: Book) {
+    return this.getBookRating(book.reviews);
+
+  }
+  getBookRating(reviews: Review[]): number {
+    if (!reviews || reviews.length === 0) {
+      return 0;
+    }
+    const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
+    return this.avgRate = sum / reviews.length;
+  }
 
   updateShelve(bookId: string, shelve: string, oldShelve: string) {
     this._book.patchShelve(bookId, shelve).subscribe(res => {
@@ -84,7 +69,8 @@ export interface Book {
   shelve: 'read' | 'want_to_read' | 'currently_reading' | "none";
   categoryId: string;
   description: string;
-  reviews?: Review[];
+  avgRate: number
+  reviews: Review[];
 }
 
 export interface Review {
