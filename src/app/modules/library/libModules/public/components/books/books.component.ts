@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import AOS from 'aos';
+
 
 @Component({
   selector: 'app-books',
@@ -8,6 +8,5 @@ import AOS from 'aos';
 })
 export class BooksComponent {
   ngOnInit() {
-    AOS.init();
   }
 }
