@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './components/main/main.component';
 import { AuthGuard } from 'src/app/Guard/user/auth.guard';
+import { AuthorsSliderComponent } from './components/authors-slider/authors-slider.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,9 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('./libModules/profile/profile.module').then(m => m.ProfileModule),
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'aboutus' , component: AuthorsSliderComponent
       },
     ]
   }

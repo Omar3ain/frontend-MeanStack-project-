@@ -2,6 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Book } from '../../author/components/author-detailes/author-detailes.component';
+import currentDomain from 'src/app/utils/dominUrls';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Book } from '../../author/components/author-detailes/author-detailes.co
 })
 export class BookService {
   btnClicked = new EventEmitter();
-  domin: string = "https://tsbookvalley.onrender.com"
+  domin: string = currentDomain;
   booksUrl = `${this.domin}/books`;
   books!: Book[];
   constructor(private http: HttpClient) { }

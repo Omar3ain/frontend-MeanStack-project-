@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BookService } from '../../services/book.service';
 import { CategoryService } from '../../../category/services/category.service';
-import { AuthorService } from '../../../author/services/author.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -133,5 +132,12 @@ export class BooksComponent {
     this.BookService.getBooks(`?name=${this.bookName}&category=${this.category}&author=${this.author}&page=${this.page}`).subscribe(books => {
       this.books = books
     });
+  }
+
+  getCategory(name : string){
+    const queryParams = {
+      category: name,
+    };
+    this.router.navigate(['/books'] ,{queryParams})
   }
 }

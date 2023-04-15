@@ -2,8 +2,6 @@ import { Component, Input } from '@angular/core';
 import { AuthorService } from '../../services/author.service';
 import { author } from '../list-authors/list-authors.component';
 import { Router } from '@angular/router';
-
-
 @Component({
   selector: 'app-author',
   templateUrl: './author.component.html',
@@ -27,9 +25,6 @@ export class AuthorComponent {
   ngOnInit(): void {
 
   }
-  // onAuthorSelected(author: author) {
-  //   this._router.navigate(['/author', author._id])
-  // }
   print() {
   }
 }

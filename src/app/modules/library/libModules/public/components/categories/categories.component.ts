@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import AOS from 'aos';
-import { CategoryService } from '../../../category/services/category.service';
 import { Router } from '@angular/router';
 import { PublicService } from '../../services/public.service';
 
@@ -11,15 +9,15 @@ import { PublicService } from '../../services/public.service';
 })
 export class CategoriesComponent {
   categoryImagePath = 'assets/library/header-image.jpg';
-  populars: any[] = [];
+  populars: popular[] = [];
   authors: any[] = [];
   categories: any[] = [];
   constructor (private router: Router ,private _publicService : PublicService) {
     this._publicService.getPopulars().subscribe({
       next : (data) => {
         this.populars = data;
-        this.authors = data.map((book :any) => book.author).flat();
-        this.categories = data.map((book : any) => book.category).flat();
+        this.authors = data.map((book :popular) => book.author).flat().filter((obj :any, index:any, self:any) =>index === self.findIndex((t : any) => (t._id === obj._id)));
+        this.categories = data.map((book : popular) => book.category).flat().filter((obj :any, index:any, self:any) =>index === self.findIndex((t : any) => (t._id === obj._id)));
       }
     })
   }
@@ -30,6 +28,13 @@ export class CategoriesComponent {
     this.router.navigate(['/books'] ,{queryParams})
   }
   ngOnInit() {
-    AOS.init();
   }
+}
+interface popular {
+  _id: string,
+  avgRating: number,
+  category : any[],
+  coverPhoto: string,
+  name:string;
+  author : any[]
 }

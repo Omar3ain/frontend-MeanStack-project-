@@ -2,8 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { author } from '../components/list-authors/list-authors.component';
-import { authorElement } from 'src/app/modules/admin/components/authors/list-authors/list-authors.component';
 import { Book } from '../components/author-detailes/author-detailes.component';
+import currentDomain from 'src/app/utils/dominUrls';
 
 
 
@@ -11,13 +11,13 @@ import { Book } from '../components/author-detailes/author-detailes.component';
   providedIn: 'root'
 })
 export class AuthorService {
-
+  private domain: string = currentDomain;
   currentPage = 1;
   authorsPerPage = 6;
   authors: author[] = [];
   Books: Book[] = [];
-  authorUrl = 'https://tsbookvalley.onrender.com/authors';
-  bookUrl = 'https://tsbookvalley.onrender.com/books'
+  authorUrl = `${this.domain}/authors`;
+  bookUrl = `${this.domain}/books`
 
 
   constructor(private http: HttpClient) { }

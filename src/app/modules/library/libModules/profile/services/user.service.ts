@@ -2,13 +2,14 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import IUserUpdate from '../Interfaces/user';
+import currentDomain from 'src/app/utils/dominUrls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  private userUrl = 'https://tsbookvalley.onrender.com/profile/';
+  private domain: string = currentDomain;
+  private userUrl = `${this.domain}/profile/`;
   btnClicked = new EventEmitter();
 
   constructor(private _http: HttpClient) { }

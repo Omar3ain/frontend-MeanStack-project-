@@ -1,14 +1,14 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
+import currentDomain from 'src/app/utils/dominUrls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  dominDev : string = "http://localhost:3000"
-  domin : string = "https://tsbookvalley.onrender.com"
-  booksUrl = `${this.dominDev}/books/`;
+  domin : string = currentDomain;
+  
   buttonClicked =new EventEmitter();
 
   constructor(private http: HttpClient) { }
@@ -17,7 +17,8 @@ export class BookService {
   }
 
   getBooks(): Observable<any> {
-    return this.http.get(this.booksUrl).pipe(catchError((this.handleError)));
+    
+    return this.http.get(`${this.domin}/books/`).pipe(catchError((this.handleError)));
   }
   addNewBook(formValue :any, coverPhoto: File) : Observable<any> {
     const formData: FormData = new FormData();

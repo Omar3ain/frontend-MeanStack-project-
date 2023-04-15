@@ -147,11 +147,12 @@
   **********************************/
   
   h1 {
-    color: gray;
+
     text-align: center;
     font-size: 50px;
     margin-bottom: -3px;
-    font-family: var(--header-font-family);
+    font-family: var(--bold-font-family);
+    color: var(--text-color);
   }
   
   /**********************************
@@ -265,7 +266,8 @@ input.search-field {
 	transition: all 0.5s;
 }
 .hover-btn {
-	background-color: #007b8c;
+	background-color: var(--text-color);
+  
 }
 .hover-btn span {
 	position: relative;
@@ -281,10 +283,17 @@ input.search-field {
 	right: -25px;
 	transition: 0.5s;
 }
+.hover-btn:hover{
+  transform: scale(1.05);
+  transition: 0.25s;
+}
 .hover-btn:hover span {
 	padding-right: 25px;
 }
 .hover-btn:hover span::after {
 	opacity: 1;
 	right: 0;
+}
+.badge {
+  cursor: pointer;
 }

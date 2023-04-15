@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import currentDomain from 'src/app/utils/dominUrls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'https://tsbookvalley.onrender.com/auth/login';
-  private registerUrl = 'https://tsbookvalley.onrender.com/auth/register';
+  private domain: string = currentDomain;
+  private loginUrl = `${this.domain}/auth/login`;
+  private registerUrl = `${this.domain}/auth/register`;
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   handleError(error: HttpErrorResponse) {

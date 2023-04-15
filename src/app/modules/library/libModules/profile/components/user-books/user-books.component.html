@@ -53,8 +53,8 @@
                               <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
                                 [src]="book.coverPhoto" />
                             </td>
-                            <td (click)="navigateBook(book._id)" class="link">{{book.name}}</td>
-                            <td (click)="navigateAuthor(book.author._id)" class="link">{{book?.author?.firstName}}
+                            <td [routerLink]="['/books', book._id]" class="link">{{book.name}}</td>
+                            <td [routerLink]="['/authors', book.author._id]" class="link">{{book?.author?.firstName}}
                               {{book?.author?.lastName}}</td>
                             <td>
                               <ngb-rating [rate]="book.avgRate" [readonly]="true" [max]="5" class="my-rating">
@@ -72,7 +72,7 @@
                               </ngb-rating>
                             </td>
                             <td>
-                              <select id="shelf" #shelfSelect (change)="updateShelve(book?._id, shelfSelect.value, book.shelve)">
+                              <select id="shelf" #shelfSelect (change)="updateShelve(book?._id, shelfSelect.value)">
                                 <option *ngFor="let option of shelfOptionKeys" [ngValue]="option"
                                   [selected]="book?.shelve === option">
                                   {{ option }}

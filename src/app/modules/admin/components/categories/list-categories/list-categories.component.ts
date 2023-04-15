@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CategoryService} from '../../../services/category.service';
 import { ToastrService } from 'ngx-toastr';
 import toastr_options from "../../../../../utils/toastr.options";
