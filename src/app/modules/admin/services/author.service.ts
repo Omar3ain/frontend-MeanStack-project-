@@ -26,6 +26,7 @@ export class AuthorService {
     formData.append('photo', photo);
     formData.append('firstName', formValue['firstName']);
     formData.append('lastName', formValue['lastName']);
+    formData.append('description', formValue['description']);
     formData.append('dob', formValue['dob']);
 
     return this.http.post(`${this.domin}/admin/author`, formData).pipe(catchError((this.handleError)));

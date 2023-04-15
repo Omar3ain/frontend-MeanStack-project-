@@ -39,12 +39,15 @@ export class UpdateBookComponent implements OnInit{
     this.showCategories()
     this.bookId = this.data.bookId;
     this._bookService.getBook(this.bookId).subscribe({
+      
       next: (data) => {
+        console.log(data);
+      
         this.bookForm.patchValue({
           name: data.name,
           description:  data.description,
-          authorId: data.authorId,
-          categoryId: data.categoryId,
+          authorId: data.authorId._id,
+          categoryId: data.categoryId._id,
         });
       },
       error: (error) => {

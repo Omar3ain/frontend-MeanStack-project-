@@ -50,8 +50,8 @@
                           <td>
                             <img class="media-object round-media img-fluid image-size" crossorigin="anonymous" [src]="book.coverPhoto"/>
                           </td>
-                          <td>{{book.categoryId}}</td>
-                          <td>{{book.authorId}}</td>
+                          <td>{{book.category.name}}</td>
+                          <td>{{book.author.firstName}} {{book.author.lastName}}</td>
                           <td >
                             <div class="action">
                             <i (click)="deleteBook(book._id)" class="bi bi-trash"></i>

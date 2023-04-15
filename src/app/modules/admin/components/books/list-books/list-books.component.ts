@@ -65,6 +65,8 @@ export class ListBooksComponent implements OnInit {
             ...book,
             id: index + 1
           }));
+          console.log(this.books);
+          
         },
         error: (error) => {
           let { error: { message } } = error;
@@ -103,9 +105,9 @@ export interface bookElement {
   name: string;
   position: number;
   coverPhoto: string;
-  authorId: string;
+  author: any;
   shelve: string;
-  categoryId: string;
+  category: any;
   description: string;
   reviews?: []
   createdAt: string;

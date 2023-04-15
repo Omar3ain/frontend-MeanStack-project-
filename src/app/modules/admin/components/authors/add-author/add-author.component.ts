@@ -21,6 +21,7 @@ export class AddAuthorComponent implements OnInit{
     this.authorForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
+      description:['', [Validators.required]],
       dob: ['', [Validators.required]],
       photo : [''],
     });

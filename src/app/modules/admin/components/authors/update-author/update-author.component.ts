@@ -24,6 +24,7 @@ export class UpdateAuthorComponent {
       this.authorForm = this.formBuilder.group({
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
+        description:['', [Validators.required]],
         dob: ['', [Validators.required]],
         photo : [''],
       });
@@ -35,6 +36,7 @@ export class UpdateAuthorComponent {
         this.authorForm.patchValue({
           firstName: data.firstName,
           lastName: data.lastName,
+          description : data.description,
           dob: data.dob,
         });
       },
