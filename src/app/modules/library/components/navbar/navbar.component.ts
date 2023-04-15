@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { UserService } from '../../libModules/profile/services/user.service';
 import IUserUpdate from '../../libModules/profile/Interfaces/user';
@@ -16,13 +16,13 @@ export class NavbarComponent implements OnInit{
   navbarCollapsed = true;
   isAuthenticated : boolean = false;
   isScrolled:  boolean  = false;
+  isAdmin : boolean = true;
   user!: IUserUpdate; 
   constructor(private _authService : AuthService,
     private _userService: UserService,
-    private toastr: ToastrService,
-    private renderer: Renderer2, private el: ElementRef){
+    private toastr: ToastrService,){
     this.isAuthenticated = this._authService.isAuthenticated();
-    this
+    this.isAdmin = this._authService.isAdmin();
 
   }
   @HostListener('window:scroll', [])
@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit{
 
   ngOnInit(): void {
     this.isAuthenticated = this._authService.isAuthenticated()
-    if(this.isAuthenticated) {
+    if(this.isAuthenticated && !this.isAdmin) {
       this._userService.getUser().subscribe({
         next : (data) => {
           this.user = data

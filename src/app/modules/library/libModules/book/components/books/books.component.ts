@@ -134,4 +134,11 @@ export class BooksComponent {
       this.books = books
     });
   }
+
+  getCategory(name : string){
+    const queryParams = {
+      category: name,
+    };
+    this.router.navigate(['/books'] ,{queryParams})
+  }
 }

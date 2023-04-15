@@ -1,9 +1,7 @@
 <section class="row justify-content-around">
- 
     <div class="category-card mb-4" *ngFor="let category of categories">
         <img crossorigin="anonymous" class="img-fluid" src="{{ category?.categoryCover }}" alt="" class="card-background">
-      <a href="/books/?category={{ category.name }}" class="card-link">{{ category.name }}</a>
-      <!-- <span class="button video-count">4 Videos</span> -->
+      <a (click)="getCategory(category.name)" class="card-link">{{ category.name }}</a>
       <div class="content">
         <h2>{{ category.name }}</h2>
         <p>{{ category.name }}</p>

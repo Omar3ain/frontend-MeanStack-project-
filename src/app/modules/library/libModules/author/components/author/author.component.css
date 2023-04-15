@@ -13,6 +13,7 @@
   border-radius: 7px;
   /* box-shadow: rgba(255, 255, 255, 0.3) 0 5vw 6vw -8vw, rgba(255, 255, 255, 0) 0 4.5vw 5vw -6vw, rgba(50, 50, 80, 0.5) 0px 4vw 8vw -2vw, rgba(0, 0, 0, 0.8) 0px 4vw 5vw -3vw; */
   transition: box-shadow 1s cubic-bezier(0.66, 0.08, 0.19, 0.97);
+  cursor: pointer;
 
 }
 
