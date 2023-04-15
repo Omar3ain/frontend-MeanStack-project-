@@ -65,3 +65,7 @@ color:  var(--sub-bg-color);
 .my-form .dataInput:focus {
 background-color: var(--input-background-color);
 }
+
+.warn {
+  color: red;
+}

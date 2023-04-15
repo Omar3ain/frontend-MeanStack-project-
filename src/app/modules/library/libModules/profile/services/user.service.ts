@@ -8,7 +8,7 @@ import IUserUpdate from '../Interfaces/user';
 })
 export class UserService {
 
-  private userUrl = 'https://tsbookvalley.onrender.com/profile/';
+  private userUrl = 'http://localhost:3000/profile/';
   btnClicked = new EventEmitter();
 
   constructor(private _http: HttpClient) { }
