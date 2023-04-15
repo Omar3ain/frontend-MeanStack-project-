@@ -1,0 +1,51 @@
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+  <section class="container main-section shadow-5-strong">
+    <div class="row d-flex justify-content-center h-100">
+      <div class="card mx-4 mx-md-5 the-card">
+        <div class="card-body py-5 px-md-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <h1 class="fw-bolder mb-5 header text-center ">Log In now</h1>
+              <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="myform mt-5">
+
+                <div class="form-outline mb-4" style="font-size: 20px;">
+                  <label class="form-label" for="form3Example3">E-mail</label>
+                  <input type="email" id="email" style="font-size: 20px;" formControlName="email"
+                    class="form-control" />
+                  <p class="warn"
+                    *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">E-mail is
+                    required!</p>
+                  <p class="warn" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']">
+                    E-mail is not valid!</p>
+                </div>
+
+                <div class="form-outline mb-4" style="font-size: 20px;">
+                  <label class="form-label" for="form3Example4">Password</label>
+                  <input type="password" id="password" style="font-size: 20px;" formControlName="password"
+                    class="form-control" />
+                  <p class="warn"
+                    *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                    <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required!</span>
+                    <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password should be at least 6
+                      characters
+                      long!</span>
+                    <span *ngIf="loginForm.get('password')?.errors?.['pattern']">Password should contain at least one
+                      uppercase letter, one lowercase letter, one number, and one special character!</span>
+                  </p>
+                </div>
+                <div class="text-center mt-5">
+                  <button type="submit" style="font-size: 20px;" class="btn btn-primary btn-block mb-4"
+                    [disabled]="!loginForm.valid">Log In</button>
+                </div>
+              </form>
+              <div class="text-center" style="font-size: 20px;">
+                <p class="mt-2">Don't have an account? <a class="link-info link" (click)="navigate()">Sign Up here</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-between page">
+  <aside>
+    <div class="container-fluid">
+      <a (click)="getBooks('all'); changeSelected('all')" [ngClass]="{ selected : selected == 'all'}">
+        <i class="bi bi-journals"></i>
+        <span class="textlink"> ALL</span>
+      </a>
+      <div class="divider"></div>
+      <a (click)="getBooks('want_to_read'); changeSelected('want_to_read')" [ngClass]="{ selected : selected == 'want_to_read'}">
+        <i class="bi bi-bookmark-plus"></i>
+        <span class="textlink"> Want to read</span>
+      </a>
+      <div class="divider"></div>
+      <a (click)="getBooks('currently_reading'); changeSelected('currently_reading')" [ngClass]="{ selected : selected == 'currently_reading'}">
+        <i class="bi bi-book-half"></i>
+        <span class="textlink"> Continue reading</span>
+      </a>
+      <div class="divider"></div>
+      <a (click)="getBooks('read'); changeSelected('read')" [ngClass]="{ selected : selected == 'read'}">
+        <i class="bi bi-journal-check"></i>
+        <span class="textlink"> Read</span>
+      </a>
+    </div>
+  </aside>
+
+  <div class="table-area container-fluid mt-5">
+    <ng-container>
+      <div class="row text-left">
+        <ng-container>
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <h1 class="card-title">My Books</h1>
+              </div>
+              <div class="card-content">
+                <div class="card-body">
+                  <div class="table-scrollable">
+                    <table class="table table-responsive-md table-striped text-center">
+                      <thead>
+                        <tr>
+                          <th>Cover</th>
+                          <th>Name</th>
+                          <th>Author</th>
+                          <th>Avg Rate</th>
+                          <th>Rating</th>
+                          <th>Shelf</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let book of books | paginate: { itemsPerPage:6, currentPage: page }">
+                          <tr class="tr">
+                            <td>
+                              <img class="media-object round-media img-fluid image-size" crossorigin="anonymous"
+                                [src]="book.coverPhoto" />
+                            </td>
+                            <td (click)="navigateBook(book._id)" class="link">{{book.name}}</td>
+                            <td (click)="navigateAuthor(book.author._id)" class="link">{{book?.author?.firstName}}
+                              {{book?.author?.lastName}}</td>
+                            <td>
+                              <ngb-rating [rate]="book.avgRate" [readonly]="true" [max]="5" class="my-rating">
+                                <ng-template let-fill="fill" let-index="index">
+                                  <i class="bi-star{{ fill === 100 ? '-fill' : '' }}" [class.filled]="fill === 100"></i>
+                                </ng-template>
+                              </ngb-rating>
+                            </td>
+                            <td>
+                              <ngb-rating [rate]="book?.reviews?.rating" [max]="5" class="my-rating"
+                                (rateChange)="editRate(book, $event)">
+                                <ng-template let-fill="fill" let-index="index">
+                                  <i class="bi-star{{ fill === 100 ? '-fill' : '' }}" [class.filled]="fill === 100"></i>
+                                </ng-template>
+                              </ngb-rating>
+                            </td>
+                            <td>
+                              <select id="shelf" #shelfSelect (change)="updateShelve(book?._id, shelfSelect.value, book.shelve)">
+                                <option *ngFor="let option of shelfOptionKeys" [ngValue]="option"
+                                  [selected]="book?.shelve === option">
+                                  {{ option }}
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>

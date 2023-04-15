@@ -1,20 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&family=PT+Sans+Narrow:wght@400;700&family=Sawarabi+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Dancing+Script:wght@400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root {
-   /* colors */
-  --background-color:#f0f0e2;
+  /* colors */
+  --background-color: #f0f0e2;
   --sub-bg-color: #d5d6cc;
   --text-color: #1c1e28;
   --button-color: #282835;
   --logo-color: #51c6cc;
+  --input-background-color: #3f3d56;
   /* font family */
   --header-font-family: 'Sawarabi Mincho', serif;
   --text-font-family: 'PT Sans Narrow', sans-serif;
   --bold-font-family: 'Changa One', cursive;
+  /* spinner */
+  --trans-dur: 0.3s;
+  /* nav */
+  --white: #FFF;
+  --black: #000;
+  --dark: #1b1b1b;
+  --gray: rgba(1, 1, 1, 0.6);
+  --lite: rgba(255, 255, 255, 0.6);
+  --primary: #bae3f9;
+  --primary_dark: var(--text-color);
+  --default_font: 'Montserrat', sans-serif;
+  --title_font: 'Abril Fatface', cursive;
+  --cursive_font: 'Dancing Script', cursive;
 }
-html, body { 
-  height: 100%; 
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-body { 
-  margin: 0; 
-  font-family: var(--text-font-family) 
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--text-font-family);
+  background:  url('/assets/library/wallpaperflare.com_wallpaper2.jpg');
+}
+
+
+
+::ng-deep .ngx-pagination .current {
+  background: var(--button-color) !important;
 }

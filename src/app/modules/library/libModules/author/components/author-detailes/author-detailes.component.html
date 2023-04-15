@@ -1,0 +1,110 @@
+<!-- <div class='background'> </div> -->
+<section class="vh-150 ">
+
+  <div class="container pt-5 pb-2" *ngIf="myauthor">
+    <div class="d-flex flex-row justify-content-start">
+      <div class="p-0 mr-5" id="class">
+        <div class="card author-card">
+          <div class="img-container">
+            <div class="img">
+              <img [src]="myauthor.photo" crossorigin="anonymous" class="img-fluid">
+            </div>
+            <div class="description card">
+              <h3>{{myauthor.firstName}} {{myauthor.lastName}}</h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="p-2 content">
+        <div class="d-inline-flex flex-column">
+          <div class="d-inline-flexp-2">
+            <h2> {{myauthor.firstName}} {{myauthor.lastName}}</h2>
+
+          </div>
+          <div class="p-2 ">
+            <p>Date of birth: {{myauthor.dob | date:'shortDate'}}</p>
+          </div>
+          <div class="p-2 ">
+            <p> books: {{books.length}} </p>
+          </div>
+
+          <div class="p-2">
+            <p>{{myauthor.description}}</p>
+          </div>
+          <ng-container>
+            <div class="row text-left">
+              <ng-container>
+                <div class="col-sm-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h1 class="card-title">Author Books</h1>
+
+                    </div>
+                    <div class="card-content">
+                      <div class="card-body">
+                        <table class="table table-responsive-md table-striped text-center">
+                          <thead>
+                            <tr>
+                              <th scope="col">coverPhoto</th>
+                              <th scope="col">name</th>
+                              <th scope="col">reviews</th>
+                              <th scope="col">shelve</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <ng-container *ngFor="let book of books ">
+                              <tr class="tr">
+
+                                <td>
+                                  <img [routerLink]="['/books',book._id]"
+                                    class="media-object round-media img-fluid image-size" crossorigin="anonymous"
+                                    [src]="book.coverPhoto" />
+
+                                </td>
+                                <td> <a [routerLink]="['/books',book._id]">{{book.name }}</a></td>
+                                <td>
+                                  <div class="rating">
+                                    <ngb-rating [rate]="getAvgRating(book)" [readonly]="true" [max]="5"
+                                      class="my-rating">
+                                      <ng-template let-fill="fill" let-index="index">
+                                        <i class="bi-star{{ fill === 100 ? '-fill' : '' }}"
+                                          [class.filled]="fill === 100"></i>
+                                      </ng-template>
+                                    </ngb-rating>
+                                    <div> ({{ book?.reviews?.length }} reviews)</div>
+                                  </div>
+
+                                </td>
+
+
+
+                                <td>
+                                  <select id="shelf" #shelfSelect
+                                    (change)="updateShelve(book._id, shelfSelect.value, book.shelve)">
+                                    <option *ngFor="let option of shelfOptionKeys" [ngValue]="option"
+                                      [selected]="book?.shelve === option">
+                                      {{ option }}
+                                    </option>
+                                  </select>
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

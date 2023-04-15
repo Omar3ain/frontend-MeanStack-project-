@@ -1,0 +1,83 @@
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+  <section class="container main-section shadow-5-strong">
+    <div class="row d-flex justify-content-center h-100">
+      <div class="card mx-4 mx-md-5 the-card">
+        <div class="card-body py-5 px-md-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <h1 class="fw-bolder mb-5 header text-center ">Sign Up now</h1>
+              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="myform mt-5">
+                <div class="row mt-5" style="font-size: 20px;">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example1">First name</label>
+                      <input type="text" formControlName="firstName" style="font-size: 20px;" id="firstName"
+                        class="form-control" />
+                      <p class="warn"
+                        *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)">
+                        First name is required!
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example2">Last name</label>
+                      <input type="text" id="lastName" formControlName="lastName" style="font-size: 20px;"
+                        class="form-control" />
+                      <p class="warn"
+                        *ngIf="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)">
+                        Last name is required!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4" style="font-size: 20px;">
+                  <label class="form-label" for="form3Example3">E-mail</label>
+                  <input type="email" id="email" style="font-size: 20px;" formControlName="email"
+                    class="form-control" />
+                  <p class="warn"
+                    *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']">E-mail
+                    is
+                    required!</p>
+                  <p class="warn"
+                    *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['email']">
+                    E-mail is not valid!</p>
+                </div>
+
+                <div class="form-outline mb-4" style="font-size: 20px;">
+                  <label class="form-label" for="form3Example4">Password</label>
+                  <input type="password" id="password" style="font-size: 20px;" formControlName="password"
+                    class="form-control" />
+                  <p class="warn"
+                    *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+                    <span *ngIf="registerForm.get('password')?.errors?.['required']">Password is required!</span>
+                    <span *ngIf="registerForm.get('password')?.errors?.['minlength']">Password should be at least 6
+                      characters
+                      long!</span>
+                    <span *ngIf="registerForm.get('password')?.errors?.['pattern']">Password should contain at least one
+                      uppercase letter, one lowercase letter, one number, and one special character!</span>
+                  </p>
+                </div>
+
+                <div class="custom-file  mx-auto d-block" style="font-size: 20px;">
+                  <label class="custom-file-label mb-2" for="avatar">Avatar</label>
+                  <input type="file" accept="image/*" (change)="onFileChange($event)"
+                    class="custom-file-input form-control" id="avatar">
+                </div>
+                <div class="text-center mt-5">
+                  <button type="submit" style="font-size: 20px;" class="btn btn-primary btn-block mb-4"
+                    [disabled]="!registerForm.valid">Sign Up</button>
+                </div>
+              </form>
+              <div class="text-center" style="font-size: 20px;">
+                <p class="mt-2">Already have an account? <a class="link-info link" (click)="navigate()">Log In here</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

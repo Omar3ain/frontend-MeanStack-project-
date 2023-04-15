@@ -6,32 +6,39 @@ import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { LibraryRoutingModule } from './modules/library/library-routing.module';
 
 import { NotFoundComponent } from './sharedComponents/not-found/not-found.component';
+import { AdminGuard } from './Guard/admin/admin.guard';
+import { AuthGuard } from './Guard/user/auth.guard';
+import { LoginGuard } from './Guard/login/login.guard';
+
 
 const routes: Routes = [
   {
     path: 'admin',
-    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AdminGuard]
   },
   {
     path: 'auth',
-    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+      canActivate: [LoginGuard]
   },
   {
     path: '',
-    loadChildren: () => import('./modules/library/library.module').then(m => m.LibraryModule )
+    loadChildren: () =>
+      import('./modules/library/library.module').then((m) => m.LibraryModule),
   },
   {
     path: '**',
-    component : NotFoundComponent
+    component: NotFoundComponent,
   },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    AdminRoutingModule,
-    AuthRoutingModule,
-    LibraryRoutingModule  ],
-  exports: [RouterModule]
+  ],
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

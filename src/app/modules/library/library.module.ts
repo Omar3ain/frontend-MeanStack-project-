@@ -2,22 +2,32 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LibraryRoutingModule } from './library-routing.module';
-import { BookModule } from './libModules/book/book.module';
-import { CategoryModule } from './libModules/category/category.module';
-import { ProfileModule } from './libModules/profile/profile.module';
-import { AuthorModule } from './libModules/author/author.module';
+
+
+import { MainComponent } from './components/main/main.component';
+import { HeaderComponent } from './libModules/public/components/header/header.component';
+import { ExpandedSearchComponent } from './components/expanded-search/expanded-search.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AuthorsSliderComponent } from './components/authors-slider/authors-slider.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MainComponent,
+    ExpandedSearchComponent,
+    FooterComponent,
+    NavbarComponent,
+    AuthorsSliderComponent,
+
+  ],
   imports: [
     CommonModule,
     LibraryRoutingModule,
-    BookModule,
-    CategoryModule,
-    ProfileModule,
-    AuthorModule
-    
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class LibraryModule { }

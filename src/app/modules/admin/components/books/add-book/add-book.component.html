@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>Add new book</h2>
+<mat-dialog-content class="mat-typography bg">
+  <div class="m-3 color">
+    <form class="form" [formGroup]="bookForm" (submit)="onSubmit()">
+      <div class="form-body">
+  
+        <div class="row">
+  
+          <div class="custom-file  mx-auto d-block">
+            <label class="custom-file-label" for="coverPhoto">Choose Cover Photo</label>
+            <input type="file" accept="image/*" (change)="uploadImage($event.target)" class="custom-file-input form-control"
+              id="coverPhoto">
+          </div>
+          <br>
+          <div class="form-group col-md-12 mb-2">
+            <label for="name">Name</label>
+            <input formControlName="name" type="text" id="name" class="form-control border-primary"
+              placeholder="Name">
+              <p *ngIf="bookForm.controls['name'].touched && bookForm.get('name')?.hasError('required')" class="text-danger">Name is required</p>
+          </div>
+          <div class="form-group col-md-12 mb-2">
+            <label for="description">description</label>
+            <textarea formControlName="description" type="text" id="description" class="form-control border-primary"
+              placeholder="description"></textarea>
+              <p *ngIf="bookForm.controls['description'].touched && bookForm.get('description')?.hasError('required')">The description is Required</p>
+              <p *ngIf="bookForm.controls['description'].touched && bookForm.get('description')?.hasError('minlength')" class="text-danger">Minimun length for description is 6 characters</p>
+          </div>
+  
+          
+    
+          <div class="form-group col-md-6 mb-2">
+            <label for="authorId">Author</label>
+            <select id="authorId" name="authorId" formControlName="authorId" class="form-select custom-select border-primary">
+              <option value="" selected>Select Author</option>
+              <option *ngFor="let author of authors" value="{{author._id}}">{{author.firstName}} {{author.lastName}}</option>
+            </select>
+          </div>
+          
+          <div class="form-group col-md-6 mb-2">
+            <label for="categoryId">Category</label>
+            <select id="categoryId" name="categoryId" formControlName="categoryId" class="form-select custom-select border-primary">
+              <option value="" selected>Select category</option>
+              <option *ngFor="let category of categories" value="{{category._id}}">{{category.name}}</option>
+              <p *ngIf=" bookForm.controls['categoryId'].status === 'INVALID'">Category name is required</p>
+            </select>
+          </div>
+  
+        </div>
+      
+      </div>
+      
+      <div class="form-actions right d-flex justify-content-end">
+        <button [disabled]="bookForm.invalid" mat-dialog-close type="submit" class="btn btn-dark"><i class="fa fa-check-square-o"></i>Create</button>
+      </div>
+  
+    </form>
+  </div>
+  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
