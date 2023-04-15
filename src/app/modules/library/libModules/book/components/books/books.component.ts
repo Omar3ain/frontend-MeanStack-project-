@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BookService } from '../../services/book.service';
 import { CategoryService } from '../../../category/services/category.service';
-import { AuthorService } from '../../../author/services/author.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';

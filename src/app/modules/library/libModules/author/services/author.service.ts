@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { author } from '../components/list-authors/list-authors.component';
-import { authorElement } from 'src/app/modules/admin/components/authors/list-authors/list-authors.component';
 import { Book } from '../components/author-detailes/author-detailes.component';
 import currentDomain from 'src/app/utils/dominUrls';
 
