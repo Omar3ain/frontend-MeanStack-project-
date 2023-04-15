@@ -7,6 +7,8 @@ import { LibraryRoutingModule } from './modules/library/library-routing.module';
 
 import { NotFoundComponent } from './sharedComponents/not-found/not-found.component';
 import { AdminGuard } from './Guard/admin/admin.guard';
+import { AuthGuard } from './Guard/user/auth.guard';
+import { LoginGuard } from './Guard/login/login.guard';
 
 
 const routes: Routes = [
@@ -14,12 +16,13 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
-    // canActivate: [AdminGuard]
+    canActivate: [AdminGuard]
   },
   {
     path: 'auth',
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
+      canActivate: [LoginGuard]
   },
   {
     path: '',

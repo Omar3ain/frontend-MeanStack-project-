@@ -16,8 +16,8 @@ export class AuthorService {
   authorsPerPage = 6;
   authors: author[] = [];
   Books: Book[] = [];
-  authorUrl = 'http://localhost:3000/authors';
-  bookUrl = 'http://localhost:3000/books'
+  authorUrl = 'https://tsbookvalley.onrender.com/authors';
+  bookUrl = 'https://tsbookvalley.onrender.com/books'
 
 
   constructor(private http: HttpClient) { }

@@ -9,7 +9,7 @@ import { Book } from '../../author/components/author-detailes/author-detailes.co
 })
 export class BookService {
   btnClicked = new EventEmitter();
-  domin: string = "http://localhost:3000"
+  domin: string = "https://tsbookvalley.onrender.com"
   booksUrl = `${this.domin}/books`;
   books!: Book[];
   constructor(private http: HttpClient) { }

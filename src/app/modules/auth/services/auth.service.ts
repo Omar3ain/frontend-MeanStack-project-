@@ -7,8 +7,8 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:3000/auth/login';
-  private registerUrl = 'http://localhost:3000/auth/register';
+  private loginUrl = 'https://tsbookvalley.onrender.com/auth/login';
+  private registerUrl = 'https://tsbookvalley.onrender.com/auth/register';
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   handleError(error: HttpErrorResponse) {

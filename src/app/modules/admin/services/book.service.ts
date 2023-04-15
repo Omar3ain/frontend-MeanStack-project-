@@ -6,7 +6,7 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class BookService {
-  domin : string = "http://localhost:3000"
+  domin : string = "https://tsbookvalley.onrender.com"
   booksUrl = `${this.domin}/books/`;
   buttonClicked =new EventEmitter();
 

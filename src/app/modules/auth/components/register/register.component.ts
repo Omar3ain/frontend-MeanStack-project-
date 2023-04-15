@@ -29,7 +29,7 @@ export class RegisterComponent {
   onSubmit() {
 
     if (!this.registerForm.valid || !this.avatar) {
-      this.toastr.error( 'Missing Field','Could not register',toastr_options);
+      this.toastr.error('Missing Field', 'Could not register', toastr_options);
       return;
     }
 
@@ -42,13 +42,13 @@ export class RegisterComponent {
 
     this.authService.register(formData).subscribe({
       next: () => {
-        this.toastr.success(`Registered successfully`,'Insert status',toastr_options);
-        this.router.navigate(['/login']);
+        this.toastr.success(`Registered successfully`, 'Insert status', toastr_options);
+        this.router.navigate(['/auth/login']);
       },
-      error : (error) => {
-        let {error : {message}}  = error;
-        if(!message) message = error.message;
-        this.toastr.error(`MESSAGE : ${message}`,'Could not register',toastr_options);
+      error: (error) => {
+        let { error: { message } } = error;
+        if (!message) message = error.message;
+        this.toastr.error(`MESSAGE : ${message}`, 'Could not register', toastr_options);
       }
     })
   }

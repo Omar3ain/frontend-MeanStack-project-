@@ -6,9 +6,9 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryService {
-  domin : string = "http://localhost:3000"
+  domin : string = "https://tsbookvalley.onrender.com"
   categoriesUrl = `${this.domin}/categories`;
-  
+
   constructor(private http: HttpClient) { }
   handleError(error: HttpErrorResponse) {
     return throwError(() => error);

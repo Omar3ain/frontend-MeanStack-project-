@@ -6,7 +6,7 @@ import { Observable, catchError, map, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class PublicService {
-  private domain: string = 'http://localhost:3000';
+  private domain: string = 'https://tsbookvalley.onrender.com';
 
   constructor( private _http : HttpClient ) { }
 

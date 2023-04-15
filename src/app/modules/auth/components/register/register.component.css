@@ -1,25 +1,25 @@
 .warn{
   color: red;
 }
-.form-group {
-  margin-top: 1rem;
-}
-.btn {
-  margin-top: 1rem;
-}
 
-.form-group
-.dataInput {
-  background-color: var(--input-background-color);
-  height: 2.7rem;
-  color: var(--sub-bg-color);
-  width: 70%;
- }
-
-.my-form .dataInput:focus {
-  background-color: var(--input-background-color);
-}
 
 .link{
   cursor: pointer;
+}
+
+.main-section{
+  margin-top: -100px;
+  backdrop-filter: blur(5px);
+  box-shadow: -4px -4px 17px -7px rgba(32,29,29,0.67);
+  -webkit-box-shadow: -4px -4px 17px -7px rgba(32,29,29,0.67);
+  -moz-box-shadow: -4px -4px 17px -7px rgba(32,29,29,0.67);
+}
+
+.the-card {
+  background: hsla(0, 0%, 100%, 0.505);
+  backdrop-filter: blur(0px);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.header{
+  font-size: 47px;
 }

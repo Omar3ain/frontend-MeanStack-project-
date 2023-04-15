@@ -6,13 +6,13 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthorService {
-  domin : string = "http://localhost:3000"
+  domin : string = "https://tsbookvalley.onrender.com"
 
   constructor(private http: HttpClient) {}
 
 
   buttonClicked =new EventEmitter();
-  
+
   getAuthors(): Observable<any> {
     return this.http.get(`${this.domin}/authors`).pipe(catchError((this.handleError)));
   }
@@ -25,8 +25,8 @@ export class AuthorService {
 
     formData.append('photo', photo);
     formData.append('firstName', formValue['firstName']);
-    formData.append('lastName', formValue['lastName']); 
-    formData.append('dob', formValue['dob']); 
+    formData.append('lastName', formValue['lastName']);
+    formData.append('dob', formValue['dob']);
 
     return this.http.post(`${this.domin}/admin/author`, formData).pipe(catchError((this.handleError)));
   }
@@ -43,8 +43,8 @@ export class AuthorService {
     if( photo) formData.append('photo', photo);
 
     formData.append('firstName', formValue['firstName']);
-    formData.append('lastName', formValue['lastName']); 
-    formData.append('dob', formValue['dob']); 
+    formData.append('lastName', formValue['lastName']);
+    formData.append('dob', formValue['dob']);
 
     return this.http.patch(`${this.domin}/admin/author/${id}`,formData).pipe(catchError((this.handleError)));
   }
