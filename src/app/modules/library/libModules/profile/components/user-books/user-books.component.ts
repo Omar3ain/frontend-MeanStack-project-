@@ -31,6 +31,7 @@ export class UserBooksComponent implements OnInit {
   changeSelected(shelf: string) {
     return this.selected = shelf;
   }
+
   getBooks(shelf: string) {
     let skip: number = (this.page - 1) * this.pageSize;
     let limit: number = this.pageSize;
@@ -66,19 +67,10 @@ export class UserBooksComponent implements OnInit {
     }
   }
 
-  updateShelve(bookId: string, shelve: string, oldShelve: string) {
+  updateShelve(bookId: string, shelve: string) {
     this.bookService.patchShelve(bookId, shelve).subscribe(res => {
       this.toastr.success(`you put this book in : ${shelve} shelve`, 'selve change successfully', toastr_options);
-      this.getBooks(oldShelve);
+      this.getBooks(this.selected);
     })
-  }
-
-
-  navigateBook(id: string) {
-    this.router.navigate([`/books/${id}`]);
-  }
-
-  navigateAuthor(id: string) {
-    this.router.navigate([`/authors/${id}`]);
   }
 }
