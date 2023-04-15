@@ -1,12 +1,13 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
+import currentDomain from 'src/app/utils/dominUrls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorService {
-  domin : string = "https://tsbookvalley.onrender.com"
+  domin : string = currentDomain;
 
   constructor(private http: HttpClient) {}
 
