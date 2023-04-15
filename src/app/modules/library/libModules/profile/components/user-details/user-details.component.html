@@ -1,21 +1,21 @@
 <app-spinner *ngIf="!user"></app-spinner>
-<div *ngIf="user" class="container rounded bg-white mt-5 mb-5" >
-  <div   class="row">
-    <div class="col-md-3 border-right">
-      <div class="d-flex flex-column align-items-center text-center p-3 py-5 img">
 
-        <div class="circular-image">
-          <img  crossorigin="anonymous" [src]="user.avatar" class="rounded-circle shadow-4"
-            style="width: 150px; height: 150px;" alt="Avatar" />
+<div *ngIf="user" class="container p-3 mb-5 rounded">
+  <div class="row align-items-center">
+    <div class="col-md-6 mb-sm-4">
+      <div class="card col-sm-12 col-md-6">
+        <div class="imgBx">
+            <img crossorigin="anonymous" [src]="user.avatar" alt="profile picture">
         </div>
-
-        <h5 class="mb-2 mt-2 name"><strong>{{user.firstName}} {{user.lastName}}</strong></h5>
-        <p class="text-muted name">{{user.email}}</p>
-
+        <div class="details">
+            <h2>{{user.firstName}} {{user.lastName}}<br></h2><span>{{user.email}}</span>
+        </div>
       </div>
+     </div>
+    <div class="col-md-6 shadow bg-white rounded">
+      <app-edit class="col-md-5 border-right"></app-edit>
     </div>
-
-    <app-edit class="col-md-5 border-right"></app-edit>
-
   </div>
 </div>
+
+
