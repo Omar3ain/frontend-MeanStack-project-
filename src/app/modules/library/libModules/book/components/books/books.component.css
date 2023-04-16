@@ -79,7 +79,7 @@
     margin: 0 auto;
     max-width: 910px;
   }
-  
+
   .choose {
     width: 100%;
     height: 40px;
@@ -93,7 +93,7 @@
   /******************************************
   Book stuff
   *******************************************/
-  
+
   .book {
     display: inline-block;
     width: 230px;
@@ -104,22 +104,22 @@
     vertical-align: top;
     transition: height 1s;
   }
-  
+
   .cover {
     border: 2px solid gray;
     height: 70%;
     overflow: hidden;
   }
-  
+
   .cover img {
     width: 100%;
   }
-  
+
   .book p {
     margin-top: 12px;
     font-size: 20px;
   }
-  
+
   .book .author {
     font-size: 15px;
   }
@@ -138,14 +138,14 @@
       margin-top: 50px;
     }
     .cover {
-      
+
     }
   }
-  
+
   /*********************************
   other
   **********************************/
-  
+
   h1 {
 
     text-align: center;
@@ -154,7 +154,7 @@
     font-family: var(--bold-font-family);
     color: var(--text-color);
   }
-  
+
   /**********************************
   display change
   ***********************************/
@@ -167,15 +167,15 @@
     margin: 25px auto 25px auto;
     font-family: var(--text-font-family);
   }
-  
+
   #list-th:target .cover {
     width: 246px;
   }
-  
+
   #list-th:target img {
     opacity: .1;
   }
-  
+
   #list-th:target p {
     margin-top: -62px;
     margin-left: 20px;
@@ -186,7 +186,7 @@
   }
 
 
-  
+
 .select_mate select {
   -webkit-appearance: none !important;
   background-clip: padding-box;
@@ -267,7 +267,7 @@ input.search-field {
 }
 .hover-btn {
 	background-color: var(--text-color);
-  
+
 }
 .hover-btn span {
 	position: relative;
@@ -296,4 +296,8 @@ input.search-field {
 }
 .badge {
   cursor: pointer;
+}
+
+.my-rating .bi-star-fill {
+	color: rgb(30, 128, 53);
 }

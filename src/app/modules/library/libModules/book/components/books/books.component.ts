@@ -53,7 +53,6 @@ export class BooksComponent {
   }
 
   clearFilter (){
-    console.log(this.pageIndex)
     this.bookName = this.category = this.author = '';
     this.pageIndex = 0;
     this.page = 1;
@@ -80,7 +79,7 @@ export class BooksComponent {
   getBooks(query: string){
     this.BookService.getBooks(`?name=${this.bookName}&category=${this.category}&author=${this.author}&page=${this.page}`).subscribe((books) => {
       this.books = books;
-      this.books.map((book) => {
+      this.books = this.books.map((book) => {
         book.name =
           book.name.length > 50 ? book.name.substring(0, 30) : book.name;
         book.averageRating = Math.floor(book.reviews.reduce((average: any, review: any) => average + review.rating, 0) / book.reviews.length);
@@ -119,6 +118,19 @@ export class BooksComponent {
     this.subjectsKeyUp.author.next(this.author)
   }
 
+
+  getAvgRating(book: any) {
+    book.avgRate = this.getBookRating(book.reviews);
+
+  }
+  getBookRating(reviews: any[]): number {
+    if (!reviews || reviews.length === 0) {
+      return 0;
+    }
+    const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
+    return sum / reviews.length;
+  }
+
   onCategoryByChange(input: Event) {
     const inputValue = (input.target as HTMLInputElement).value
     this.router.navigate([], {
@@ -131,13 +143,22 @@ export class BooksComponent {
   search() {
     this.BookService.getBooks(`?name=${this.bookName}&category=${this.category}&author=${this.author}&page=${this.page}`).subscribe(books => {
       this.books = books
+      this.books.forEach(book => {
+        this.getAvgRating(book);
+      });
     });
   }
 
   getCategory(name : string){
     const queryParams = {
       category: name,
+      name: '',
+      author: '',
+      page: 1
     };
-    this.router.navigate(['/books'] ,{queryParams})
+    this.router.navigate(['/books'] ,{queryParams});
+    this.subjectsKeyUp.category.next(this.category);
   }
 }
+
+

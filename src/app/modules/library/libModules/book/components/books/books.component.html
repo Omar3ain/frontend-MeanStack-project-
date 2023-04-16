@@ -36,7 +36,7 @@
         <div class="book-card__cover">
           <div class="book-card__book">
             <div class="book-card__book-front">
-              <a [routerLink]="['/books',book?._id ]" >
+              <a [routerLink]="['/books',book?._id ]">
                 <img class="book-card__img" crossorigin="anonymous" src="{{ book?.coverPhoto }}" />
               </a>
             </div>
@@ -59,7 +59,7 @@
             </a>
           </div>
           <div class="rating">
-            <ngb-rating [rate]="book?.averageRating" [readonly]="true" [max]="5" class="my-rating">
+            <ngb-rating [rate]="book?.avgRate" [readonly]="true" [max]="5" class="my-rating">
               <ng-template let-fill="fill" let-index="index">
                 <i class="bi-star{{ fill === 100 ? '-fill' : '' }}" [class.filled]="fill === 100"></i>
               </ng-template>
@@ -71,16 +71,8 @@
     </div>
   </div>
 
-  <mat-paginator #paginator
-              class="demo-paginator"
-              (page)="changePage($event)"
-              [length]="countOfBooks"
-              [pageSize]="10"
-              [disabled]="false"
-              [showFirstLastButtons]="true"
-              [pageSizeOptions]="[]"
-              [hidePageSize]="false"
-              [pageIndex]="pageIndex"
-              aria-label="Select page">
-</mat-paginator>
+  <mat-paginator #paginator class="demo-paginator" (page)="changePage($event)" [length]="countOfBooks" [pageSize]="10"
+    [disabled]="false" [showFirstLastButtons]="true" [pageSizeOptions]="[]" [hidePageSize]="false"
+    [pageIndex]="pageIndex" aria-label="Select page">
+  </mat-paginator>
 </div>
