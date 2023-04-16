@@ -105,9 +105,9 @@ export interface bookElement {
   name: string;
   position: number;
   coverPhoto: string;
-  author: any;
+  authorId: any;
   shelve: string;
-  category: any;
+  categoryId: any;
   description: string;
   reviews?: []
   createdAt: string;

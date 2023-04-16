@@ -18,7 +18,7 @@ export class BookService {
 
   getBooks(): Observable<any> {
     
-    return this.http.get(`${this.domin}/books/`).pipe(catchError((this.handleError)));
+    return this.http.get(`${this.domin}/admin/book/get/books`).pipe(catchError((this.handleError)));
   }
   addNewBook(formValue :any, coverPhoto: File) : Observable<any> {
     const formData: FormData = new FormData();
