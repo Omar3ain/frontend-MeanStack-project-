@@ -4,8 +4,8 @@ import { ListAuthorsComponent } from './components/list-authors/list-authors.com
 import { AuthorDetailesComponent } from './components/author-detailes/author-detailes.component';
 
 const routes: Routes = [
-  { path: '', component: ListAuthorsComponent },
-  { path: ':id', component: AuthorDetailesComponent },
+  { path: '', data: { title: 'Authors' }, component: ListAuthorsComponent },
+  { path: ':id',data: { title: 'Author Details' }, component: AuthorDetailesComponent },
 ];
 
 @NgModule({

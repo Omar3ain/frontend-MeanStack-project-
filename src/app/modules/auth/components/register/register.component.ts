@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import toastr_options from 'src/app/utils/toastr.options';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -11,11 +12,11 @@ import toastr_options from 'src/app/utils/toastr.options';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   avatar!: File;
 
-  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder, private toastr: ToastrService) {
+  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder, private toastr: ToastrService, private titleService: Title, private _route: ActivatedRoute) {
 
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
@@ -25,6 +26,9 @@ export class RegisterComponent {
       Validators.minLength(6),
       Validators.pattern("^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()])(?=.*[0-9]).+$")]]
     });
+  }
+  ngOnInit(): void {
+    this.titleService.setTitle(this._route.snapshot.data['title']);
   }
   onSubmit() {
 

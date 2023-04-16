@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import swal from 'sweetalert2';
+import { Title } from '@angular/platform-browser';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AuthorService } from '../../../services/author.service';
 import { ToastrService } from 'ngx-toastr';
 import toastr_options from "../../../../../utils/toastr.options";
 import swalOptions from "../../../../../utils/swal.options";
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import {  UpdateAuthorComponent } from '../update-author/update-author.component'
 import { AddAuthorComponent } from '../add-author/add-author.component'
-import swal from 'sweetalert2';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-authors',
@@ -18,7 +20,7 @@ export class ListAuthorsComponent {
   page: number = 1;
   dialogConfig = new MatDialogConfig();
   searchTerm : string = '';
-  constructor(private _authorService: AuthorService, private toastr: ToastrService, public dialog: MatDialog) {
+  constructor(private _authorService: AuthorService, private toastr: ToastrService, public dialog: MatDialog, private titleService: Title, private route: ActivatedRoute) {
     this._authorService.buttonClicked.subscribe(() => {
       this.getAuthors();
     })
@@ -31,6 +33,7 @@ export class ListAuthorsComponent {
   }
 
   ngOnInit() {
+    this.titleService.setTitle(this.route.snapshot.data['title']);
     this.getAuthors();
   }
 
